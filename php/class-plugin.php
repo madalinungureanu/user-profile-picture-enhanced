@@ -23,5 +23,9 @@ class Plugin extends Plugin_Abstract {
 		// Register option defaults.
 		$this->admin_options = new Admin\Options();
 		$this->admin_options->register_hooks();
+
+		// Show migration interface.
+		$this->migrate = new Admin\Migrate();
+		$this->migrate->register_hooks();
 	}
 }
