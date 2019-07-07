@@ -1,0 +1,33 @@
+{
+  "name": "user-profile-picture-enhanced",
+  "version": "1.0.0",
+  "description": "An add-on for User Profile Picture.",
+  "scripts": {
+    "start": "cgb-scripts start",
+    "build": "cgb-scripts build",
+    "eject": "cgb-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ronalfy/user-profile-picture-enhanced"
+  },
+  "author": "Ronald Huereca",
+  "license": "SEE LICENSE IN license.txt",
+  "bugs": {
+    "url": "https://mediaron.com/support"
+  },
+  "homepage": "https://mediaron.com/",
+  "devDependencies": {
+    "cgb-scripts": "^1.17.0",
+    "classnames": "^2.2.6",
+    "gulp": "^4.0.2",
+    "gulp-zip": "^4.1.0",
+    "lodash": "^4.17.11"
+  },
+  "dependencies": {
+    "axios": "^0.18.1",
+    "fstream": "^1.0.12",
+    "npm": "^6.9.0",
+    "tar": "^4.4.9"
+  }
+}
