@@ -24,6 +24,42 @@ class Post_Type {
 	 */
 	public function register_hooks() {
 		add_filter( 'mpp_post_type_args', array( $this, 'post_type_args' ) );
+		add_filter( 'manage_mt_pp_posts_columns', array( $this, 'post_type_columns' ) );
+		add_action( 'manage_mt_pp_posts_custom_column', array( $this, 'post_type_column_output' ), 10, 2 );
+	}
+
+	/**
+	 * Modify UPP's Post Type Column Output
+	 *
+	 * @param string $column  Column name.
+	 * @param int    $post_id Post ID.
+	 *
+	 * @return void
+	 */
+	public function post_type_column_output( $column, $post_id ) {
+		switch ( $column ) {
+			case 'profile_picture':
+				echo 'test_picture';
+				break;
+			case 'profile_title':
+				echo 'test_title';
+				break;
+		}
+	}
+
+	/**
+	 * Modify UPP's Post Type Appearance
+	 *
+	 * @param array $columns Column arguments.
+	 *
+	 * @return array New Column arguments
+	 */
+	public function post_type_columns( $columns ) {
+		unset( $columns['title'] );
+		unset( $columns['date'] );
+		$columns['profile_picture'] = __( 'Avatar', 'user-profile-picture-enhanced' );
+		$columns['profile_title']   = __( 'User', 'user-profile-picture-enhanced' );
+		return $columns;
 	}
 
 	/**
