@@ -104,11 +104,11 @@ user_profile_picture_enhanced()
  * Sometimes we need to do some things after the plugin is loaded, so call the Plugin_Interface::plugin_loaded().
  */
 add_action( 'plugins_loaded', array( user_profile_picture_enhanced(), 'plugin_loaded' ) );
-add_action( 'init', 'replyable_woocommerce_add_i18n' );
+add_action( 'init', 'user_profile_picture_enhanced_add_i18n' );
 
 /**
  * Add i18n to Replyable WooCommerce
  */
-function replyable_woocommerce_add_i18n() {
+function user_profile_picture_enhanced_add_i18n() {
 	load_plugin_textdomain( 'user-profile-picture-enhanced', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
