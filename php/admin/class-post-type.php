@@ -37,12 +37,14 @@ class Post_Type {
 	 * @return void
 	 */
 	public function post_type_column_output( $column, $post_id ) {
+		$post = get_post( $post_id );
 		switch ( $column ) {
 			case 'profile_picture':
-				echo 'test_picture';
+				echo get_avatar( $post->post_author );
 				break;
 			case 'profile_title':
-				echo 'test_title';
+				$user = get_user_by( 'id', $post->post_author );
+				echo esc_html( $user->data->display_name );
 				break;
 		}
 	}
@@ -57,8 +59,8 @@ class Post_Type {
 	public function post_type_columns( $columns ) {
 		unset( $columns['title'] );
 		unset( $columns['date'] );
-		$columns['profile_picture'] = __( 'Avatar', 'user-profile-picture-enhanced' );
 		$columns['profile_title']   = __( 'User', 'user-profile-picture-enhanced' );
+		$columns['profile_picture'] = __( 'Avatar', 'user-profile-picture-enhanced' );
 		return $columns;
 	}
 
