@@ -22,6 +22,7 @@ jQuery( document ).ready( function( $ ) {
 				} );
 			} else {
 				$('#upp-migrate').val( upp_enhanced.migrated );
+				window.location.href = upp_enhanced.upp_page;
 			}
 		}, 'json' );
 	}
