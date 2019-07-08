@@ -30,6 +30,33 @@ class Social_Networks {
 		add_action( 'wp_ajax_add_upp_social', array( $this, 'ajax_add_user_social_network' ) );
 		add_action( 'wp_ajax_remove_upp_social', array( $this, 'ajax_remove_social_network' ) );
 		add_action( 'wp_ajax_save_upp_social', array( $this, 'ajax_save_social_network' ) );
+		add_action( 'wp_ajax_sort_upp_social', array( $this, 'ajax_sort_social_networks' ) );
+	}
+
+	/**
+	 * Sort the social networks.
+	 */
+	public function ajax_sort_social_networks() {
+		$post_data = wp_unslash( $_POST );
+		if ( ! current_user_can( 'edit_pages' ) || ! wp_verify_nonce( $post_data['nonce'], 'add-social-networks' ) ) {
+			die( '' );
+		}
+		$items = $post_data['data'];
+		global $wpdb;
+		$tablename = $wpdb->prefix . 'upp_social_networks';
+		foreach ( $items as $key => $item ) {
+			$wpdb->update( // phpcs:ignore
+				$tablename,
+				array(
+					'item_order' => absint( $item['order'] ),
+				),
+				array(
+					'id' => absint( $item['id'] ),
+				),
+				array( '%d' )
+			);
+		}
+		die( '' );
 	}
 
 	/**

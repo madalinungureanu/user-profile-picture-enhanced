@@ -29,7 +29,7 @@ jQuery( document ).ready( function( $ ) {
 		$.post( ajaxurl, args, function( response ) {
 			$button.removeAttr( 'disabled' );
 			$( '#user-profile-enhanced-spinner' ).hide();
-			$( '#user-profile-picture-enhanced-social-networks' ).append( response ).find( 'input:last' ).focus();
+			$( '#user-profile-picture-enhanced-sortable' ).append( response ).find( 'input:last' ).focus();
 		});
 	} );
 
@@ -53,6 +53,7 @@ jQuery( document ).ready( function( $ ) {
 		};
 		$.post( ajaxurl, args, function( response ) {
 			$input.remove();
+			jQuery.fn.upp_enhanced_sortable();
 		});
 	} );
 
