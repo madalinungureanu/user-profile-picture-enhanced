@@ -38,11 +38,6 @@ jQuery( document ).ready( function( $ ) {
 				$.post( ajaxurl, args, function( response ) {
 				});
 
-			},
-			start: function( event, ui ) {
-				sort_start.item = ui.item;
-				sort_start.prev = ui.item.prev( ':not(".placeholder")' );
-				sort_start.next = ui.item.next( ':not(".placeholder")' );
 			}
 		});
 	};
