@@ -25,7 +25,7 @@ class Migrate {
 	public function register_hooks() {
 		global $mt_pp;
 		$options = $mt_pp->get_options();
-		if ( false === $options['migrated'] ) {
+		if ( 'off' === $options['migrated'] ) {
 			add_action( 'admin_notices', array( $this, 'show_migration_notice' ) );
 			add_action( 'admin_menu', array( $this, 'register_admin_page' ) );
 			add_action( 'wp_ajax_migrate_upp_data', array( $this, 'ajax_migrate_data' ) );
@@ -73,7 +73,7 @@ class Migrate {
 			// Update option to show we have migrated.
 			global $mt_pp;
 			$options             = $mt_pp->get_options();
-			$options['migrated'] = true;
+			$options['migrated'] = 'on';
 			$mt_pp->update_options( $options );
 			die( wp_json_encode( $return ) );
 		}
