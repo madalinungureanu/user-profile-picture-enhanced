@@ -23,6 +23,11 @@ class Post_Type {
 	 * Register any hooks that this component needs.
 	 */
 	public function register_hooks() {
+		global $mt_pp;
+		$options = $mt_pp->get_options();
+		if ( 'off' === $options['show_profile_post_type'] ) {
+			return;
+		}
 		add_filter( 'mpp_post_type_args', array( $this, 'post_type_args' ) );
 		add_filter( 'manage_mt_pp_posts_columns', array( $this, 'post_type_columns' ) );
 		add_action( 'manage_mt_pp_posts_custom_column', array( $this, 'post_type_column_output' ), 10, 2 );
@@ -101,13 +106,20 @@ class Post_Type {
 			'items_list_navigation' => __( 'Profile Picture list navigation', 'user-profile-picture-enhanced' ),
 			'filter_items_list'     => __( 'Filter Profile Picture list', 'user-profile-picture-enhanced' ),
 		);
-		$rewrite = array(
-			'slug'       => 'users',
-			'with_front' => true,
-			'pages'      => true,
-			'feeds'      => false,
-		);
-		$args    = array(
+		global $mt_pp;
+		$options = $mt_pp->get_options();
+		if ( 'on' === $options['allow_public_profiles'] ) {
+			$rewrite = array(
+				'slug'       => 'users',
+				'with_front' => true,
+				'pages'      => true,
+				'feeds'      => false,
+			);
+		} else {
+			$rewrite = false;
+		}
+
+		$args = array(
 			'label'               => __( 'Profile Picture', 'user-profile-picture-enhanced' ),
 			'description'         => __( 'User Profile Picture', 'user-profile-picture-enhanced' ),
 			'labels'              => $labels,
@@ -120,9 +132,9 @@ class Post_Type {
 			'show_in_admin_bar'   => false,
 			'show_in_nav_menus'   => false,
 			'can_export'          => true,
-			'has_archive'         => 'users',
+			'has_archive'         => 'on' === $options['allow_public_profiles'] ? true : false,
 			'exclude_from_search' => true,
-			'publicly_queryable'  => true,
+			'publicly_queryable'  => 'on' === $options['allow_public_profiles'] ? true : false,
 			'rewrite'             => $rewrite,
 			'capability_type'     => 'page',
 			'capabilities'        => array(
