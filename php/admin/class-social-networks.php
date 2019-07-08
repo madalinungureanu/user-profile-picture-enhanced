@@ -140,8 +140,7 @@ class Social_Networks {
 	private function get_social_networks_for_user( $user_id ) {
 		global $wpdb;
 		$tablename = $wpdb->prefix . 'upp_social_networks';
-		$query = "select * from {$tablename} WHERE user_id = %d ORDER BY item_order ASC";
-		$results = $wpdb->get_results( // phpcs:ignore
+		$results   = $wpdb->get_results( // phpcs:ignore
 			$wpdb->prepare(
 				"select * from {$tablename} WHERE user_id = %d ORDER BY item_order ASC", // phpcs:ignore
 				$user_id
