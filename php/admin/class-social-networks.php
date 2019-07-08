@@ -25,12 +25,103 @@ class Social_Networks {
 	public function register_hooks() {
 		add_action( 'mpp_user_profile_form', array( $this, 'add_social_networks_to_profile_page' ) );
 		$this->create_table();
+
+		// Ajax Calls.
+		add_action( 'wp_ajax_add_upp_social', array( $this, 'ajax_add_user_social_network' ) );
+		add_action( 'wp_ajax_remove_upp_social', array( $this, 'ajax_remove_social_network' ) );
+		add_action( 'wp_ajax_save_upp_social', array( $this, 'ajax_save_social_network' ) );
+	}
+
+	/**
+	 * Saves a social network URL.
+	 */
+	public function ajax_save_social_network() {
+		$post_data = wp_unslash( $_POST );
+		if ( ! current_user_can( 'edit_pages' ) || ! wp_verify_nonce( $post_data['nonce'], 'add-social-networks' ) ) {
+			die( '' );
+		}
+
+		$profile_id = absint( $post_data['id'] );
+		$url        = esc_url( $post_data['url'] );
+
+		global $wpdb;
+		$tablename = $wpdb->prefix . 'upp_social_networks';
+		$wpdb->update( // phpcs:ignore
+			$tablename,
+			array(
+				'url' => $url,
+			),
+			array(
+				'id' => $profile_id,
+			),
+			array( '%s' )
+		);
+		die( '' );
+	}
+
+	/**
+	 * Removes a social media item.
+	 */
+	public function ajax_remove_social_network() {
+		$post_data = wp_unslash( $_POST );
+		if ( ! current_user_can( 'edit_pages' ) || ! wp_verify_nonce( $post_data['nonce'], 'add-social-networks' ) ) {
+			die( '' );
+		}
+		$profile_id = absint( $post_data['id'] );
+		global $wpdb;
+		$tablename = $wpdb->prefix . 'upp_social_networks';
+		$wpdb->delete( // phpcs:ignore
+			$tablename,
+			array( 'id' => $profile_id ),
+			array( '%d' )
+		);
+		die( '' );
+	}
+
+	/**
+	 * Adds a social network for a user. Returns HTML markup.
+	 */
+	public function ajax_add_user_social_network() {
+		$post_data = wp_unslash( $_POST );
+		if ( ! current_user_can( 'edit_pages' ) || ! wp_verify_nonce( $post_data['nonce'], 'add-social-networks' ) ) {
+			die( '' );
+		}
+
+		// Save the profile data to the custom table.
+		global $wpdb;
+		$tablename = $wpdb->prefix . 'upp_social_networks';
+		$wpdb->insert( // phpcs:ignore
+			$tablename,
+			array(
+				'user_id'    => absint( $post_data['user_id'] ),
+				'slug'       => sanitize_text_field( $post_data['slug'] ),
+				'label'      => sanitize_text_field( $post_data['label'] ),
+				'icon'       => sanitize_text_field( $post_data['icon'] ),
+				'url'        => '',
+				'date'       => current_time( 'mysql' ),
+				'item_order' => absint( $post_data['order'] ),
+			),
+			array(
+				'%d',
+				'%s',
+				'%s',
+				'%s',
+				'%s',
+				'%s',
+			)
+		);
+		$profile_id = $wpdb->insert_id;
+
+		$html  = '';
+		$html .= '<div class="user-profile-enhanced-social-item" data-id="' . absint( $profile_id ) . '" data-order="' . absint( $post_data['order'] ) . '" data-icon="' . esc_attr( $post_data['icon'] ) . '" data-id="0"><i class="' . esc_attr( $post_data['icon'] ) . '"></i> <input class="user-profile-enhanced-url regular-text" type="text" value="" placeholder="https://" /> <a class="user-profile-enhanced-social-item-save button button-secondary" href="#" class="button button-secondary">' . esc_html__( 'Save', 'user-profile-picture-enhanced' ) . '</a> <a class="user-profile-enhanced-social-item-remove button button-secondary button-link-delete" href="#" class="button button-secondary">' . esc_html__( 'Remove', 'user-profile-picture-enhanced' ) . '</a></div>';
+		die( $html ); // phpcs:ignore
 	}
 
 	/**
 	 * Add Social Networks Admin
 	 */
 	public function add_social_networks_to_profile_page() {
+		global $mt_pp;
 		wp_enqueue_script(
 			'upp-enhanced-social',
 			USER_PROFILE_PICTURE_ENHANCED_URL . 'js/social-networks.js',
@@ -77,6 +168,7 @@ class Social_Networks {
 					?>
 				</select>
 				<a href="#" id="user-profile-enhanced-social-add" class="button button-secondary"><?php esc_html_e( 'Add Social Network', 'user-profile-picture-enhanced' ); ?></a>
+				<div id="user-profile-enhanced-spinner" style="display: none;"><?php printf( '<img class="mpp-loading" width="40" height="40" alt="Loading" src="%s" />', esc_url( $mt_pp::get_plugin_url( '/img/loading.gif' ) ) ); ?></div>
 			</td>
 		</tr>
 		<?php

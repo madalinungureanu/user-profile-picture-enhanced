@@ -47,8 +47,6 @@ spl_autoload_register(
 
 		$file = $directory . DIRECTORY_SEPARATOR . $filename;
 
-		error_log( $file );
-
 		if ( file_exists( $file ) ) {
 			require_once $file;
 		}
