@@ -110,11 +110,53 @@ class Social_Networks {
 				'%s',
 			)
 		);
-		$profile_id = $wpdb->insert_id;
 
-		$html  = '';
-		$html .= '<div class="user-profile-enhanced-social-item" data-id="' . absint( $profile_id ) . '" data-order="' . absint( $post_data['order'] ) . '" data-icon="' . esc_attr( $post_data['icon'] ) . '" data-id="0"><i class="' . esc_attr( $post_data['icon'] ) . '"></i> <input class="user-profile-enhanced-url regular-text" type="text" value="" placeholder="https://" /> <a class="user-profile-enhanced-social-item-save button button-secondary" href="#" class="button button-secondary">' . esc_html__( 'Save', 'user-profile-picture-enhanced' ) . '</a> <a class="user-profile-enhanced-social-item-remove button button-secondary button-link-delete" href="#" class="button button-secondary">' . esc_html__( 'Remove', 'user-profile-picture-enhanced' ) . '</a></div>';
-		die( $html ); // phpcs:ignore
+		// Return HTML.
+		$profile_id = $wpdb->insert_id;
+		die( $this->get_profile_html( $profile_id, $post_data['order'], $post_data['icon'], '' ) ); // phpcs:ignore
+	}
+
+	/**
+	 * Retrieves the profile picture HTML.
+	 *
+	 * @param int    $profile_id The social profile ID for the user.
+	 * @param int    $order      The order of the social profile.
+	 * @param string $icon       The FA icon for the social profile.
+	 *
+	 * @return string HTML.
+	 */
+	private function get_profile_html( $profile_id, $order, $icon, $url ) {
+		$html = '<div class="user-profile-enhanced-social-item" data-id="' . absint( $profile_id ) . '" data-order="' . absint( $order ) . '" data-icon="' . esc_attr( $icon ) . '"><i class="' . esc_attr( $icon ) . '"></i> <input class="user-profile-enhanced-url regular-text" type="text" value="' . esc_attr( $url ) . '" placeholder="https://" /> <a class="user-profile-enhanced-social-item-save button button-secondary" href="#" class="button button-secondary">' . esc_html__( 'Save', 'user-profile-picture-enhanced' ) . '</a> <a class="user-profile-enhanced-social-item-remove button button-secondary button-link-delete" href="#" class="button button-secondary">' . esc_html__( 'Remove', 'user-profile-picture-enhanced' ) . '</a></div>';
+		return $html;
+	}
+
+	/**
+	 * Get a list of social networks for the user sorted by order.
+	 *
+	 * @param int $user_id The user ID to get the social networks for.
+	 *
+	 * @return string HTML for the user profile social networks
+	 */
+	private function get_social_networks_for_user( $user_id ) {
+		global $wpdb;
+		$tablename = $wpdb->prefix . 'upp_social_networks';
+		$query = "select * from {$tablename} WHERE user_id = %d ORDER BY item_order ASC";
+		$results = $wpdb->get_results( // phpcs:ignore
+			$wpdb->prepare(
+				"select * from {$tablename} WHERE user_id = %d ORDER BY item_order ASC", // phpcs:ignore
+				$user_id
+			)
+		);
+		if ( 0 === count( $results ) ) {
+			return '';
+		}
+
+		// Loop through results and get HTML.
+		$html = '';
+		foreach ( $results as $result ) {
+			$html .= $this->get_profile_html( $result->id, $result->item_order, $result->icon, $result->url );
+		}
+		return $html;
 	}
 
 	/**
@@ -171,6 +213,10 @@ class Social_Networks {
 				</select>
 				<a href="#" id="user-profile-enhanced-social-add" class="button button-secondary"><?php esc_html_e( 'Add Social Network', 'user-profile-picture-enhanced' ); ?></a>
 				<div id="user-profile-enhanced-spinner" style="display: none;"><?php printf( '<img class="mpp-loading" width="40" height="40" alt="Loading" src="%s" />', esc_url( $mt_pp::get_plugin_url( '/img/loading.gif' ) ) ); ?></div>
+				<?php
+				$user_id = $mt_pp->get_user_id();
+				echo $this->get_social_networks_for_user( $user_id ); // phpcs:ignore
+				?>
 			</td>
 		</tr>
 		<?php
