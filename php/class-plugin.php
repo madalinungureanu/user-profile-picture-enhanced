@@ -27,5 +27,9 @@ class Plugin extends Plugin_Abstract {
 		// Show migration interface.
 		$this->migrate = new Admin\Migrate();
 		$this->migrate->register_hooks();
+
+		// Show social networks screen.
+		$this->social_networks = new Admin\Social_Networks();
+		$this->social_networks->register_hooks();
 	}
 }
