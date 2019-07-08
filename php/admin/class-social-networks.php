@@ -126,7 +126,7 @@ class Social_Networks {
 	 * @return string HTML.
 	 */
 	private function get_profile_html( $profile_id, $order, $icon, $url ) {
-		$html = '<div class="user-profile-enhanced-social-item" data-id="' . absint( $profile_id ) . '" data-order="' . absint( $order ) . '" data-icon="' . esc_attr( $icon ) . '"><i class="' . esc_attr( $icon ) . '"></i> <input class="user-profile-enhanced-url regular-text" type="text" value="' . esc_attr( $url ) . '" placeholder="https://" /> <a class="user-profile-enhanced-social-item-save button button-secondary" href="#" class="button button-secondary">' . esc_html__( 'Save', 'user-profile-picture-enhanced' ) . '</a> <a class="user-profile-enhanced-social-item-remove button button-secondary button-link-delete" href="#" class="button button-secondary">' . esc_html__( 'Remove', 'user-profile-picture-enhanced' ) . '</a> <span class="dashicons dashicons-move"></span></div>';
+		$html = '<li><div class="user-profile-enhanced-social-item" data-id="' . absint( $profile_id ) . '" data-order="' . absint( $order ) . '" data-icon="' . esc_attr( $icon ) . '"><i class="' . esc_attr( $icon ) . '"></i> <input class="user-profile-enhanced-url regular-text" type="text" value="' . esc_attr( $url ) . '" placeholder="https://" /> <a class="user-profile-enhanced-social-item-save button button-secondary" href="#" class="button button-secondary">' . esc_html__( 'Save', 'user-profile-picture-enhanced' ) . '</a> <a class="user-profile-enhanced-social-item-remove button button-secondary button-link-delete" href="#" class="button button-secondary">' . esc_html__( 'Remove', 'user-profile-picture-enhanced' ) . '</a> <span class="dashicons dashicons-move"></span></div></li>';
 		return $html;
 	}
 
@@ -163,10 +163,25 @@ class Social_Networks {
 	 */
 	public function add_social_networks_to_profile_page() {
 		global $mt_pp;
+
+		wp_enqueue_script(
+			'upp-sortable',
+			USER_PROFILE_PICTURE_ENHANCED_URL . 'js/sortable.js',
+			array( 'jquery' ),
+			USER_PROFILE_PICTURE_ENHANCED_VERSION,
+			true
+		);
+		wp_enqueue_script(
+			'upp-sortable-init',
+			USER_PROFILE_PICTURE_ENHANCED_URL . 'js/sortable-init.js',
+			array( 'upp-sortable' ),
+			USER_PROFILE_PICTURE_ENHANCED_VERSION,
+			true
+		);
 		wp_enqueue_script(
 			'upp-enhanced-social',
 			USER_PROFILE_PICTURE_ENHANCED_URL . 'js/social-networks.js',
-			array( 'jquery' ),
+			array( 'upp-sortable-init' ),
 			USER_PROFILE_PICTURE_ENHANCED_VERSION,
 			true
 		);
@@ -212,10 +227,14 @@ class Social_Networks {
 				</select>
 				<a href="#" id="user-profile-enhanced-social-add" class="button button-secondary"><?php esc_html_e( 'Add Social Network', 'user-profile-picture-enhanced' ); ?></a>
 				<div id="user-profile-enhanced-spinner" style="display: none;"><?php printf( '<img class="mpp-loading" width="40" height="40" alt="Loading" src="%s" />', esc_url( $mt_pp::get_plugin_url( '/img/loading.gif' ) ) ); ?></div>
-				<?php
-				$user_id = $mt_pp->get_user_id();
-				echo $this->get_social_networks_for_user( $user_id ); // phpcs:ignore
-				?>
+				<div>
+					<ul id="user-profile-picture-enhanced-sortable">
+					<?php
+					$user_id = $mt_pp->get_user_id();
+					echo $this->get_social_networks_for_user( $user_id ); // phpcs:ignore
+					?>
+					</ul>
+				</div>
 			</td>
 		</tr>
 		<?php
