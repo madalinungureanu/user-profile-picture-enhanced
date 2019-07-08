@@ -31,6 +31,7 @@ define( 'USER_PROFILE_PICTURE_ENHANCED_DIR', plugin_dir_path( __FILE__ ) );
 define( 'USER_PROFILE_PICTURE_ENHANCED_URL', plugins_url( '/', __FILE__ ) );
 define( 'USER_PROFILE_PICTURE_ENHANCED_SLUG', plugin_basename( __FILE__ ) );
 define( 'USER_PROFILE_PICTURE_ENHANCED_FILE', __FILE__ );
+define( 'USER_PROFILE_PICTURE_ENHANCED_TABLE_VERSION', '1.0.0' );
 
 // Setup the plugin auto loader.
 require_once 'php/autoloader.php';

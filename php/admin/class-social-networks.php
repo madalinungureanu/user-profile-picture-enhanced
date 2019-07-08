@@ -24,6 +24,7 @@ class Social_Networks {
 	 */
 	public function register_hooks() {
 		add_action( 'mpp_user_profile_form', array( $this, 'add_social_networks_to_profile_page' ) );
+		$this->create_table();
 	}
 
 	/**
@@ -210,5 +211,58 @@ class Social_Networks {
 			),
 		);
 		return $social_networks;
+	}
+
+	/**
+	 * Create comments table
+	 *
+	 * @since 1.0.0
+	 * @access private
+	 * @return void
+	 */
+	private function create_table() {
+		global $wpdb;
+		$tablename = $wpdb->prefix . 'upp_social_networks';
+
+		$version = get_option( 'upp_enhanced_table_version', '0' );
+		if ( version_compare( $version, USER_PROFILE_PICTURE_ENHANCED_TABLE_VERSION ) < 0 ) {
+			$charset_collate = '';
+			if ( ! empty( $wpdb->charset ) ) {
+				$charset_collate = "DEFAULT CHARACTER SET $wpdb->charset";
+			}
+			if ( ! empty( $wpdb->collate ) ) {
+				$charset_collate .= " COLLATE $wpdb->collate";
+			}
+			$sql = "CREATE TABLE {$tablename} (
+							id BIGINT(20) NOT NULL AUTO_INCREMENT,
+							user_id BIGINT(20) NOT NULL DEFAULT 0,
+							slug text NOT NULL,
+							label text NOT NULL,
+							icon text NOT NULL,
+							url text NOT NULL,
+							date DATETIME NOT NULL,
+							item_order BIGINT(20) NOT NULL DEFAULT 0,
+							PRIMARY KEY  (id)
+							) {$charset_collate};";
+			require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+			dbDelta( $sql );
+
+			update_option( 'upp_enhanced_table_version', USER_PROFILE_PICTURE_ENHANCED_TABLE_VERSION );
+		}
+	}
+
+	/**
+	 * Drop comments table
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function drop() {
+		global $wpdb;
+		$tablename = $wpdb->prefix . 'upp_social_networks';
+		$sql       = "drop table if exists $tablename";
+		$wpdb->query( $sql ); // phpcs:ignore
+		delete_option( 'upp_enhanced_table_version' );
 	}
 }
