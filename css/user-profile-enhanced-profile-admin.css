@@ -1,0 +1,6 @@
+.user-profile-enhanced-social-item .fab,
+.user-profile-enhanced-social-item .fas {
+	width: 24px;
+	height: 24px;
+	cursor: move;
+}

@@ -1,17 +1,8 @@
 jQuery( document ).ready( function( $ ) {
-	jQuery.fn.upp_enhanced_sortable = function() {
+	jQuery.upp_enhanced_sortable = function() {
 		var sort_list = $( '#user-profile-picture-enhanced-sortable' );
 		var max_levels = 1;
-		sort_list.nestedSortable( {
-			forcePlaceholderSize: true,
-			handle: 'div',
-			helper:	'clone',
-			items: 'li',
-			maxLevels: max_levels,
-			opacity: .6,
-			placeholder: 'ui-sortable-placeholder',
-			toleranceElement: '> div',
-			listType: 'ul',
+		jQuery.upp_enhanced_sortable.sortable = sort_list.sortable( {
 			update: function( event, ui ) {
 				var $items = $( '#user-profile-picture-enhanced-sortable li' );
 				if ( 0 == $items.length ) {
@@ -41,5 +32,5 @@ jQuery( document ).ready( function( $ ) {
 			}
 		});
 	};
-	jQuery.fn.upp_enhanced_sortable();
+	jQuery.upp_enhanced_sortable();
 } );

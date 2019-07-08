@@ -31,6 +31,27 @@ class Social_Networks {
 		add_action( 'wp_ajax_remove_upp_social', array( $this, 'ajax_remove_social_network' ) );
 		add_action( 'wp_ajax_save_upp_social', array( $this, 'ajax_save_social_network' ) );
 		add_action( 'wp_ajax_sort_upp_social', array( $this, 'ajax_sort_social_networks' ) );
+
+		// Load profile page CSS.
+		add_action( 'admin_enqueue_scripts', array( $this, 'load_styles' ), 10, 1 );
+	}
+
+	/**
+	 * Load CSS on the user profile page.
+	 *
+	 * @param string $hook The current page in the admin.
+	 */
+	public function load_styles( $hook ) {
+		if ( 'profile.php' !== $hook ) {
+			return;
+		}
+		wp_enqueue_style(
+			'user-profile-picture-enhanced-profile',
+			USER_PROFILE_PICTURE_ENHANCED_URL . 'css/user-profile-enhanced-profile-admin.css',
+			array(),
+			USER_PROFILE_PICTURE_ENHANCED_VERSION,
+			'all'
+		);
 	}
 
 	/**
@@ -153,7 +174,7 @@ class Social_Networks {
 	 * @return string HTML.
 	 */
 	private function get_profile_html( $profile_id, $order, $icon, $url ) {
-		$html = '<li><div class="user-profile-enhanced-social-item" data-id="' . absint( $profile_id ) . '" data-order="' . absint( $order ) . '" data-icon="' . esc_attr( $icon ) . '"><i class="' . esc_attr( $icon ) . '"></i> <input class="user-profile-enhanced-url regular-text" type="text" value="' . esc_attr( $url ) . '" placeholder="https://" /> <a class="user-profile-enhanced-social-item-save button button-secondary" href="#" class="button button-secondary">' . esc_html__( 'Save', 'user-profile-picture-enhanced' ) . '</a> <a class="user-profile-enhanced-social-item-remove button button-secondary button-link-delete" href="#" class="button button-secondary">' . esc_html__( 'Remove', 'user-profile-picture-enhanced' ) . '</a> <span class="dashicons dashicons-move"></span></div></li>';
+		$html = '<li><div class="user-profile-enhanced-social-item" data-id="' . absint( $profile_id ) . '" data-order="' . absint( $order ) . '" data-icon="' . esc_attr( $icon ) . '"><i class="' . esc_attr( $icon ) . '"></i> <input class="user-profile-enhanced-url regular-text" type="text" value="' . esc_attr( $url ) . '" placeholder="https://" /> <a class="user-profile-enhanced-social-item-save button button-secondary" href="#" class="button button-secondary">' . esc_html__( 'Save', 'user-profile-picture-enhanced' ) . '</a> <a class="user-profile-enhanced-social-item-remove button button-secondary button-link-delete" href="#" class="button button-secondary">' . esc_html__( 'Remove', 'user-profile-picture-enhanced' ) . '</a></div></li>';
 		return $html;
 	}
 
@@ -192,16 +213,9 @@ class Social_Networks {
 		global $mt_pp;
 
 		wp_enqueue_script(
-			'upp-sortable',
-			USER_PROFILE_PICTURE_ENHANCED_URL . 'js/sortable.js',
-			array( 'jquery' ),
-			USER_PROFILE_PICTURE_ENHANCED_VERSION,
-			true
-		);
-		wp_enqueue_script(
 			'upp-sortable-init',
 			USER_PROFILE_PICTURE_ENHANCED_URL . 'js/sortable-init.js',
-			array( 'upp-sortable' ),
+			array( 'jquery', 'jquery-ui-sortable' ),
 			USER_PROFILE_PICTURE_ENHANCED_VERSION,
 			true
 		);

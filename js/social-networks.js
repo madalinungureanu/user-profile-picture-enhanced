@@ -53,7 +53,6 @@ jQuery( document ).ready( function( $ ) {
 		};
 		$.post( ajaxurl, args, function( response ) {
 			$input.remove();
-			jQuery.fn.upp_enhanced_sortable();
 		});
 	} );
 
