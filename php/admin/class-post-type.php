@@ -75,7 +75,7 @@ class Post_Type {
 		$labels  = array(
 			'name'                  => _x( 'Profile Pictures', 'Post Type General Name', 'user-profile-picture-enhanced' ),
 			'singular_name'         => _x( 'Profile Picture', 'Post Type Singular Name', 'user-profile-picture-enhanced' ),
-			'menu_name'             => __( 'Profile Picture', 'user-profile-picture-enhanced' ),
+			'menu_name'             => __( 'Profile Pictures', 'user-profile-picture-enhanced' ),
 			'name_admin_bar'        => __( 'Profile Picture', 'user-profile-picture-enhanced' ),
 			'archives'              => __( 'Profile Picture Archives', 'user-profile-picture-enhanced' ),
 			'attributes'            => __( 'Profile Picture Attributes', 'user-profile-picture-enhanced' ),
