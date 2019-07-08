@@ -30,11 +30,36 @@ class Social_Networks {
 	 * Add Social Networks Admin
 	 */
 	public function add_social_networks_to_profile_page() {
+		wp_enqueue_script(
+			'upp-enhanced-social',
+			USER_PROFILE_PICTURE_ENHANCED_URL . 'js/social-networks.js',
+			array( 'jquery' ),
+			USER_PROFILE_PICTURE_ENHANCED_VERSION,
+			true
+		);
+		wp_localize_script(
+			'upp-enhanced-social',
+			'upp_enhanced',
+			array(
+				'remove' => __( 'Remove', 'user-profile-picture-enhanced' ),
+				'save'   => __( 'Save', 'user-profile-picture-enhanced' ),
+				'saving' => __( 'Saving...', 'user-profile-picture-enhanced' ),
+			)
+		);
+
+		wp_enqueue_script(
+			'font-awesome',
+			'https://kit.fontawesome.com/9869399772.js',
+			array(),
+			USER_PROFILE_PICTURE_ENHANCED_VERSION,
+			true
+		);
 		?>
 		<tr valign="top">
 			<th scope="row"><?php esc_html_e( 'Social Networks', 'user-profile-picture-enhanced' ); ?></th>
 			<td id="user-profile-picture-enhanced-social-networks">
 				<?php
+				wp_nonce_field( 'add-social-networks', 'upp_add_social_network' );
 				$social_networks = $this->get_social_networks();
 				?>
 				<select id="user-profile-enhanced-social-options">
@@ -80,7 +105,7 @@ class Social_Networks {
 			),
 			'dribble'     => array(
 				'label' => 'Dribble',
-				'fa'    => 'fab fa-dribble',
+				'fa'    => 'fab fa-dribbble',
 			),
 			'dropbox'     => array(
 				'label' => 'Dropbox',
