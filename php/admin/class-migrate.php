@@ -58,6 +58,7 @@ class Migrate {
 
 				// Update the post title.
 				$post->post_title = esc_html( $user->data->display_name );
+				$post->post_name  = esc_html( sanitize_title( $post->post_title ) );
 				wp_update_post( $post );
 				$offset++;
 			}
@@ -82,9 +83,14 @@ class Migrate {
 	 * Adds a migration notice for new users.
 	 */
 	public function show_migration_notice() {
+		global $pagenow;
+		if ( 'tools.php' === $pagenow ) {
+			return;
+		}
 		printf(
-			'<div class="error"><p>%s <a class="button button-secondary" href="#">%s</a></p></div>',
+			'<div class="error"><p>%s <a class="button button-secondary" href="%s">%s</a></p></div>',
 			esc_html__( 'User Profile Picture data needs to be migrated for User Profile Enhanced to function properly.', 'user-profile-picture-enhanced' ),
+			esc_url( admin_url( 'tools.php?page=user-profile-picture-enhanced-migrate' ) ),
 			esc_html__( 'Migrate Now.', 'user-profile-picture-enhanced' )
 		);
 	}
