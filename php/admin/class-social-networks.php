@@ -126,7 +126,7 @@ class Social_Networks {
 	 * @return string HTML.
 	 */
 	private function get_profile_html( $profile_id, $order, $icon, $url ) {
-		$html = '<div class="user-profile-enhanced-social-item" data-id="' . absint( $profile_id ) . '" data-order="' . absint( $order ) . '" data-icon="' . esc_attr( $icon ) . '"><i class="' . esc_attr( $icon ) . '"></i> <input class="user-profile-enhanced-url regular-text" type="text" value="' . esc_attr( $url ) . '" placeholder="https://" /> <a class="user-profile-enhanced-social-item-save button button-secondary" href="#" class="button button-secondary">' . esc_html__( 'Save', 'user-profile-picture-enhanced' ) . '</a> <a class="user-profile-enhanced-social-item-remove button button-secondary button-link-delete" href="#" class="button button-secondary">' . esc_html__( 'Remove', 'user-profile-picture-enhanced' ) . '</a></div>';
+		$html = '<div class="user-profile-enhanced-social-item" data-id="' . absint( $profile_id ) . '" data-order="' . absint( $order ) . '" data-icon="' . esc_attr( $icon ) . '"><i class="' . esc_attr( $icon ) . '"></i> <input class="user-profile-enhanced-url regular-text" type="text" value="' . esc_attr( $url ) . '" placeholder="https://" /> <a class="user-profile-enhanced-social-item-save button button-secondary" href="#" class="button button-secondary">' . esc_html__( 'Save', 'user-profile-picture-enhanced' ) . '</a> <a class="user-profile-enhanced-social-item-remove button button-secondary button-link-delete" href="#" class="button button-secondary">' . esc_html__( 'Remove', 'user-profile-picture-enhanced' ) . '</a> <span class="dashicons dashicons-move"></span></div>';
 		return $html;
 	}
 
