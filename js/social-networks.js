@@ -33,9 +33,17 @@ jQuery( document ).ready( function( $ ) {
 		});
 	} );
 
+	// Enable the save button if a user changes input.
+	$( '#user-profile-picture-enhanced-social-networks' ).on( 'keydown', '.user-profile-enhanced-url', function( e ) {
+		var $input = jQuery( this ).parent( '.user-profile-enhanced-social-item' );
+		$input.find( '.user-profile-enhanced-social-item-save' ).html( upp_enhanced.save ).removeAttr( 'disabled' );
+	} );
+
+
 	// Remove a social network item
 	$( '#user-profile-picture-enhanced-social-networks' ).on( 'click', '.user-profile-enhanced-social-item-remove', function( e ) {
 		e.preventDefault();
+		$( this ).html( upp_enhanced.removing ).attr( 'disabled', 'disabled' );
 		var $input = jQuery( this ).parent( '.user-profile-enhanced-social-item' );
 		var profile_id = $input.data( 'id' );
 		var args = {
@@ -48,9 +56,11 @@ jQuery( document ).ready( function( $ ) {
 		});
 	} );
 
-	// Remove a social network item
+	// Save the URL for a profile network item
 	$( '#user-profile-picture-enhanced-social-networks' ).on( 'click', '.user-profile-enhanced-social-item-save', function( e ) {
 		e.preventDefault();
+		var $button = $( this )
+		$button.html( upp_enhanced.saving ).attr( 'disabled', 'disabled' );
 		var $input = jQuery( this ).parent( '.user-profile-enhanced-social-item' );
 		var profile_id = $input.data( 'id' );
 		var url = $input.find( '.user-profile-enhanced-url' ).val();
@@ -61,6 +71,7 @@ jQuery( document ).ready( function( $ ) {
 			action: 'save_upp_social'
 		};
 		$.post( ajaxurl, args, function( response ) {
+			$button.html( upp_enhanced.saved );
 		});
 	} );
 } );

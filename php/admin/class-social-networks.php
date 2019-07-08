@@ -134,6 +134,8 @@ class Social_Networks {
 			'upp_enhanced',
 			array(
 				'remove'      => __( 'Remove', 'user-profile-picture-enhanced' ),
+				'removing'    => __( 'Removing...', 'user-profile-picture-enhanced' ),
+				'saved'       => __( 'Saved', 'user-profile-picture-enhanced' ),
 				'save'        => __( 'Save', 'user-profile-picture-enhanced' ),
 				'saving'      => __( 'Saving...', 'user-profile-picture-enhanced' ),
 				'placeholder' => 'https://',
