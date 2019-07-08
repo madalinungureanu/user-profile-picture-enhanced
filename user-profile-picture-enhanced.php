@@ -7,7 +7,7 @@
  * @license http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  *
  * Plugin Name: User Profile Picture Enhanced
- * Plugin URI: https://replyable.com/downloads/user-profile-picture-enhanced/
+ * Plugin URI: https://mediaron.com/downloads/user-profile-picture-enhanced/
  * Description: An add-on for User Profile Picture.
  * Version: 1.0.0
  * Author: MediaRon LLC
