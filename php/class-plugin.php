@@ -31,5 +31,13 @@ class Plugin extends Plugin_Abstract {
 		// Show social networks screen.
 		$this->social_networks = new Admin\Social_Networks();
 		$this->social_networks->register_hooks();
+
+		// Enqueue block assets.
+		$this->block_enqueue = new Blocks\Enqueue();
+		$this->block_enqueue->register_hooks();
+
+		// Avatar block.
+		$this->avatar_block = new Blocks\Avatar();
+		$this->avatar_block->register_hooks();
 	}
 }

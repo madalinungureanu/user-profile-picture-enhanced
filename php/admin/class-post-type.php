@@ -132,6 +132,12 @@ class Post_Type {
 			'show_in_admin_bar'   => false,
 			'show_in_nav_menus'   => false,
 			'can_export'          => true,
+			'supports'            => array(
+				'editor',
+				'thumbnail',
+				'title',
+				'excerpt',
+			),
 			'has_archive'         => 'on' === $options['allow_public_profiles'] ? true : false,
 			'exclude_from_search' => true,
 			'publicly_queryable'  => 'on' === $options['allow_public_profiles'] ? true : false,

@@ -8,5 +8,6 @@
  * All blocks should be included here since this is the file that
  * Webpack is compiling as the input file.
  */
-
-//import './block/block.js';
+import './block/style.scss';
+import './block/editor.scss';
+import './block/blocks/avatar/block';
