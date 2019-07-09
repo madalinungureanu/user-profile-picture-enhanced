@@ -1,7 +1,6 @@
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const { Component, Fragment } = wp.element;
-
 import edit from './edit';
 
 /**
@@ -24,6 +23,9 @@ registerBlockType( 'mpp/user-profile-picture-enhanced-avatar', {
 		__( 'profile', 'user-profile-picture-enhanced' ),
 		__( 'avatar', 'user-profile-picture-enhanced' ),
 	],
+	supports: {
+		align: true
+	},
 	edit: edit,
 	save() {return null }
 } );

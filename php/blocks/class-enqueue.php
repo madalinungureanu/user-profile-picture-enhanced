@@ -27,6 +27,9 @@ class Enqueue {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'block_js' ) );
 	}
 
+	/**
+	 * Enqueue the block JS.
+	 */
 	public function block_js() {
 		// Scripts.
 		wp_enqueue_script(
@@ -40,7 +43,8 @@ class Enqueue {
 			'user-profile-picture-enhanced-js',
 			'upp_enhanced',
 			array(
-				'rest_url' => get_rest_url(),
+				'rest_url'   => get_rest_url(),
+				'rest_nonce' => wp_create_nonce( 'wp_rest' ),
 			)
 		);
 
@@ -56,6 +60,9 @@ class Enqueue {
 		);
 	}
 
+	/**
+	 * Enqueue the front-end CSS.
+	 */
 	public function frontend_css() {
 		wp_enqueue_style(
 			'user-profile-picture-enhanced-block-css', // Handle.

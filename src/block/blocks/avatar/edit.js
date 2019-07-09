@@ -1,5 +1,5 @@
 const { Component, Fragment } = wp.element;
-
+const { withSelect } = wp.data;
 const { __, _x } = wp.i18n;
 
 const {
@@ -35,14 +35,19 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 	};
 
 	render() {
-		const { attributes } = this.props;
+		const { post } = this.props;
 
 		return (
 			<Fragment>
-
+				{post.author}
 			</Fragment>
 		);
 	}
 }
+export default withSelect(select => {
+	const { getCurrentPost } = select("core/editor");
 
-export default User_Profile_Picture_Enhanced_Avatar;
+	return {
+		post: getCurrentPost(),
+	};
+})(User_Profile_Picture_Enhanced_Avatar);
