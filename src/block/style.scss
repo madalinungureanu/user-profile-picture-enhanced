@@ -1,0 +1,14 @@
+.upp-enhanced-avatar {
+	&.round img {
+		border-radius: 100%;
+	}
+	&.aligncenter {
+		text-align: center;
+	}
+}
+.upp-enhanced-avatar-caption {
+	margin: 0 !important;
+	&:before {
+		display: none !important
+	}
+}

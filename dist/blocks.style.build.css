@@ -4,3 +4,13 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.upp-enhanced-avatar.round img {
+  border-radius: 100%; }
+
+.upp-enhanced-avatar.aligncenter {
+  text-align: center; }
+
+.upp-enhanced-avatar-caption {
+  margin: 0 !important; }
+  .upp-enhanced-avatar-caption:before {
+    display: none !important; }
