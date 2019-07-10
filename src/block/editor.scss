@@ -1,3 +1,9 @@
 .upp-enhanced-avatar.round img {
 	border-radius: 100%;
 }
+.upp-enhanced-avatar-caption {
+	margin: 0 !important;
+	&:before {
+		display: none !important
+	}
+}

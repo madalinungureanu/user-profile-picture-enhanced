@@ -117,6 +117,22 @@ class Avatar {
 						'type'    => 'int',
 						'default' => '32',
 					),
+					'bgImg'           => array(
+						'type'    => 'string',
+						'default' => '',
+					),
+					'bgImgFill'       => array(
+						'type'    => 'string',
+						'default' => 'cover',
+					),
+					'bgImgOpacity'    => array(
+						'type'    => 'string',
+						'default' => '0.4',
+					),
+					'bgImgParallax'   => array(
+						'type'    => 'boolean',
+						'default' => false,
+					),
 				),
 				'render_callback' => array( $this, 'frontend' ),
 			)

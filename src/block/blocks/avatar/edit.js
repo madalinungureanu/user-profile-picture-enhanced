@@ -62,6 +62,10 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 			caption: this.props.attributes.caption,
 			captionColor: this.props.attributes.captionColor,
 			captionFontSize: this.props.attributes.captionFontSize,
+			bgImg: this.props.attributes.bgImg,
+			bgImgFill: this.props.attributes.bgImgFill,
+			bgImgOpacity: this.props.attributes.bgImgOpacity,
+			bgImgParallax: this.props.attributes.bgImgParallax,
 		};
 	};
 
@@ -101,7 +105,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 
 	render() {
 		const { post, setAttributes } = this.props;
-		const {  imgUrl, alt, width, height, backgroundColor, avatarShape, padding, imgBorder, imgBgColor, imgBorderColor, imgPadding, border, borderColor, borderRadius, caption, captionColor, captionFontSize } = this.props.attributes;
+		const {  imgUrl, alt, width, height, backgroundColor, avatarShape, padding, imgBorder, imgBgColor, imgBorderColor, imgPadding, border, borderColor, borderRadius, caption, captionColor, captionFontSize, bgImg, bgImgFill, bgImgOpacity, bgImgParallax } = this.props.attributes;
 
 		// Get thumbnail sizes in the right format.
 		const imageSizes = Object.entries( upp_enhanced.image_sizes );
@@ -111,7 +115,6 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 		} );
 
 		// Get Avatar Shape Settings.
-		// Avatar shape options
 		const avatarShapeOptions = [
 			{ value: 'square', label: __( 'Square', 'user-profile-picture-enhanced' ) },
 			{ value: 'round', label: __( 'Round', 'user-profile-picture-enhanced' ) },
@@ -194,7 +197,43 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 									step={ 1 }
 								/>
 							</PanelBody>
-							<PanelBody title={ __( 'Color Settings', 'user-profile-picture-enhanced' ) }>
+							<PanelBody title={ __( 'Background Settings', 'user-profile-picture-enhanced' ) } initialOpen={false}>
+								<MediaUpload
+									onSelect={ ( imageObject ) => {
+										this.props.setAttributes( { bgImg: imageObject.url } );
+									} }
+									type="image"
+									value={ bgImg }
+									render={ ( { open } ) => (
+										<Fragment>
+											<button className="components-button is-button" onClick={ open }>
+												{ __( 'Background Image!', 'user-profile-picture-enhanced' ) }
+											</button>
+											{ bgImg &&
+												<Fragment>
+													<div>
+														<img src={ bgImg } alt={ __( 'User Profile Picture Background Image', 'user-profile-picture-enhanced' ) } width="250" height="250" />
+													</div>
+													<div>
+														<button className="components-button is-button" onClick={ ( event ) => {
+															this.props.setAttributes( { bgImg: '' } );
+														} }>
+															{ __( 'Remove Image', 'user-profile-picture-enhanced' ) }
+														</button>
+													</div>
+												</Fragment>
+											}
+										</Fragment>
+									) }
+								/>
+								<ToggleControl
+									label={ __( 'Parallax?', 'metronet-profile-picture' ) }
+									checked={ bgImgParallax }
+									onChange={ ( value ) => this.props.setAttributes( { bgImgParallax: value } ) }
+								/>
+
+							</PanelBody>
+							<PanelBody title={ __( 'Color Settings', 'user-profile-picture-enhanced' ) } initialOpen={false}>
 								<PanelColorSettings
 									title={ __( 'Border Color', 'user-profile-picture-enhanced' ) }
 									initialOpen={ true }
@@ -242,7 +281,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 								>
 								</PanelColorSettings>
 							</PanelBody>
-							<PanelBody title={ __( 'Caption Settings', 'user-profile-picture-enhanced' ) }>
+							<PanelBody title={ __( 'Caption Settings', 'user-profile-picture-enhanced' ) } initialOpen={false}>
 								<PanelColorSettings
 									title={ __( 'Caption Text Color', 'user-profile-picture-enhanced' ) }
 									initialOpen={ true }
@@ -278,6 +317,9 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 									"padding": padding + 'px',
 									"border": border + 'px' + ' solid' + borderColor,
 									"border-radius": borderRadius + 'px',
+									"backgroundImage": 'url(' + bgImg + ')',
+									"backgroundSize": bgImgFill,
+									"backgroundAttachment": bgImgParallax ? 'fixed' : 'inherit',
 								}}
 							>
 								<img
