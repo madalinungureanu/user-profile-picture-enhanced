@@ -76,7 +76,7 @@ class User_Profile_Picture_Enhanced_Biography extends Component {
 
 	render() {
 		const { post, setAttributes } = this.props;
-		const { align, biography, biographyHeading } = this.props.attributes;
+		const { align, biography, biographyHeading, backgroundColor, padding, border, borderColor, borderRadius, headingColor, headingFontSize, biographyColor, bgImg, bgImgFill, bgImgOpacity, bgImgParallax } = this.props.attributes;
 
 		return (
 			<Fragment>
@@ -93,8 +93,124 @@ class User_Profile_Picture_Enhanced_Biography extends Component {
 				{!this.state.loading &&
 					<Fragment>
 						<InspectorControls>
-							<PanelBody title={ __( 'Biography Settings', 'user-profile-picture-enhanced' ) }>
+						<PanelBody title={ __( 'Biography Settings', 'user-profile-picture-enhanced' ) }>
+								<RangeControl
+									label={ __( 'Padding', 'user-profile-picture-enhanced' ) }
+									value={ padding }
+									onChange={ ( value ) => this.props.setAttributes( { padding: value } ) }
+									min={ 0 }
+									max={ 60 }
+									step={ 1 }
+								/>
+								<RangeControl
+									label={ __( 'Border', 'user-profile-picture-enhanced' ) }
+									value={ border }
+									onChange={ ( value ) => this.props.setAttributes( { border: value } ) }
+									min={ 0 }
+									max={ 60 }
+									step={ 1 }
+								/>
+								<RangeControl
+									label={ __( 'Border Radius', 'user-profile-picture-enhanced' ) }
+									value={ borderRadius }
+									onChange={ ( value ) => this.props.setAttributes( { borderRadius: value } ) }
+									min={ 0 }
+									max={ 60 }
+									step={ 1 }
+								/>
+								<RangeControl
+									label={ __( 'Heading Font Size', 'user-profile-picture' ) }
+									value={ headingFontSize }
+									onChange={ ( value ) => this.props.setAttributes( { headingFontSize: value } ) }
+									min={ 10 }
+									max={ 100 }
+									step={ 1 }
+								/>
+							</PanelBody>
+							<PanelBody title={ __( 'Background Settings', 'user-profile-picture-enhanced' ) } initialOpen={false}>
+								<MediaUpload
+									onSelect={ ( imageObject ) => {
+										this.props.setAttributes( { bgImg: imageObject.url } );
+									} }
+									type="image"
+									value={ bgImg }
+									render={ ( { open } ) => (
+										<Fragment>
+											<button className="components-button is-button" onClick={ open }>
+												{ __( 'Background Image!', 'user-profile-picture-enhanced' ) }
+											</button>
+											{ bgImg &&
+												<Fragment>
+													<div>
+														<img src={ bgImg } alt={ __( 'User Profile Picture Background Image', 'user-profile-picture-enhanced' ) } width="250" height="250" />
+													</div>
+													<div>
+														<button className="components-button is-button" onClick={ ( event ) => {
+															this.props.setAttributes( { bgImg: '' } );
+														} }>
+															{ __( 'Remove Image', 'user-profile-picture-enhanced' ) }
+														</button>
+													</div>
+												</Fragment>
+											}
+										</Fragment>
+									) }
+								/>
+								<ToggleControl
+									label={ __( 'Parallax?', 'metronet-profile-picture' ) }
+									checked={ bgImgParallax }
+									onChange={ ( value ) => this.props.setAttributes( { bgImgParallax: value } ) }
+								/>
 
+							</PanelBody>
+							<PanelBody title={ __( 'Color Settings', 'user-profile-picture-enhanced' ) } initialOpen={false}>
+								<PanelColorSettings
+									title={ __( 'Border Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: borderColor,
+										onChange: ( value ) => {
+											setAttributes( { borderColor: value});
+										},
+										label: __( 'Image Border Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								></PanelColorSettings>
+								<PanelColorSettings
+									title={ __( 'Background Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: backgroundColor,
+										onChange: ( value ) => {
+											setAttributes( { backgroundColor: value});
+										},
+										label: __( 'Backgroud Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								>
+								</PanelColorSettings>
+								<PanelColorSettings
+									title={ __( 'Heading Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: headingColor,
+										onChange: ( value ) => {
+											setAttributes( { headingColor: value});
+										},
+										label: __( 'Heading Text Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								>
+								</PanelColorSettings>
+								<PanelColorSettings
+									title={ __( 'Biography Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: biographyColor,
+										onChange: ( value ) => {
+											setAttributes( { biographyColor: value});
+										},
+										label: __( 'Biography Text Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								>
+								</PanelColorSettings>
 							</PanelBody>
 						</InspectorControls>
 						<Fragment>
@@ -105,36 +221,35 @@ class User_Profile_Picture_Enhanced_Biography extends Component {
 										`align${align}`,
 									)
 								}
-								/*style={{
+								style={{
 									"backgroundColor": backgroundColor,
 									"padding": padding + 'px',
 									"border": border + 'px' + ' solid' + borderColor,
-									"border-radius": borderRadius + 'px',
+									"borderRadius": borderRadius + 'px',
 									"backgroundImage": 'url(' + bgImg + ')',
 									"backgroundSize": bgImgFill,
 									"backgroundAttachment": bgImgParallax ? 'fixed' : 'inherit',
-								}}*/
+								}}
 							>
 								<RichText
 									tagName="h2"
 									placeholder={ __( 'Enter a Biography Heading...', 'metronet-profile-picture' ) }
 									value={ biographyHeading }
 									className='upp-enhanced-biography-heading'
-									/*style={ {
-										color: captionColor,
-										fontSize: captionFontSize + 'px'
-									} }*/
+									style={ {
+										color: headingColor,
+										fontSize: headingFontSize + 'px'
+									} }
 									onChange={ ( value ) => { setAttributes( { biographyHeading: value } ) } }
 								/>
 								<RichText
-									tagName="p"
+									tagName="div"
 									placeholder={ __( 'Enter a Biography...', 'metronet-profile-picture' ) }
 									value={ biography }
 									className='upp-enhanced-biogrpahy-content'
-									/*style={ {
-										color: captionColor,
-										fontSize: captionFontSize + 'px'
-									} }*/
+									style={ {
+										color: biographyColor,
+									} }
 									onChange={ ( value ) => { setAttributes( { biography: value } ) } }
 								/>
 							</div>

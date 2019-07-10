@@ -4,19 +4,27 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
-.upp-enhanced-avatar.round img {
+.upp-enhanced-avatar.round img,
+.upp-enhanced-biography.round img {
   border-radius: 100%; }
 
-.upp-enhanced-avatar.aligncenter, .upp-enhanced-avatar.alignwide, .upp-enhanced-avatar.alignfull {
+.upp-enhanced-avatar.aligncenter, .upp-enhanced-avatar.alignwide, .upp-enhanced-avatar.alignfull,
+.upp-enhanced-biography.aligncenter,
+.upp-enhanced-biography.alignwide,
+.upp-enhanced-biography.alignfull {
   text-align: center; }
 
-.upp-enhanced-avatar.alignleft {
+.upp-enhanced-avatar.alignleft,
+.upp-enhanced-biography.alignleft {
   text-align: left; }
 
-.upp-enhanced-avatar.alignright {
+.upp-enhanced-avatar.alignright,
+.upp-enhanced-biography.alignright {
   text-align: right; }
 
-.upp-enhanced-avatar-caption {
+.upp-enhanced-avatar-caption,
+.upp-enhanced-biography-heading {
   margin: 0 !important; }
-  .upp-enhanced-avatar-caption:before {
+  .upp-enhanced-avatar-caption:before,
+  .upp-enhanced-biography-heading:before {
     display: none !important; }
