@@ -40,6 +40,10 @@ class Plugin extends Plugin_Abstract {
 		$this->avatar_block = new Blocks\Avatar();
 		$this->avatar_block->register_hooks();
 
+		// Biography block.
+		$this->biography_block = new Blocks\Biography();
+		$this->biography_block->register_hooks();
+
 		// Load Rest API for Avatar.
 		$this->rest_get_avatar = new Rest\Rest_Get_Avatar();
 		$this->rest_get_avatar->register_hooks();
