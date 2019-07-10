@@ -61,6 +61,14 @@ class Avatar {
 						'type'    => 'string',
 						'default' => '',
 					),
+					'backgroundColor' => array(
+						'type'    => 'string',
+						'default' => 'inherit',
+					),
+					'avatarShape'     => array(
+						'type'    => 'string',
+						'default' => 'square',
+					),
 				),
 				'render_callback' => array( $this, 'frontend' ),
 			)

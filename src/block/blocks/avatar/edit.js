@@ -1,4 +1,5 @@
 import axios from 'axios';
+import classnames from 'classnames';
 
 const { Component, Fragment } = wp.element;
 const { withSelect } = wp.data;
@@ -20,7 +21,8 @@ const {
 
 const {
 	InspectorControls,
-	BlockControls
+	BlockControls,
+	PanelColorSettings,
 } = wp.editor;
 
 const {
@@ -45,11 +47,13 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 			height: this.props.attributes.height,
 			alt: this.props.attributes.alt,
 			html: this.props.attributes.html,
+			backgroundColor: this.props.attributes.backgroundColor,
+			avatarShape: this.props.attributes.avatarShape,
 		};
 	};
 
 	getAvatar = () => {
-		axios.post(upp_enhanced.rest_url + `mpp/v3/get_avatar/`, { post_id: this.props.post.id, size: this.state.imageSize }, { 'headers': { 'X-WP-Nonce': upp_enhanced.rest_nonce } } ).then( (response) => {
+		axios.post(upp_enhanced.rest_url + `mpp/v3/get_avatar/`, { post_id: this.props.post.id, size: this.props.attributes.imageSize }, { 'headers': { 'X-WP-Nonce': upp_enhanced.rest_nonce } } ).then( (response) => {
 			this.setState(
 				{
 					loading: false,
@@ -83,8 +87,22 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 	}
 
 	render() {
-		const { post } = this.props;
-		const {  imgUrl, alt, width, height } = this.props.attributes;
+		const { post, setAttributes } = this.props;
+		const {  imgUrl, alt, width, height, backgroundColor, avatarShape } = this.props.attributes;
+
+		// Get thumbnail sizes in the right format.
+		const imageSizes = Object.entries( upp_enhanced.image_sizes );
+		let thumbnailSizes = [];
+		imageSizes.forEach( function( label, index ) {
+			thumbnailSizes.push( { value: label[0], label: label[1] } );
+		} );
+
+		// Get Avatar Shape Settings.
+		// Avatar shape options
+		const avatarShapeOptions = [
+			{ value: 'square', label: __( 'Square', 'user-profile-picture-enhanced' ) },
+			{ value: 'round', label: __( 'Round', 'user-profile-picture-enhanced' ) },
+		];
 
 		return (
 			<Fragment>
@@ -100,9 +118,42 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 				}
 				{!this.state.loading &&
 					<Fragment>
-						<div className="upp-enhanced-avatar">
-							<img src={imgUrl} alt={alt} width={width} height={height} />
-						</div>
+						<InspectorControls>
+							<PanelBody title={ __( 'Avatar Settings', 'user-profile-picture-enhanced' ) }>
+								<SelectControl
+										label={ __( 'Select an Image Size', 'user-profile-picture-enhanced' ) }
+										value={this.state.imageSize}
+										options={ thumbnailSizes }
+										onChange={ ( value ) => {
+											setAttributes( {imageSize: value} );
+											this.props.attributes.imageSize = value;
+											this.setState( { loading: true, imageSize: value } );
+											this.getAvatar();
+										} }
+								/>
+								<SelectControl
+										label={ __( 'Select an Avatar Shape', 'user-profile-picture-enhanced' ) }
+										value={this.state.avatarShape}
+										options={ avatarShapeOptions }
+										onChange={ ( value ) => {
+											setAttributes( {avatarShape: value} );
+											this.setState( { avatarShape: value } );
+										} }
+								/>
+							</PanelBody>
+						</InspectorControls>
+						<Fragment>
+							<div
+								className={
+									classnames(
+										'upp-enhanced-avatar',
+										avatarShape,
+									)
+								}
+							>
+								<img src={imgUrl} alt={alt} width={width} height={height} />
+							</div>
+						</Fragment>
 					</Fragment>
 				}
 			</Fragment>
