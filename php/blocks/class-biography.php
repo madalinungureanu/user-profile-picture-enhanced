@@ -37,6 +37,10 @@ class Biography {
 			'mpp/user-profile-picture-enhanced-biography',
 			array(
 				'attributes'      => array(
+					'align'     => array(
+						'type'    => 'string',
+						'default' => 'center',
+					),
 					'biography' => array(
 						'type'    => 'string',
 						'default' => '',

@@ -76,7 +76,7 @@ class User_Profile_Picture_Enhanced_Biography extends Component {
 
 	render() {
 		const { post, setAttributes } = this.props;
-		const { biography, biographyHeading } = this.props.attributes;
+		const { align, biography, biographyHeading } = this.props.attributes;
 
 		return (
 			<Fragment>
@@ -118,7 +118,7 @@ class User_Profile_Picture_Enhanced_Biography extends Component {
 								<RichText
 									tagName="h2"
 									placeholder={ __( 'Enter a Biography Heading...', 'metronet-profile-picture' ) }
-									value={ biogrpahyHeading }
+									value={ biographyHeading }
 									className='upp-enhanced-biography-heading'
 									/*style={ {
 										color: captionColor,
@@ -129,7 +129,7 @@ class User_Profile_Picture_Enhanced_Biography extends Component {
 								<RichText
 									tagName="p"
 									placeholder={ __( 'Enter a Biography...', 'metronet-profile-picture' ) }
-									value={ biogrpahyHeading }
+									value={ biography }
 									className='upp-enhanced-biogrpahy-content'
 									/*style={ {
 										color: captionColor,

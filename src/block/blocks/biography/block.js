@@ -15,13 +15,13 @@ import edit from './edit';
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'mpp/user-profile-picture-enhanced-avatar', {
-	title: __( 'User Profile Avatar', 'user-profile-picture-enhanced' ), // Block title.
-	icon: 'businessman',
+registerBlockType( 'mpp/user-profile-picture-enhanced-biography', {
+	title: __( 'User Profile Biography', 'user-profile-picture-enhanced' ), // Block title.
+	icon: 'media-document',
 	category: 'mpp',
 	keywords: [
 		__( 'profile', 'user-profile-picture-enhanced' ),
-		__( 'avatar', 'user-profile-picture-enhanced' ),
+		__( 'biography', 'user-profile-picture-enhanced' ),
 	],
 	supports: {
 		align: true
