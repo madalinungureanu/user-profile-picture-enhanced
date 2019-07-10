@@ -37,37 +37,85 @@ class Avatar {
 			'mpp/user-profile-picture-enhanced-avatar',
 			array(
 				'attributes'      => array(
-					'imageSize' => array(
+					'imageSize'       => array(
 						'type'    => 'string',
 						'default' => 'profile_300',
 					),
-					'imgUrl'    => array(
+					'imgUrl'          => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'alt'       => array(
+					'align'           => array(
+						'type'    => 'string',
+						'default' => 'center',
+					),
+					'alt'             => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'width'     => array(
+					'width'           => array(
 						'type'    => 'integer',
 						'default' => 300,
 					),
-					'height'    => array(
+					'height'          => array(
 						'type'    => 'integer',
 						'default' => 300,
 					),
-					'html'      => array(
+					'html'            => array(
 						'type'    => 'string',
 						'default' => '',
 					),
 					'backgroundColor' => array(
 						'type'    => 'string',
-						'default' => 'inherit',
+						'default' => '#0073a8',
 					),
 					'avatarShape'     => array(
 						'type'    => 'string',
 						'default' => 'square',
+					),
+					'padding'         => array(
+						'type'    => 'int',
+						'default' => 20,
+					),
+					'imgBorder'       => array(
+						'type'    => 'int',
+						'default' => 0,
+					),
+					'imgBorderColor'  => array(
+						'type'    => 'string',
+						'default' => '#FFFFFF',
+					),
+					'imgPadding'      => array(
+						'type'    => 'int',
+						'default' => 0,
+					),
+					'imgBgColor'      => array(
+						'type'    => 'string',
+						'default' => 'inherit',
+					),
+					'border'          => array(
+						'type'    => 'int',
+						'default' => 0,
+					),
+					'borderColor'     => array(
+						'type'    => 'string',
+						'default' => '#000000',
+					),
+					'borderRadius'    => array(
+						'type'    => 'int',
+						'default' => 0,
+					),
+					'caption'         => array(
+						'type'    => 'string',
+						'default' => '',
+					),
+					'captionColor'    => array(
+						'type'    => 'string',
+						'default' => '#000000',
+					),
+					'captionFontSize' => array(
+						'type'    => 'int',
+						'default' => '32',
 					),
 				),
 				'render_callback' => array( $this, 'frontend' ),

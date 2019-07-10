@@ -14,6 +14,7 @@ const {
 	Toolbar,
 	ToggleControl,
 	Button,
+	RangeControl,
 	ButtonGroup,
 	PanelRow,
 	Spinner,
@@ -22,6 +23,7 @@ const {
 const {
 	InspectorControls,
 	BlockControls,
+	MediaUpload,
 	PanelColorSettings,
 } = wp.editor;
 
@@ -49,6 +51,17 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 			html: this.props.attributes.html,
 			backgroundColor: this.props.attributes.backgroundColor,
 			avatarShape: this.props.attributes.avatarShape,
+			padding: this.props.attributes.padding,
+			imgBorder: this.props.attributes.imgBorder,
+			imgBgColor: this.props.attributes.imgBgColor,
+			imgBorderColor: this.props.attributes.imgBorderColor,
+			imgpadding: this.props.attributes.imgPadding,
+			border: this.props.attributes.border,
+			borderColor: this.props.attributes.borderColor,
+			borderRadius: this.props.attributes.borderRadius,
+			caption: this.props.attributes.caption,
+			captionColor: this.props.attributes.captionColor,
+			captionFontSize: this.props.attributes.captionFontSize,
 		};
 	};
 
@@ -88,7 +101,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 
 	render() {
 		const { post, setAttributes } = this.props;
-		const {  imgUrl, alt, width, height, backgroundColor, avatarShape } = this.props.attributes;
+		const {  imgUrl, alt, width, height, backgroundColor, avatarShape, padding, imgBorder, imgBgColor, imgBorderColor, imgPadding, border, borderColor, borderRadius, caption, captionColor, captionFontSize } = this.props.attributes;
 
 		// Get thumbnail sizes in the right format.
 		const imageSizes = Object.entries( upp_enhanced.image_sizes );
@@ -140,6 +153,116 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 											this.setState( { avatarShape: value } );
 										} }
 								/>
+								<RangeControl
+									label={ __( 'Padding', 'user-profile-picture-enhanced' ) }
+									value={ padding }
+									onChange={ ( value ) => this.props.setAttributes( { padding: value } ) }
+									min={ 0 }
+									max={ 60 }
+									step={ 1 }
+								/>
+								<RangeControl
+									label={ __( 'Border', 'user-profile-picture-enhanced' ) }
+									value={ border }
+									onChange={ ( value ) => this.props.setAttributes( { border: value } ) }
+									min={ 0 }
+									max={ 60 }
+									step={ 1 }
+								/>
+								<RangeControl
+									label={ __( 'Border Radius', 'user-profile-picture-enhanced' ) }
+									value={ borderRadius }
+									onChange={ ( value ) => this.props.setAttributes( { borderRadius: value } ) }
+									min={ 0 }
+									max={ 60 }
+									step={ 1 }
+								/>
+								<RangeControl
+									label={ __( 'Image Border', 'user-profile-picture' ) }
+									value={ imgBorder }
+									onChange={ ( value ) => this.props.setAttributes( { imgBorder: value } ) }
+									min={ 0 }
+									max={ 60 }
+									step={ 1 }
+								/>
+								<RangeControl
+									label={ __( 'Image Padding', 'user-profile-picture' ) }
+									value={ imgPadding }
+									onChange={ ( value ) => this.props.setAttributes( { imgPadding: value } ) }
+									min={ 0 }
+									max={ 60 }
+									step={ 1 }
+								/>
+							</PanelBody>
+							<PanelBody title={ __( 'Color Settings', 'user-profile-picture-enhanced' ) }>
+								<PanelColorSettings
+									title={ __( 'Border Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: borderColor,
+										onChange: ( value ) => {
+											setAttributes( { borderColor: value});
+										},
+										label: __( 'Image Border Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								></PanelColorSettings>
+								<PanelColorSettings
+									title={ __( 'Image Background Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: imgBgColor,
+										onChange: ( value ) => {
+											setAttributes( { imgBgColor: value});
+										},
+										label: __( 'Image Border Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								></PanelColorSettings>
+								<PanelColorSettings
+									title={ __( 'Image Border Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: imgBorderColor,
+										onChange: ( value ) => {
+											setAttributes( { imgBorderColor: value});
+										},
+										label: __( 'Image Border Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								>
+								</PanelColorSettings>
+								<PanelColorSettings
+									title={ __( 'Background Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: backgroundColor,
+										onChange: ( value ) => {
+											setAttributes( { backgroundColor: value});
+										},
+										label: __( 'Backgroud Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								>
+								</PanelColorSettings>
+							</PanelBody>
+							<PanelBody title={ __( 'Caption Settings', 'user-profile-picture-enhanced' ) }>
+								<PanelColorSettings
+									title={ __( 'Caption Text Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: captionColor,
+										onChange: ( value ) => {
+											setAttributes( { captionColor: value});
+										},
+										label: __( 'Caption Text Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								>
+								</PanelColorSettings>
+								<RangeControl
+									label={ __( 'Caption Font Size', 'user-profile-picture' ) }
+									value={ captionFontSize }
+									onChange={ ( value ) => this.props.setAttributes( { captionFontSize: value } ) }
+									min={ 10 }
+									max={ 100 }
+									step={ 1 }
+								/>
 							</PanelBody>
 						</InspectorControls>
 						<Fragment>
@@ -150,8 +273,35 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 										avatarShape,
 									)
 								}
+								style={{
+									"backgroundColor": backgroundColor,
+									"padding": padding + 'px',
+									"border": border + 'px' + ' solid' + borderColor,
+									"border-radius": borderRadius + 'px',
+								}}
 							>
-								<img src={imgUrl} alt={alt} width={width} height={height} />
+								<img
+									src={imgUrl}
+									alt={alt}
+									width={width}
+									height={height}
+									style={{
+										"backgroundColor": imgBgColor,
+										"border": imgBorder + 'px' + ' solid' + imgBorderColor,
+										"padding": imgPadding + 'px',
+									}}
+								/>
+								<RichText
+									tagName="h2"
+									placeholder={ __( 'Enter a Caption...', 'metronet-profile-picture' ) }
+									value={ caption }
+									className='upp-enhanced-avatar-caption'
+									style={ {
+										color: captionColor,
+										fontSize: captionFontSize + 'px'
+									} }
+									onChange={ ( value ) => { setAttributes( { caption: value } ) } }
+								/>
 							</div>
 						</Fragment>
 					</Fragment>

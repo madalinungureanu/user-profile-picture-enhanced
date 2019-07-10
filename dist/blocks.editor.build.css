@@ -1,1 +1,8 @@
-.upp-enhanced-avatar.round img{border-radius:100%}
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.upp-enhanced-avatar.round img {
+  border-radius: 100%; }
