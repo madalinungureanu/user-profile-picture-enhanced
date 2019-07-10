@@ -105,7 +105,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 
 	render() {
 		const { post, setAttributes } = this.props;
-		const {  imgUrl, alt, width, height, backgroundColor, avatarShape, padding, imgBorder, imgBgColor, imgBorderColor, imgPadding, border, borderColor, borderRadius, caption, captionColor, captionFontSize, bgImg, bgImgFill, bgImgOpacity, bgImgParallax } = this.props.attributes;
+		const { align, imgUrl, alt, width, height, backgroundColor, avatarShape, padding, imgBorder, imgBgColor, imgBorderColor, imgPadding, border, borderColor, borderRadius, caption, captionColor, captionFontSize, bgImg, bgImgFill, bgImgOpacity, bgImgParallax } = this.props.attributes;
 
 		// Get thumbnail sizes in the right format.
 		const imageSizes = Object.entries( upp_enhanced.image_sizes );
@@ -310,6 +310,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 									classnames(
 										'upp-enhanced-avatar',
 										avatarShape,
+										`align${align}`,
 									)
 								}
 								style={{

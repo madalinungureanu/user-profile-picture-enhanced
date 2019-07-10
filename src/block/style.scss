@@ -2,8 +2,16 @@
 	&.round img {
 		border-radius: 100%;
 	}
-	&.aligncenter {
+	&.aligncenter,
+	&.alignwide,
+	&.alignfull {
 		text-align: center;
+	}
+	&.alignleft {
+		text-align: left;
+	}
+	&.alignright {
+		text-align: right;
 	}
 }
 .upp-enhanced-avatar-caption {

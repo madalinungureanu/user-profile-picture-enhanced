@@ -129,7 +129,7 @@ class Post_Type {
 			'show_in_menu'        => true,
 			'menu_position'       => 100,
 			'menu_icon'           => 'dashicons-groups',
-			'show_in_admin_bar'   => false,
+			'show_in_admin_bar'   => true,
 			'show_in_nav_menus'   => false,
 			'can_export'          => true,
 			'supports'            => array(

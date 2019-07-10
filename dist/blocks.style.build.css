@@ -7,8 +7,14 @@
 .upp-enhanced-avatar.round img {
   border-radius: 100%; }
 
-.upp-enhanced-avatar.aligncenter {
+.upp-enhanced-avatar.aligncenter, .upp-enhanced-avatar.alignwide, .upp-enhanced-avatar.alignfull {
   text-align: center; }
+
+.upp-enhanced-avatar.alignleft {
+  text-align: left; }
+
+.upp-enhanced-avatar.alignright {
+  text-align: right; }
 
 .upp-enhanced-avatar-caption {
   margin: 0 !important; }
