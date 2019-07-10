@@ -36,7 +36,32 @@ class Avatar {
 		register_block_type(
 			'mpp/user-profile-picture-enhanced-avatar',
 			array(
-				'attributes'      => array(),
+				'attributes'      => array(
+					'imageSize' => array(
+						'type'    => 'string',
+						'default' => 'profile_300',
+					),
+					'imgUrl'    => array(
+						'type'    => 'string',
+						'default' => '',
+					),
+					'alt'       => array(
+						'type'    => 'string',
+						'default' => '',
+					),
+					'width'     => array(
+						'type'    => 'integer',
+						'default' => 300,
+					),
+					'height'    => array(
+						'type'    => 'integer',
+						'default' => 300,
+					),
+					'html'      => array(
+						'type'    => 'string',
+						'default' => '',
+					),
+				),
 				'render_callback' => array( $this, 'frontend' ),
 			)
 		);

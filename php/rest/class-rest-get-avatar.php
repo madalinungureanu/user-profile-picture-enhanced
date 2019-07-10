@@ -34,7 +34,7 @@ class Rest_Get_Avatar {
 	public function register_rest() {
 		register_rest_route(
 			'mpp/v3',
-			'/get-avatar/',
+			'/get_avatar/',
 			array(
 				'methods'  => 'POST',
 				'callback' => array( $this, 'get_avatar' ),
