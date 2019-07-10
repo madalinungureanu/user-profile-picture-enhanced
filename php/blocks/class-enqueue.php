@@ -35,8 +35,8 @@ class Enqueue {
 		// Get Intermedia Image Sizes for use in components.
 		$intermediate_sizes = get_intermediate_image_sizes();
 		$js_format_sizes    = array();
-		foreach ( $intermediate_sizes as $index => $size ) {
-			$js_format[ $size ] = $size;
+		foreach ( $intermediate_sizes as $size ) {
+			$js_format_sizes[ $size ] = $size;
 		}
 
 		// Scripts.
