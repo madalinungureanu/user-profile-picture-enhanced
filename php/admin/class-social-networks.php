@@ -170,6 +170,7 @@ class Social_Networks {
 	 * @param int    $profile_id The social profile ID for the user.
 	 * @param int    $order      The order of the social profile.
 	 * @param string $icon       The FA icon for the social profile.
+	 * @param string $url        The URL of the social network.
 	 *
 	 * @return string HTML.
 	 */
