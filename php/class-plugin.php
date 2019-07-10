@@ -20,6 +20,10 @@ class Plugin extends Plugin_Abstract {
 		$this->post_type = new Admin\Post_Type();
 		$this->post_type->register_hooks();
 
+		// Add quick links to the user profile pages.
+		$this->user_quicklinks = new Admin\User_Quicklinks();
+		$this->user_quicklinks->register_hooks();
+
 		// Register option defaults.
 		$this->admin_options = new Admin\Options();
 		$this->admin_options->register_hooks();
