@@ -69,11 +69,16 @@ class Avatar {
 
 	/**
 	 * Outputs the block content on the front-end
+	 *
+	 * @param array $attributes Array of attributes.
 	 */
-	public function frontend() {
+	public function frontend( $attributes ) {
 		if ( is_admin() ) {
 			return;
 		}
-		return 'test';
+		$html  = '<div class=aligncenter">';
+		$html .= $attributes['html'];
+		$html .= '</div>';
+		return $html;
 	}
 }

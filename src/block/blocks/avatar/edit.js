@@ -49,7 +49,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 	};
 
 	getAvatar = () => {
-		axios.post(upp_enhanced.rest_url + `mpp/v3/get_avatar/`, { user_id: this.props.post.author, size: this.state.imageSize }, { 'headers': { 'X-WP-Nonce': upp_enhanced.rest_nonce } } ).then( (response) => {
+		axios.post(upp_enhanced.rest_url + `mpp/v3/get_avatar/`, { post_id: this.props.post.id, size: this.state.imageSize }, { 'headers': { 'X-WP-Nonce': upp_enhanced.rest_nonce } } ).then( (response) => {
 			this.setState(
 				{
 					loading: false,
@@ -72,6 +72,12 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 
 	componentDidMount = () => {
 		if ( this.state.loading ) {
+			this.getAvatar();
+		}
+	}
+
+	componentDidUpdate = (prevProps) => {
+		if ( this.props.post.author !== prevProps.post.author ) {
 			this.getAvatar();
 		}
 	}
