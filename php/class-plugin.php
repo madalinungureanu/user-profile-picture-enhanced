@@ -44,6 +44,10 @@ class Plugin extends Plugin_Abstract {
 		$this->biography_block = new Blocks\Biography();
 		$this->biography_block->register_hooks();
 
+		// Load Rest API for Biography.
+		$this->rest_get_user_biography = new Rest\Rest_Get_User_Biography();
+		$this->rest_get_user_biography->register_hooks();
+
 		// Load Rest API for Avatar.
 		$this->rest_get_avatar = new Rest\Rest_Get_Avatar();
 		$this->rest_get_avatar->register_hooks();
