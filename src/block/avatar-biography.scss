@@ -1,0 +1,25 @@
+.upp-enhanced-avatar,
+.upp-enhanced-biography {
+	margin-bottom: 20px;
+	&.round img {
+		border-radius: 100%;
+	}
+	&.aligncenter,
+	&.alignwide,
+	&.alignfull {
+		text-align: center;
+	}
+	&.alignleft {
+		text-align: left;
+	}
+	&.alignright {
+		text-align: right;
+	}
+}
+.upp-enhanced-avatar-caption,
+.upp-enhanced-biography-heading {
+	margin: 0 !important;
+	&:before {
+		display: none !important
+	}
+}

@@ -4,23 +4,23 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
-.upp-enhanced-avatar.round img,
-.upp-enhanced-biography.round img {
-  border-radius: 100%; }
-
-.upp-enhanced-avatar.aligncenter, .upp-enhanced-avatar.alignwide, .upp-enhanced-avatar.alignfull,
-.upp-enhanced-biography.aligncenter,
-.upp-enhanced-biography.alignwide,
-.upp-enhanced-biography.alignfull {
-  text-align: center; }
-
-.upp-enhanced-avatar.alignleft,
-.upp-enhanced-biography.alignleft {
-  text-align: left; }
-
-.upp-enhanced-avatar.alignright,
-.upp-enhanced-biography.alignright {
-  text-align: right; }
+.upp-enhanced-avatar,
+.upp-enhanced-biography {
+  margin-bottom: 20px; }
+  .upp-enhanced-avatar.round img,
+  .upp-enhanced-biography.round img {
+    border-radius: 100%; }
+  .upp-enhanced-avatar.aligncenter, .upp-enhanced-avatar.alignwide, .upp-enhanced-avatar.alignfull,
+  .upp-enhanced-biography.aligncenter,
+  .upp-enhanced-biography.alignwide,
+  .upp-enhanced-biography.alignfull {
+    text-align: center; }
+  .upp-enhanced-avatar.alignleft,
+  .upp-enhanced-biography.alignleft {
+    text-align: left; }
+  .upp-enhanced-avatar.alignright,
+  .upp-enhanced-biography.alignright {
+    text-align: right; }
 
 .upp-enhanced-avatar-caption,
 .upp-enhanced-biography-heading {
@@ -28,3 +28,135 @@
   .upp-enhanced-avatar-caption:before,
   .upp-enhanced-biography-heading:before {
     display: none !important; }
+
+/* Social Media Colors */
+.upp-enhanced-social-networks.aligncenter ul {
+  text-align: center; }
+
+.upp-enhanced-social-networks.alignleft ul {
+  text-align: left; }
+
+.upp-enhanced-social-networks.alignright ul {
+  text-align: right; }
+
+.upp-enhanced-social-networks.alignfull ul, .upp-enhanced-social-networks.alignwide ul {
+  text-align: center; }
+
+.upp-enhanced-social-networks ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+.upp-enhanced-social-networks li {
+  list-style-type: none;
+  text-align: left; }
+
+.upp-enhanced-social-networks.vertical li {
+  text-align: center; }
+
+.upp-enhanced-social-networks.horizontal li {
+  display: inline-block;
+  text-align: center;
+  margin: 10px; }
+
+.upp-enhanced-social-networks.brand .fa-twitter {
+  color: #00aced; }
+
+.upp-enhanced-social-networks.brand .fa-amazon {
+  color: #000000; }
+
+.upp-enhanced-social-networks.brand .fa-behance {
+  color: #0692e9; }
+
+.upp-enhanced-social-networks.brand .fa-blogger {
+  color: #fb8f3d; }
+
+.upp-enhanced-social-networks.brand .fa-codepen {
+  color: #000000; }
+
+.upp-enhanced-social-networks.brand .fa-dribble {
+  color: #F46899; }
+
+.upp-enhanced-social-networks.brand .fa-dropbox {
+  color: #018BD3; }
+
+.upp-enhanced-social-networks.brand .fa-eventbrite {
+  color: #f6682F; }
+
+.upp-enhanced-social-networks.brand .fa-facebook-f {
+  color: #3b5998; }
+
+.upp-enhanced-social-networks.brand .fa-flickr {
+  color: #ff0084; }
+
+.upp-enhanced-social-networks.brand .fa-foursquare {
+  color: #0072b1; }
+
+.upp-enhanced-social-networks.brand .fa-ghost {
+  color: #000000; }
+
+.upp-enhanced-social-networks.brand .fa-github {
+  color: #070709; }
+
+.upp-enhanced-social-networks.brand .fa-google {
+  color: #CF3D2E; }
+
+.upp-enhanced-social-networks.brand .fa-instagram {
+  color: #A1755C; }
+
+.upp-enhanced-social-networks.brand .fa-linkedin {
+  color: #0085AE; }
+
+.upp-enhanced-social-networks.brand .fa-rss {
+  color: #f26522; }
+
+.upp-enhanced-social-networks.brand .fa-medium {
+  color: #02b875; }
+
+.upp-enhanced-social-networks.brand .fa-path {
+  color: #000000; }
+
+.upp-enhanced-social-networks.brand .fa-pinterest {
+  color: #CC2127; }
+
+.upp-enhanced-social-networks.brand .fa-pocket {
+  color: #000000; }
+
+.upp-enhanced-social-networks.brand .fa-polldaddy {
+  color: #bc0b0b; }
+
+.upp-enhanced-social-networks.brand .fa-reddit {
+  color: #000000; }
+
+.upp-enhanced-social-networks.brand .fa-skype {
+  color: #01AEF2; }
+
+.upp-enhanced-social-networks.brand .fa-spotify {
+  color: #1ed760; }
+
+.upp-enhanced-social-networks.brand .fa-squarespace {
+  color: #000000; }
+
+.upp-enhanced-social-networks.brand .fa-stumbleupon {
+  color: #EB4823; }
+
+.upp-enhanced-social-networks.brand .fa-telegram {
+  color: #000000; }
+
+.upp-enhanced-social-networks.brand .fa-tumblr {
+  color: #314E6C; }
+
+.upp-enhanced-social-networks.brand .fa-twitch {
+  color: #4b367c; }
+
+.upp-enhanced-social-networks.brand .fa-twitter {
+  color: #00aced; }
+
+.upp-enhanced-social-networks.brand .fa-vimeo {
+  color: #1ab7ea; }
+
+.upp-enhanced-social-networks.brand .fa-wordpress {
+  color: #21759b; }
+
+.upp-enhanced-social-networks.brand .fa-youtube {
+  color: #bb0000; }

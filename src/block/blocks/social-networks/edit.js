@@ -86,18 +86,22 @@ class User_Profile_Picture_Enhanced_Social_Networks extends Component {
 		}
 	}
 
-	getIcons = ( icons, iconSize ) => {
+	getIcons = ( icons, iconSize, iconColor ) => {
 		return ( icons.map((el, i) =>
 				<li key={i}>
 					<style>
 						{`
-							.fas:before,
-							.fab:before {
+							.upp-enhanced-social-networks .fas:before,
+							.upp-enhanced-social-networks .fab:before {
 								font-size: ${iconSize}px;
+							}
+							.upp-enhanced-social-networks.custom .fas:before,
+							.upp-enhanced-social-networks.custom .fab:before {
+								color: ${iconColor};
 							}
 						`}
 					</style>
-					<i className={icons[i].icon}></i>
+					<span className={icons[i].slug}><i className={icons[i].icon}></i></span>
 				</li>
 		 ) );
 	}
@@ -107,7 +111,7 @@ class User_Profile_Picture_Enhanced_Social_Networks extends Component {
 		const { align, icons, iconSize, iconTheme, iconColor, iconOrientation, backgroundColor, padding, border, borderColor, borderRadius, bgImg, bgImgFill, bgImgOpacity, bgImgParallax} = this.props.attributes;
 
 		const iconThemeOptions = [
-			{ value: 'branded', label: __( 'Brand Colors', 'user-profile-picture-enhanced' ) },
+			{ value: 'brand', label: __( 'Brand Colors', 'user-profile-picture-enhanced' ) },
 			{ value: 'custom', label: __( 'Custom Color', 'user-profile-picture-enhanced' ) },
 		];
 		const iconOrientationOptions = [
@@ -149,9 +153,22 @@ class User_Profile_Picture_Enhanced_Social_Networks extends Component {
 										value={iconTheme}
 										options={ iconThemeOptions }
 										onChange={ ( value ) => {
-											setAttributes( {imageSize: iconTheme} );
+											setAttributes( {iconTheme: value} );
 										} }
 								/>
+								{ 'custom' === iconTheme &&
+									<PanelColorSettings
+										title={ __( 'Icon Color', 'user-profile-picture-enhanced' ) }
+										initialOpen={ true }
+										colorSettings={ [ {
+											value: iconColor,
+											onChange: ( value ) => {
+												setAttributes( { iconColor: value});
+											},
+											label: __( 'Icon Color', 'user-profile-picture-enhanced' ),
+										} ] }
+									></PanelColorSettings>
+								}
 								<SelectControl
 										label={ __( 'Select an Icon Orientation', 'user-profile-picture-enhanced' ) }
 										value={ iconOrientation}
@@ -265,7 +282,7 @@ class User_Profile_Picture_Enhanced_Social_Networks extends Component {
 										'upp-enhanced-social-networks',
 										`align${align}`,
 										iconOrientation,
-										iconColor,
+										iconTheme,
 									)
 								}
 								style={{
@@ -279,7 +296,7 @@ class User_Profile_Picture_Enhanced_Social_Networks extends Component {
 								}}
 							>
 								<ul>
-									{this.getIcons(icons, iconSize)}
+									{this.getIcons(icons, iconSize, iconColor)}
 								</ul>
 							</div>
 						</Fragment>

@@ -295,7 +295,7 @@ class Social_Networks {
 			),
 			'behance'     => array(
 				'label' => 'Behance',
-				'fa'    => 'fab fab fa-behance',
+				'fa'    => 'fab fa-behance',
 			),
 			'blogger'     => array(
 				'label' => 'Blogger',

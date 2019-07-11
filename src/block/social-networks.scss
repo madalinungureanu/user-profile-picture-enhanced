@@ -1,0 +1,87 @@
+/* Social Media Colors */
+$colors: twitter #00aced,
+	amazon #000000,
+	behance #0692e9,
+	blogger #fb8f3d,
+	codepen #000000,
+	dribble #F46899,
+	dropbox #018BD3,
+	eventbrite #f6682F,
+	facebook-f #3b5998,
+	flickr #ff0084,
+	foursquare #0072b1,
+	ghost #000000,
+	github #070709,
+	google #CF3D2E,
+	instagram #A1755C,
+	linkedin #0085AE,
+	rss #f26522,
+	medium #02b875,
+	path #000000,
+	pinterest #CC2127,
+	pocket #000000,
+	polldaddy #bc0b0b,
+	reddit #000000,
+	skype #01AEF2,
+	spotify #1ed760,
+	squarespace #000000,
+	stumbleupon #EB4823,
+	telegram #000000,
+	tumblr #314E6C,
+	twitch #4b367c,
+	twitter #00aced,
+	vimeo #1ab7ea,
+	wordpress #21759b,
+	youtube #bb0000
+;
+.upp-enhanced-social-networks {
+
+	&.aligncenter {
+		ul {
+			text-align: center;
+		}
+	}
+	&.alignleft {
+		ul {
+			text-align: left;
+		}
+	}
+	&.alignright {
+		ul {
+			text-align: right;
+		}
+	}
+	&.alignfull,
+	&.alignwide {
+		ul {
+			text-align: center;
+		}
+	}
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	li {
+		list-style-type: none;
+		text-align: left;
+	}
+	&.vertical {
+		li {
+			text-align: center;
+		}
+
+	}
+	&.horizontal {
+		li {
+			display: inline-block;
+			text-align: center;
+			margin: 10px;
+		}
+	}
+	@each $color in $colors {
+		&.brand .fa-#{nth($color,1)} {
+			color: #{nth($color,2)};
+		}
+	}
+}
