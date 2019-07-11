@@ -193,6 +193,42 @@
   text-decoration: none !important;
   display: block; }
 
+.upp-enhanced-recent-posts.aqua li {
+  background-color: #00FFFF;
+  padding: 10px 20px 10px 20px;
+  border: 1px solid #00a2ff; }
+  .upp-enhanced-recent-posts.aqua li:hover {
+    background-color: #00e4ff; }
+
+.upp-enhanced-recent-posts.aqua a,
+.upp-enhanced-recent-posts.aqua a:hover,
+.upp-enhanced-recent-posts.aqua a:visited {
+  color: #d0456f; }
+
+.upp-enhanced-recent-posts.blue li {
+  background-color: #0310c0;
+  padding: 10px 20px 10px 20px;
+  border: 1px solid #0212e2; }
+  .upp-enhanced-recent-posts.blue li:hover {
+    background-color: #2633d8; }
+
+.upp-enhanced-recent-posts.blue a,
+.upp-enhanced-recent-posts.blue a:hover,
+.upp-enhanced-recent-posts.blue a:visited {
+  color: #FFFFFF; }
+
+.upp-enhanced-recent-posts.brown li {
+  background-color: #43300f;
+  padding: 10px 20px 10px 20px;
+  border: 1px solid #362507; }
+  .upp-enhanced-recent-posts.brown li:hover {
+    background-color: #3e2c0e; }
+
+.upp-enhanced-recent-posts.brown a,
+.upp-enhanced-recent-posts.brown a:hover,
+.upp-enhanced-recent-posts.brown a:visited {
+  color: #FFFFFF; }
+
 .upp-enhanced-recent-posts.light li {
   background-color: #FFF;
   padding: 10px 20px 10px 20px;

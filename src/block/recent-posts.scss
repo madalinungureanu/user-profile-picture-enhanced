@@ -35,6 +35,51 @@
 		text-decoration: none !important;
 		display: block;
 	}
+	&.aqua {
+		li {
+			background-color: #00FFFF;
+			padding: 10px 20px 10px 20px;
+			border: 1px solid #00a2ff;
+			&:hover {
+				background-color: #00e4ff;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #d0456f;
+		}
+	}
+	&.blue {
+		li {
+			background-color: #0310c0;
+			padding: 10px 20px 10px 20px;
+			border: 1px solid #0212e2;
+			&:hover {
+				background-color: #2633d8;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #FFFFFF;
+		}
+	}
+	&.brown {
+		li {
+			background-color: #43300f;
+			padding: 10px 20px 10px 20px;
+			border: 1px solid #362507;
+			&:hover {
+				background-color: #3e2c0e;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #FFFFFF;
+		}
+	}
 	&.light {
 		li {
 			background-color: #FFF;
