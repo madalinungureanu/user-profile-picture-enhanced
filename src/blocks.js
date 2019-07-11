@@ -13,3 +13,4 @@ import './block/editor.scss';
 import './block/blocks/avatar/block';
 import './block/blocks/biography/block';
 import './block/blocks/social-networks/block';
+import './block/blocks/recent-posts/block';

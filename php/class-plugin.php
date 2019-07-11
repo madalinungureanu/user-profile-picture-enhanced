@@ -52,6 +52,10 @@ class Plugin extends Plugin_Abstract {
 		$this->social_networks_block = new Blocks\Social_Networks();
 		$this->social_networks_block->register_hooks();
 
+		// Recent Posts block.
+		$this->recent_posts_block = new Blocks\Recent_Posts();
+		$this->recent_posts_block->register_hooks();
+
 		// Load Rest API for Biography.
 		$this->rest_get_user_biography = new Rest\Rest_Get_User_Biography();
 		$this->rest_get_user_biography->register_hooks();
@@ -63,5 +67,9 @@ class Plugin extends Plugin_Abstract {
 		// Load Rest API for Social Networks.
 		$this->rest_get_social_networks = new Rest\Rest_Get_User_Social_Networks();
 		$this->rest_get_social_networks->register_hooks();
+
+		// Load Rest API for Recent Posts.
+		$this->rest_get_recent_posts = new Rest\Rest_Get_Recent_Posts();
+		$this->rest_get_recent_posts->register_hooks();
 	}
 }

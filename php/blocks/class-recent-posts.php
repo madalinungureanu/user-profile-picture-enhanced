@@ -8,12 +8,12 @@
 namespace User_Profile_Picture_Enhanced\Blocks;
 
 /**
- * Class Admin
+ * Class Recent_Posts
  */
-class Avatar {
+class Recent_Posts {
 
 	/**
-	 * Initialize the Admin component.
+	 * Initialize the Recent_Posts component.
 	 */
 	public function init() {
 
@@ -34,64 +34,23 @@ class Avatar {
 			return;
 		}
 		register_block_type(
-			'mpp/user-profile-picture-enhanced-avatar',
+			'mpp/user-profile-picture-enhanced-recent-posts',
 			array(
 				'attributes'      => array(
-					'imageSize'       => array(
-						'type'    => 'string',
-						'default' => 'profile_300',
-					),
-					'imgUrl'          => array(
-						'type'    => 'string',
-						'default' => '',
-					),
-					'align'           => array(
-						'type'    => 'string',
-						'default' => 'center',
-					),
-					'alt'             => array(
-						'type'    => 'string',
-						'default' => '',
-					),
-					'width'           => array(
-						'type'    => 'integer',
-						'default' => 300,
-					),
-					'height'          => array(
-						'type'    => 'integer',
-						'default' => 300,
-					),
-					'html'            => array(
-						'type'    => 'string',
-						'default' => '',
+					'posts'           => array(
+						'type'    => 'array',
+						'default' => array(),
+						'items'   => [
+							'type' => 'object',
+						],
 					),
 					'backgroundColor' => array(
 						'type'    => 'string',
 						'default' => '#FFFFFF',
 					),
-					'avatarShape'     => array(
-						'type'    => 'string',
-						'default' => 'square',
-					),
 					'padding'         => array(
 						'type'    => 'int',
 						'default' => 20,
-					),
-					'imgBorder'       => array(
-						'type'    => 'int',
-						'default' => 0,
-					),
-					'imgBorderColor'  => array(
-						'type'    => 'string',
-						'default' => '#FFFFFF',
-					),
-					'imgPadding'      => array(
-						'type'    => 'int',
-						'default' => 0,
-					),
-					'imgBgColor'      => array(
-						'type'    => 'string',
-						'default' => 'inherit',
 					),
 					'border'          => array(
 						'type'    => 'int',
@@ -104,18 +63,6 @@ class Avatar {
 					'borderRadius'    => array(
 						'type'    => 'int',
 						'default' => 0,
-					),
-					'caption'         => array(
-						'type'    => 'string',
-						'default' => '',
-					),
-					'captionColor'    => array(
-						'type'    => 'string',
-						'default' => '#000000',
-					),
-					'captionFontSize' => array(
-						'type'    => 'int',
-						'default' => '32',
 					),
 					'bgImg'           => array(
 						'type'    => 'string',
@@ -148,6 +95,7 @@ class Avatar {
 		if ( is_admin() ) {
 			return;
 		}
+		return 'test';
 
 		// Loading Attributes.
 		$align = 'center';

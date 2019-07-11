@@ -166,3 +166,28 @@
 
 .upp-enhanced-social-networks.brand .fa-youtube {
   color: #bb0000; }
+
+.upp-enhanced-recent-posts.aligncenter ul {
+  text-align: center; }
+
+.upp-enhanced-recent-posts.alignleft ul {
+  text-align: left; }
+
+.upp-enhanced-recent-posts.alignright ul {
+  text-align: right; }
+
+.upp-enhanced-recent-posts.alignfull ul, .upp-enhanced-recent-posts.alignwide ul {
+  text-align: center; }
+
+.upp-enhanced-recent-posts ul {
+  margin: 0 !important;
+  padding: 0 !important; }
+
+.upp-enhanced-recent-posts li {
+  list-style-type: none;
+  text-align: left; }
+
+.upp-enhanced-recent-posts a,
+.upp-enhanced-recent-posts a:hover,
+.upp-enhanced-recent-posts a:visited {
+  text-decoration: none !important; }

@@ -66,7 +66,7 @@ class Social_Networks {
 					),
 					'backgroundColor' => array(
 						'type'    => 'string',
-						'default' => '#0073a8',
+						'default' => '#FFFFFF',
 					),
 					'padding'         => array(
 						'type'    => 'int',

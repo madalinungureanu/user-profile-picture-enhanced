@@ -1,0 +1,37 @@
+.upp-enhanced-recent-posts {
+
+	&.aligncenter {
+		ul {
+			text-align: center;
+		}
+	}
+	&.alignleft {
+		ul {
+			text-align: left;
+		}
+	}
+	&.alignright {
+		ul {
+			text-align: right;
+		}
+	}
+	&.alignfull,
+	&.alignwide {
+		ul {
+			text-align: center;
+		}
+	}
+	ul {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	li {
+		list-style-type: none;
+		text-align: left;
+	}
+	a,
+	a:hover,
+	a:visited {
+		text-decoration: none !important;
+	}
+}
