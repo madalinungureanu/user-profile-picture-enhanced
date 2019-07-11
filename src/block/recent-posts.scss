@@ -33,5 +33,21 @@
 	a:hover,
 	a:visited {
 		text-decoration: none !important;
+		display: block;
+	}
+	&.light {
+		li {
+			background-color: #FFF;
+			padding: 10px 20px 10px 20px;
+			border: 1px solid #EEE;
+			&:hover {
+				background-color: #e8e8e8;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #000;
+		}
 	}
 }

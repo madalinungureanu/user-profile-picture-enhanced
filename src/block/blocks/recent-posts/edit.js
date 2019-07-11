@@ -100,22 +100,32 @@ class User_Profile_Picture_Enhanced_Recent_Posts extends Component {
 		}
 		return ( posts.map((el, i) =>
 				<li key={i}>
-					{__('Post Title')}
+					<a href={posts[i].permalink}>{posts[i].post_title}</a>
 				</li>
 		 ) );
 	}
 
 	render() {
 		const { post, setAttributes } = this.props;
-		const { posts, align, backgroundColor, padding, border, borderColor, borderRadius, bgImg, bgImgFill, bgImgOpacity, bgImgParallax} = this.props.attributes;
+		const { posts, theme, align, backgroundColor, padding, border, borderColor, borderRadius, bgImg, bgImgFill, bgImgOpacity, bgImgParallax} = this.props.attributes;
 
-		const iconThemeOptions = [
-			{ value: 'brand', label: __( 'Brand Colors', 'user-profile-picture-enhanced' ) },
-			{ value: 'custom', label: __( 'Custom Color', 'user-profile-picture-enhanced' ) },
-		];
-		const iconOrientationOptions = [
-			{ value: 'horizontal', label: __( 'Horizontal', 'user-profile-picture-enhanced' ) },
-			{ value: 'vertical', label: __( 'Vertical', 'user-profile-picture-enhanced' ) },
+		const recentPostThemes = [
+			{ value: 'aqua', label: __( 'Aqua', 'user-profile-picture-enhanced' ) },
+			{ value: 'blue', label: __( 'Blue', 'user-profile-picture-enhanced' ) },
+			{ value: 'brown', label: __( 'Brown', 'user-profile-picture-enhanced' ) },
+			{ value: 'cyan', label: __( 'Cyan', 'user-profile-picture-enhanced' ) },
+			{ value: 'dark', label: __( 'Dark', 'user-profile-picture-enhanced' ) },
+			{ value: 'gray', label: __( 'Gray', 'user-profile-picture-enhanced' ) },
+			{ value: 'green', label: __( 'Green', 'user-profile-picture-enhanced' ) },
+			{ value: 'light', label: __( 'Light', 'user-profile-picture-enhanced' ) },
+			{ value: 'magenta', label: __( 'Magenta', 'user-profile-picture-enhanced' ) },
+			{ value: 'navy', label: __( 'Navy', 'user-profile-picture-enhanced' ) },
+			{ value: 'orange', label: __( 'Orange', 'user-profile-picture-enhanced' ) },
+			{ value: 'pink', label: __( 'Pink', 'user-profile-picture-enhanced' ) },
+			{ value: 'red', label: __( 'Red', 'user-profile-picture-enhanced' ) },
+			{ value: 'tan', label: __( 'Tan', 'user-profile-picture-enhanced' ) },
+			{ value: 'violet', label: __( 'Violet', 'user-profile-picture-enhanced' ) },
+			{ value: 'yellow', label: __( 'Yellow', 'user-profile-picture-enhanced' ) },
 		];
 
 		const resetSelect = [
@@ -146,7 +156,15 @@ class User_Profile_Picture_Enhanced_Recent_Posts extends Component {
 				{!this.state.loading &&
 					<Fragment>
 						<InspectorControls>
-							<PanelBody title={ __( 'Icon Settings', 'user-profile-picture-enhanced' ) }>
+							<PanelBody title={ __( 'Recent Posts Settings', 'user-profile-picture-enhanced' ) }>
+								<SelectControl
+										label={ __( 'Select a Post Theme', 'user-profile-picture-enhanced' ) }
+										value={theme}
+										options={ recentPostThemes }
+										onChange={ ( value ) => {
+											setAttributes( {theme: value} );
+										} }
+								/>
 								<RangeControl
 									label={ __( 'Padding', 'user-profile-picture-enhanced' ) }
 									value={ padding }
@@ -243,6 +261,7 @@ class User_Profile_Picture_Enhanced_Recent_Posts extends Component {
 									classnames(
 										'upp-enhanced-recent-posts',
 										`align${align}`,
+										theme,
 									)
 								}
 								style={{

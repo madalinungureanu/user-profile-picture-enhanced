@@ -44,6 +44,10 @@ class Recent_Posts {
 							'type' => 'object',
 						],
 					),
+					'theme'           => array(
+						'type'    => 'string',
+						'default' => 'light',
+					),
 					'backgroundColor' => array(
 						'type'    => 'string',
 						'default' => '#FFFFFF',

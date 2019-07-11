@@ -190,4 +190,17 @@
 .upp-enhanced-recent-posts a,
 .upp-enhanced-recent-posts a:hover,
 .upp-enhanced-recent-posts a:visited {
-  text-decoration: none !important; }
+  text-decoration: none !important;
+  display: block; }
+
+.upp-enhanced-recent-posts.light li {
+  background-color: #FFF;
+  padding: 10px 20px 10px 20px;
+  border: 1px solid #EEE; }
+  .upp-enhanced-recent-posts.light li:hover {
+    background-color: #e8e8e8; }
+
+.upp-enhanced-recent-posts.light a,
+.upp-enhanced-recent-posts.light a:hover,
+.upp-enhanced-recent-posts.light a:visited {
+  color: #000; }
