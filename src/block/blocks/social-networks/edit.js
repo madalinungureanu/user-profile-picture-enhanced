@@ -61,6 +61,7 @@ class User_Profile_Picture_Enhanced_Social_Networks extends Component {
 	};
 
 	getSocialNetworks = () => {
+		const refThis = this;
 		axios.post(upp_enhanced.rest_url + `mpp/v3/get_social_networks/`, { post_id: this.props.post.id, size: this.props.attributes.imageSize }, { 'headers': { 'X-WP-Nonce': upp_enhanced.rest_nonce } } ).then( (response) => {
 			this.setState(
 				{
@@ -71,6 +72,13 @@ class User_Profile_Picture_Enhanced_Social_Networks extends Component {
 			this.props.setAttributes( {
 				icons: response.data.items,
 			});
+		})
+		.catch(function (error) {
+			refThis.setState(
+				{
+					loading: false,
+				}
+			)
 		});
 	}
 
@@ -87,6 +95,13 @@ class User_Profile_Picture_Enhanced_Social_Networks extends Component {
 	}
 
 	getIcons = ( icons, iconSize, iconColor ) => {
+		if ( 0 === icons.length ) {
+			return (
+				<li>
+					{__( 'No social networks were found for this user', 'user-profile-picture-enhanced' )}
+				</li>
+			);
+		}
 		return ( icons.map((el, i) =>
 				<li key={i}>
 					<style>
