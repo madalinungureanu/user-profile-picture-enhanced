@@ -66,9 +66,15 @@ $colors: twitter #00aced,
 		list-style-type: none;
 		text-align: left;
 	}
+	a,
+	a:hover,
+	a:visited {
+		text-decoration: none !important;
+	}
 	&.vertical {
 		li {
 			text-align: center;
+			margin: 10px;
 		}
 
 	}

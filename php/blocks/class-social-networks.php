@@ -64,10 +64,6 @@ class Social_Networks {
 						'type'    => 'string',
 						'default' => 'center',
 					),
-					'html'            => array(
-						'type'    => 'string',
-						'default' => '',
-					),
 					'backgroundColor' => array(
 						'type'    => 'string',
 						'default' => '#0073a8',
@@ -120,56 +116,65 @@ class Social_Networks {
 			return;
 		}
 
-		return 'test';
-
 		// Loading Attributes.
 		$align = 'center';
 		if ( isset( $attributes['align'] ) ) {
 			$align = $attributes['align'];
 		}
-		$image_url         = $attributes['imgUrl'];
-		$alt               = $attributes['alt'];
-		$width             = $attributes['width'];
-		$height            = $attributes['height'];
-		$bg_img_parallax   = $attributes['bgImgParallax'];
-		$bg_img_fill       = $attributes['bgImgFill'];
-		$bg_img            = $attributes['bgImg'];
-		$caption_font_size = $attributes['captionFontSize'];
-		$caption_color     = $attributes['captionColor'];
-		$caption           = $attributes['caption'];
-		$border_radius     = $attributes['borderRadius'];
-		$border            = $attributes['border'];
-		$border_color      = $attributes['borderColor'];
-		$img_bg_color      = $attributes['imgBgColor'];
-		$img_padding       = $attributes['imgPadding'];
-		$img_border_color  = $attributes['imgBorderColor'];
-		$img_border        = $attributes['imgBorder'];
-		$padding           = $attributes['padding'];
-		$avatar_shape      = $attributes['avatarShape'];
-		$background_color  = $attributes['backgroundColor'];
+		$icon_size        = $attributes['iconSize'];
+		$icon_theme       = $attributes['iconTheme'];
+		$icon_color       = $attributes['iconColor'];
+		$icon_orientation = $attributes['iconOrientation'];
+		$bg_img_parallax  = $attributes['bgImgParallax'];
+		$bg_img_fill      = $attributes['bgImgFill'];
+		$bg_img           = $attributes['bgImg'];
+		$border_radius    = $attributes['borderRadius'];
+		$border           = $attributes['border'];
+		$border_color     = $attributes['borderColor'];
+		$padding          = $attributes['padding'];
+		$background_color = $attributes['backgroundColor'];
+
+		global $post;
+		$user_id = absint( $post->post_author );
 
 		ob_start();
 		?>
+		<style>
+			.upp-enhanced-social-networks .fab:before,
+			.upp-enhanced-social-networks .fas:before {
+				font-size: <?php echo esc_attr( $icon_size ); ?>px;
+			}
+			<?php
+			if ( 'custom' === $icon_theme ) :
+				?>
+				.upp-enhanced-social-networks.custom .fas:before,
+				.upp-enhanced-social-networks.custom .fab:before {
+					color: <?php echo esc_attr( $icon_color ); ?>;
+				}
+				<?php
+			endif;
+			?>
+		</style>
 		<div
-			class="upp-enhanced-avatar <?php echo esc_attr( $avatar_shape ); ?> align<?php echo esc_attr( $align ); ?>"
+			class="upp-enhanced-social-networks <?php echo esc_attr( $icon_theme ); ?> <?php echo esc_attr( $icon_orientation ); ?> align<?php echo esc_attr( $align ); ?>"
 			style="background-color: <?php echo esc_attr( $background_color ); ?>; padding: <?php echo absint( $padding ); ?>px; border: <?php echo absint( $border ); ?>px solid <?php echo esc_attr( $border_color ); ?>; border-radius: <?php echo absint( $border_radius ); ?>px; <?php echo ( ! empty( $bg_img ) ) ? sprintf( 'background-image: url(%s);', esc_url( $bg_img ) ) : ''; ?> background-size: <?php echo esc_attr( $bg_img_fill ); ?>; background-attachment: <?php echo $bg_img_parallax ? 'fixed' : 'inherit'; ?>"
 		>
-			<img
-			src="<?php echo esc_attr( $image_url ); ?>"
-			alt="<?php echo esc_attr( $alt ); ?>"
-			width="<?php echo absint( $width ); ?>"
-			height="<?php echo absint( $height ); ?>"
-			style="background-color: <?php echo esc_attr( $img_bg_color ); ?>; border: <?php echo esc_attr( $img_border ); ?>px solid <?php echo esc_attr( $img_border_color ); ?>; padding: <?php echo esc_attr( $img_padding ); ?>px;"
-			/>
-			<?php
-			if ( ! empty( $caption ) ) {
-				?>
-				<h2 class="upp-enhanced-avatar-caption" style="color: <?php echo esc_attr( $caption_color ); ?>; font-size: <?php echo esc_attr( $caption_font_size ); ?>px;">
-					<?php echo wp_kses_post( $caption ); ?>
-				</h2>
-				<?php
-			}
+		<?php
+		global $wpdb;
+		$tablename = $wpdb->prefix . 'upp_social_networks';
+		$results = $wpdb->get_results( $wpdb->prepare( "select * from {$tablename} where user_id = %d ORDER BY item_order ASC", $user_id ) ); // phpcs:ignore
+		echo '<ul>';
+		foreach ( $results as $result ) {
 			?>
+			<li>
+				<a href="<?php echo esc_url( $result->url ); ?>" title="<?php echo esc_attr( $result->label ); ?>" aria-label="<?php echo esc_attr( $result->label ); ?>">
+					<i class="<?php echo esc_attr( $result->icon ); ?>"></i>
+				</a>
+			</li>
+			<?php
+		}
+		echo '</ul>';
+		?>
 		</div>
 		<?php
 		return ob_get_clean();

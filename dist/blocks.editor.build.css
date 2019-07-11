@@ -51,8 +51,14 @@
   list-style-type: none;
   text-align: left; }
 
+.upp-enhanced-social-networks a,
+.upp-enhanced-social-networks a:hover,
+.upp-enhanced-social-networks a:visited {
+  text-decoration: none !important; }
+
 .upp-enhanced-social-networks.vertical li {
-  text-align: center; }
+  text-align: center;
+  margin: 10px; }
 
 .upp-enhanced-social-networks.horizontal li {
   display: inline-block;

@@ -80,6 +80,13 @@ class Enqueue {
 	 * Enqueue the front-end CSS.
 	 */
 	public function frontend_css() {
+		wp_enqueue_script(
+			'font-awesome',
+			'https://kit.fontawesome.com/9869399772.js',
+			array(),
+			USER_PROFILE_PICTURE_ENHANCED_VERSION,
+			true
+		);
 		wp_enqueue_style(
 			'user-profile-picture-enhanced-block-css', // Handle.
 			USER_PROFILE_PICTURE_ENHANCED_URL . 'dist/blocks.style.build.css',

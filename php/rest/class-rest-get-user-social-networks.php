@@ -75,8 +75,6 @@ class Rest_Get_User_Social_Networks {
 		$tablename = $wpdb->prefix . 'upp_social_networks';
 		$results = $wpdb->get_results( $wpdb->prepare( "select * from {$tablename} where user_id = %d ORDER BY item_order ASC", $user_id ) ); // phpcs:ignore
 
-		error_log( print_r( $results, true ) );
-
 		if ( ! $results ) {
 			return new \WP_Error( 'mpp_no_social_networks', __( 'No social networks found for this user.', 'user-profile-picture-enhanced' ), array( 'status' => 403 ) );
 		}
