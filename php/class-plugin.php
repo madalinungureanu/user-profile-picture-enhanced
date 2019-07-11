@@ -59,5 +59,9 @@ class Plugin extends Plugin_Abstract {
 		// Load Rest API for Avatar.
 		$this->rest_get_avatar = new Rest\Rest_Get_Avatar();
 		$this->rest_get_avatar->register_hooks();
+
+		// Load Rest API for Social Networks.
+		$this->rest_get_social_networks = new Rest\Rest_Get_User_Social_Networks();
+		$this->rest_get_social_networks->register_hooks();
 	}
 }

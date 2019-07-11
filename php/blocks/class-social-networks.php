@@ -37,6 +37,13 @@ class Social_Networks {
 			'mpp/user-profile-picture-enhanced-social-networks',
 			array(
 				'attributes'      => array(
+					'icons'           => array(
+						'type'    => 'array',
+						'default' => array(),
+						'items'   => [
+							'type' => 'object',
+						],
+					),
 					'iconSize'        => array(
 						'type'    => 'int',
 						'default' => 24,

@@ -56,6 +56,13 @@ class Enqueue {
 				'image_sizes' => $js_format_sizes,
 			)
 		);
+		wp_enqueue_script(
+			'font-awesome',
+			'https://kit.fontawesome.com/9869399772.js',
+			array(),
+			USER_PROFILE_PICTURE_ENHANCED_VERSION,
+			true
+		);
 
 		wp_set_script_translations( 'user-profile-picture-enhanced-js', 'user-profile-picture-enhanced' );
 
