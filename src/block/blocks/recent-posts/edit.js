@@ -110,6 +110,7 @@ class User_Profile_Picture_Enhanced_Recent_Posts extends Component {
 		const { posts, theme, align, backgroundColor, padding, border, borderColor, borderRadius, bgImg, bgImgFill, bgImgOpacity, bgImgParallax} = this.props.attributes;
 
 		const recentPostThemes = [
+			{ value: 'none', label: __( 'None', 'user-profile-picture-enhanced' ) },
 			{ value: 'aqua', label: __( 'Aqua', 'user-profile-picture-enhanced' ) },
 			{ value: 'blue', label: __( 'Blue', 'user-profile-picture-enhanced' ) },
 			{ value: 'brown', label: __( 'Brown', 'user-profile-picture-enhanced' ) },
