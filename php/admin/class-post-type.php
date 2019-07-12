@@ -142,6 +142,7 @@ class Post_Type {
 			'exclude_from_search' => true,
 			'publicly_queryable'  => 'on' === $options['allow_public_profiles'] ? true : false,
 			'rewrite'             => $rewrite,
+			'query_var'           => 'uppe_user',
 			'capability_type'     => 'page',
 			'capabilities'        => array(
 				'create_posts' => 'do_not_allow',

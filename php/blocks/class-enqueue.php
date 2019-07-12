@@ -32,6 +32,9 @@ class Enqueue {
 	 */
 	public function block_js() {
 
+		global $mt_pp;
+		$options = $mt_pp->get_options();
+
 		// Get Intermedia Image Sizes for use in components.
 		$intermediate_sizes = get_intermediate_image_sizes();
 		$js_format_sizes    = array();
@@ -56,13 +59,16 @@ class Enqueue {
 				'image_sizes' => $js_format_sizes,
 			)
 		);
-		wp_enqueue_script(
-			'font-awesome',
-			'https://kit.fontawesome.com/9869399772.js',
-			array(),
-			USER_PROFILE_PICTURE_ENHANCED_VERSION,
-			true
-		);
+
+		if ( 'on' === $options['font_awesome_admin'] ) {
+			wp_enqueue_script(
+				'font-awesome',
+				'https://kit.fontawesome.com/9869399772.js',
+				array(),
+				USER_PROFILE_PICTURE_ENHANCED_VERSION,
+				true
+			);
+		}
 
 		wp_set_script_translations( 'user-profile-picture-enhanced-js', 'user-profile-picture-enhanced' );
 
@@ -80,13 +86,19 @@ class Enqueue {
 	 * Enqueue the front-end CSS.
 	 */
 	public function frontend_css() {
-		wp_enqueue_script(
-			'font-awesome',
-			'https://kit.fontawesome.com/9869399772.js',
-			array(),
-			USER_PROFILE_PICTURE_ENHANCED_VERSION,
-			true
-		);
+		global $mt_pp;
+		error_log( print_r( $mt_pp, true ) );
+		$options = $mt_pp->get_options();
+
+		if ( 'on' === $options['font_awesome_frontend'] ) {
+			wp_enqueue_script(
+				'font-awesome',
+				'https://kit.fontawesome.com/9869399772.js',
+				array(),
+				USER_PROFILE_PICTURE_ENHANCED_VERSION,
+				true
+			);
+		}
 		wp_enqueue_style(
 			'user-profile-picture-enhanced-block-css', // Handle.
 			USER_PROFILE_PICTURE_ENHANCED_URL . 'dist/blocks.style.build.css',

@@ -24,7 +24,8 @@ class Options {
 	 */
 	public function register_hooks() {
 		add_filter( 'mpp_options_defaults', array( $this, 'option_defaults' ), 10, 1 );
-		add_action( 'mpp_user_profile_admin_settings_after_row', array( $this, 'output_options' ) );
+		add_action( 'mpp_user_profile_admin_settings_after_row', array( $this, 'output_post_type_options' ), 10, 1 );
+		add_action( 'mpp_user_profile_admin_settings_after_row', array( $this, 'output_font_awesome_options' ), 11, 1 );
 	}
 
 	/**
@@ -38,15 +39,17 @@ class Options {
 		$defaults['migrated']               = 'off';
 		$defaults['show_profile_post_type'] = 'off';
 		$defaults['allow_public_profiles']  = 'off';
+		$defaults['font_awesome_admin']     = 'on';
+		$defaults['font_awesome_frontend']  = 'off';
 		return $defaults;
 	}
 
 	/**
-	 * Output the Options for this plugin.
+	 * Output the Post Type Options for this plugin.
 	 *
 	 * @param array $options Options for the plugin.
 	 */
-	public function output_options( $options ) {
+	public function output_post_type_options( $options ) {
 		?>
 		<tr>
 			<th scope="row"><?php esc_html_e( 'Post Type Options', 'user-profile-picture-enhanced' ); ?></th>
@@ -59,6 +62,27 @@ class Options {
 				<input type="hidden" name="options[allow_public_profiles]" value="off" />
 				<input id="allow-public-profiles" type="checkbox" value="on" name="options[allow_public_profiles]" <?php checked( 'on', $options['allow_public_profiles'] ); ?> /> <label for="allow-public-profiles"><?php esc_html_e( 'Allow users to have public profiles.', 'user-profile-picture-enhanced' ); ?></label>
 				<p class="description"><?php esc_html_e( 'Allow the post type to be viewable by users on the front-end of the site.', 'user-profile-picture-enhanced' ); ?></p>
+			</td>
+		</tr>
+		<?php
+	}
+	/**
+	 * Output the Font Awesome options for this plugin.
+	 *
+	 * @param array $options Options for the plugin.
+	 */
+	public function output_font_awesome_options( $options ) {
+		?>
+		<tr>
+			<th scope="row"><?php esc_html_e( 'Font Awesome Options', 'user-profile-picture-enhanced' ); ?></th>
+			<td>
+				<input type="hidden" name="options[font_awesome_admin]" value="off" />
+				<input id="font-awesome-admin" type="checkbox" value="on" name="options[font_awesome_admin]" <?php checked( 'on', $options['font_awesome_admin'] ); ?> /> <label for="font-awesome-admin"><?php esc_html_e( 'Allow Font Awesome 5 in the Admin Area?', 'user-profile-picture-enhanced' ); ?></label>
+				<p class="description"><?php esc_html_e( 'Uncheck this box if you already have Font Awesome 5 running in the admin area of your site.', 'user-profile-picture-enhanced' ); ?></p>
+
+				<input type="hidden" name="options[font_awesome_frontend]" value="off" />
+				<input id="font-awesome-front-end" type="checkbox" value="on" name="options[font_awesome_frontend]" <?php checked( 'on', $options['font_awesome_frontend'] ); ?> /> <label for="font-awesome-front-end"><?php esc_html_e( 'Allow Font Awesome 5 on the front-end of your site?', 'user-profile-picture-enhanced' ); ?></label>
+				<p class="description"><?php esc_html_e( 'Uncheck this box if you already have Font Awesome 5 running on the front-end of your site.', 'user-profile-picture-enhanced' ); ?></p>
 			</td>
 		</tr>
 		<?php

@@ -104,7 +104,7 @@ user_profile_picture_enhanced()
 /**
  * Sometimes we need to do some things after the plugin is loaded, so call the Plugin_Interface::plugin_loaded().
  */
-add_action( 'plugins_loaded', array( user_profile_picture_enhanced(), 'plugin_loaded' ) );
+add_action( 'plugins_loaded', array( user_profile_picture_enhanced(), 'plugin_loaded' ), 20 );
 add_action( 'init', 'user_profile_picture_enhanced_add_i18n' );
 
 /**

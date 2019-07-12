@@ -212,6 +212,7 @@ class Social_Networks {
 	 */
 	public function add_social_networks_to_profile_page() {
 		global $mt_pp;
+		$options = $mt_pp->get_options();
 
 		wp_enqueue_script(
 			'upp-sortable-init',
@@ -239,14 +240,15 @@ class Social_Networks {
 				'placeholder' => 'https://',
 			)
 		);
-
-		wp_enqueue_script(
-			'font-awesome',
-			'https://kit.fontawesome.com/9869399772.js',
-			array(),
-			USER_PROFILE_PICTURE_ENHANCED_VERSION,
-			true
-		);
+		if ( 'on' === $options['font_awesome_admin'] ) {
+			wp_enqueue_script(
+				'font-awesome',
+				'https://kit.fontawesome.com/9869399772.js',
+				array(),
+				USER_PROFILE_PICTURE_ENHANCED_VERSION,
+				true
+			);
+		}
 		?>
 		<tr valign="top">
 			<th scope="row"><?php esc_html_e( 'Social Networks', 'user-profile-picture-enhanced' ); ?></th>
