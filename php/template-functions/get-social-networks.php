@@ -14,5 +14,27 @@
  * @return mixed Array or string depending on the context.
  */
 function uppe_get_social_networks( $user_id, $context = 'output' ) {
+
+	// Make sure user is sanitized.
+	$user_id = absint( $user_id );
+
+	// Get social networks for user.
+	global $wpdb;
+	$tablename = $wpdb->prefix . 'upp_social_networks';
+	$results = $wpdb->get_results( $wpdb->prepare( "select * from {$tablename} where user_id = %d ORDER BY item_order ASC", $user_id ) ); // phpcs:ignore
+
+	if ( 'raw' === $context ) {
+		return $results;
+	} else {
+		$html = '';
+		if ( empty( $results ) ) {
+			return $html;
+		}
+		$html = '<ul>';
+		foreach ( $results as $result ) {
+			//$html = sprintf( '<li><a href="%s">')
+		}
+		$html = '</ul>';
+	}
 	return '';
 }
