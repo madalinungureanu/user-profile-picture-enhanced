@@ -28,6 +28,7 @@
 	li {
 		list-style-type: none;
 		text-align: left;
+		transition: all 0.5s ease;
 	}
 	a,
 	a:hover,
@@ -153,6 +154,126 @@
 		a:hover,
 		a:visited {
 			color: #000;
+		}
+	}
+	&.magenta {
+		li {
+			background-color: #8b008b;
+			padding: 10px 20px 10px 20px;
+			border: 1px solid #FFFFFF;
+			&:hover {
+				background-color: #720072;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #FFFFFF;
+		}
+	}
+	&.navy {
+		li {
+			background-color: #000080;
+			padding: 10px 20px 10px 20px;
+			border: 1px solid #004080;
+			&:hover {
+				background-color: #00004d;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #FFFFFF;
+		}
+	}
+	&.orange {
+		li {
+			background-color: #ffa500;
+			padding: 10px 20px 10px 20px;
+			border: 1px solid #e69500;
+			&:hover {
+				background-color: #cc8400;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #000000;
+		}
+	}
+	&.pink {
+		li {
+			background-color: #ff1493;
+			padding: 10px 20px 10px 20px;
+			border: 1px solid #fa0087;
+			&:hover {
+				background-color: #e00079;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #FFFFFF;
+		}
+	}
+	&.red {
+		li {
+			background-color: #8b0000;
+			padding: 10px 20px 10px 20px;
+			border: 1px solid #720000;
+			&:hover {
+				background-color: #580000;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #FFFFFF;
+		}
+	}
+	&.tan {
+		li {
+			background-color: #d2b48c;
+			padding: 10px 20px 10px 20px;
+			border: 1px solid #d9c09e;
+			&:hover {
+				background-color: #c49c67;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #8d6838;
+		}
+	}
+	&.violet {
+		li {
+			background-color: #8a2be2;
+			padding: 10px 20px 10px 20px;
+			border: 1px solid #9641e5;
+			&:hover {
+				background-color: #701ac0;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #FFFFFF;
+		}
+	}
+	&.yellow {
+		li {
+			background-color: #ffff00;
+			padding: 10px 20px 10px 20px;
+			border: 1px solid #e6e600;
+			&:hover {
+				background-color: #cccc00;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #000000;
 		}
 	}
 }
