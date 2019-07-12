@@ -36,13 +36,16 @@ class User_Quicklinks {
 			return;
 		}
 		add_filter( 'user_row_actions', array( $this, 'insert_user_profile_quicklink' ), 10, 2 );
-		add_action( 'mpp_user_profile_form', array( $this, 'add_quicklinks_to_profile_page' ), 20 );
+		add_action( 'mpp_user_profile_form', array( $this, 'add_quicklinks_to_profile_page' ), 20, 1 );
 	}
 
 	/**
 	 * Add a quick link to the profile page.
+	 *
+	 * @param int $user_id The User ID.
 	 */
-	public function add_quicklinks_to_profile_page() {
+	public function add_quicklinks_to_profile_page( $user_id ) {
+		$user            = get_user_by( 'id', $user_id );
 		$profile_post_id = absint( get_user_option( 'metronet_post_id', $user->data->ID ) );
 		if ( $profile_post_id ) {
 			$user_edit_page = add_query_arg(
