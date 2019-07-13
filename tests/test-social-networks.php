@@ -8,7 +8,7 @@
 /**
  * Sample test case.
  */
-class UPP_Enhanced extends WP_UnitTestCase {
+class UPP_Enhanced_Social_Networks extends WP_UnitTestCase {
 
 	/**
 	 * A test for getting the social networks for a user.
