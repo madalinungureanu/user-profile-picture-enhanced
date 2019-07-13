@@ -5,9 +5,6 @@
  * that are used across the project.
 */
 
-// Colors.
-$black: rgb(41, 41, 41);
-$white: #f4f4f4;
-$gray: #dedede;
-$green: #bada55;
-$red: orangered;
+@import "block/scss/avatar-biography";
+@import "block/scss/social-networks";
+@import "block/scss/recent-posts";

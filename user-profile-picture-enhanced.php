@@ -113,3 +113,6 @@ add_action( 'init', 'user_profile_picture_enhanced_add_i18n' );
 function user_profile_picture_enhanced_add_i18n() {
 	load_plugin_textdomain( 'user-profile-picture-enhanced', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
+
+// Include Template functions.
+require_once 'php/template-functions/get-social-networks.php';

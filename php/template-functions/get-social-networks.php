@@ -32,9 +32,16 @@ function uppe_get_social_networks( $user_id, $context = 'output' ) {
 		}
 		$html = '<ul>';
 		foreach ( $results as $result ) {
-			//$html = sprintf( '<li><a href="%s">')
+			$html .= sprintf(
+				'<li><a href="%s" aria-label="%s" title="%s"><i class="%s"></i></a></li>',
+				esc_url( $result->url ),
+				esc_html( $result->label ),
+				esc_html( $result->label ),
+				esc_attr( $result->icon )
+			);
 		}
-		$html = '</ul>';
+		$html .= '</ul>';
+		return $html;
 	}
 	return '';
 }
