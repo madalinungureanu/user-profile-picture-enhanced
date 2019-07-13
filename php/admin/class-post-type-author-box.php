@@ -17,6 +17,12 @@ class Post_Type_Author_Box {
 	 */
 	public function init() {
 		$this->register_post_type();
+
+		// Setup Post Type Template.
+		$author_box_type           = get_post_type_object( 'uppe_author_box' );
+		$author_box_type->template = array(
+			array( 'mpp/user-profile-enhanced' ),
+		);
 	}
 
 	/**
