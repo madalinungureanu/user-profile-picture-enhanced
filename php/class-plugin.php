@@ -20,6 +20,10 @@ class Plugin extends Plugin_Abstract {
 		$this->post_type_upp = new Admin\Post_Type_UPP();
 		$this->post_type_upp->register_hooks();
 
+		// Register post type for author box.
+		$this->post_type_author_box = new Admin\Post_Type_Author_Box();
+		$this->post_type_author_box->register_hooks();
+
 		// Add quick links to the user profile pages.
 		$this->user_quicklinks = new Admin\User_Quicklinks();
 		$this->user_quicklinks->register_hooks();
