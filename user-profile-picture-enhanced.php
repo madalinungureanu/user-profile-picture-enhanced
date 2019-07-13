@@ -52,6 +52,17 @@ function user_profile_picture_enhanced_dependency_error() {
 		esc_html__( 'User Profile Picture must be installed to use User Profile Picture Enhanced', 'user-profile-picture-enhanced' )
 	);
 }
+
+/**
+ * Admin notice if User Profile Picture isn't installed.
+ */
+function user_profile_picture_enhanced_upp_version_error() {
+	printf(
+		'<div class="error"><p>%s</p></div>',
+		esc_html__( 'User Profile Picture Enhanced requires User Profile Picture 2.3.2 or above.', 'user-profile-picture-enhanced' )
+	);
+}
+
 /**
  * String describing the minimum PHP version.
  *
@@ -72,6 +83,11 @@ if ( version_compare( phpversion(), '5.4', '<' ) ) {
 
 if ( ! defined( 'METRONET_PROFILE_PICTURE_VERSION' ) ) {
 	add_action( 'admin_notices', 'user_profile_picture_enhanced_dependency_error' );
+	return;
+}
+
+if ( defined( 'METRONET_PROFILE_PICTURE_VERSION' ) && version_compare( METRONET_PROFILE_PICTURE_VERSION, '2.3.2', '<' ) ) {
+	add_action( 'admin_notices', 'user_profile_picture_enhanced_upp_version_error' );
 	return;
 }
 
