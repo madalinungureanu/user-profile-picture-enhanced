@@ -17,8 +17,8 @@ class Plugin extends Plugin_Abstract {
 	public function plugin_loaded() {
 
 		// Register post type actions and filters.
-		$this->post_type = new Admin\Post_Type();
-		$this->post_type->register_hooks();
+		$this->post_type_upp = new Admin\Post_Type_UPP();
+		$this->post_type_upp->register_hooks();
 
 		// Add quick links to the user profile pages.
 		$this->user_quicklinks = new Admin\User_Quicklinks();

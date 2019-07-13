@@ -54,7 +54,7 @@ function user_profile_picture_enhanced_dependency_error() {
 }
 
 /**
- * Admin notice if User Profile Picture isn't installed.
+ * Admin notice if User Profile Picture isn't an adequate version.
  */
 function user_profile_picture_enhanced_upp_version_error() {
 	printf(

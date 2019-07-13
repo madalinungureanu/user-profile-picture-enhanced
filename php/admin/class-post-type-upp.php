@@ -10,7 +10,7 @@ namespace User_Profile_Picture_Enhanced\Admin;
 /**
  * Class Admin
  */
-class Post_Type {
+class Post_Type_UPP {
 
 	/**
 	 * Initialize the Admin component.
