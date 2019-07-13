@@ -27,6 +27,7 @@ class Options {
 		add_action( 'mpp_user_profile_admin_settings_after_row', array( $this, 'output_post_type_options' ), 10, 1 );
 		add_action( 'mpp_user_profile_admin_settings_after_row', array( $this, 'output_font_awesome_options' ), 11, 1 );
 		add_action( 'mpp_user_profile_admin_settings_after_row', array( $this, 'output_author_box_options' ), 12, 1 );
+		add_action( 'mpp_user_profile_admin_settings_after_row', array( $this, 'output_author_box_select' ), 13, 1 );
 	}
 
 	/**
@@ -103,6 +104,25 @@ class Options {
 				<input type="hidden" name="options[author_box_type]" value="off" />
 				<input id="author-box-post-type" type="checkbox" value="on" name="options[author_box_type]" <?php checked( 'on', $options['author_box_type'] ); ?> /> <label for="author-box-post-type"><?php esc_html_e( 'Enable Author Boxes?', 'user-profile-picture-enhanced' ); ?></label>
 				<p class="description"><?php esc_html_e( 'Check this box to enable an Author Box post type. This will allow you to insert an Author Box below the content area of your site.', 'user-profile-picture-enhanced' ); ?></p>
+			</td>
+		</tr>
+		<?php
+	}
+
+	/**
+	 * Output the Author Box options for post types.
+	 *
+	 * @param array $options Options for the plugin.
+	 */
+	public function output_author_box_select( $options ) {
+		if ( 'off' === $options['author_box_type'] ) {
+			return;
+		}
+		?>
+		<tr>
+			<th scope="row"><?php esc_html_e( 'Author Box Select', 'user-profile-picture-enhanced' ); ?></th>
+			<td>
+				<p class="description"><?php esc_html_e( 'Select an Author Box to show up for each post type. Select none for no author box for that post type.', 'user-profile-picture-enhanced' ); ?></p>
 			</td>
 		</tr>
 		<?php
