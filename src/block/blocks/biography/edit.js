@@ -157,7 +157,7 @@ class User_Profile_Picture_Enhanced_Biography extends Component {
 									) }
 								/>
 								<ToggleControl
-									label={ __( 'Parallax?', 'metronet-profile-picture' ) }
+									label={ __( 'Parallax?', 'user-profile-picture-enhanced' ) }
 									checked={ bgImgParallax }
 									onChange={ ( value ) => this.props.setAttributes( { bgImgParallax: value } ) }
 								/>
@@ -233,7 +233,7 @@ class User_Profile_Picture_Enhanced_Biography extends Component {
 							>
 								<RichText
 									tagName="h2"
-									placeholder={ __( 'Enter a Biography Heading...', 'metronet-profile-picture' ) }
+									placeholder={ __( 'Enter a Biography Heading...', 'user-profile-picture-enhanced' ) }
 									value={ biographyHeading }
 									className='upp-enhanced-biography-heading'
 									style={ {
@@ -244,7 +244,7 @@ class User_Profile_Picture_Enhanced_Biography extends Component {
 								/>
 								<RichText
 									tagName="div"
-									placeholder={ __( 'Enter a Biography...', 'metronet-profile-picture' ) }
+									placeholder={ __( 'Enter a Biography...', 'user-profile-picture-enhanced' ) }
 									value={ biography }
 									className='upp-enhanced-biogrpahy-content'
 									style={ {

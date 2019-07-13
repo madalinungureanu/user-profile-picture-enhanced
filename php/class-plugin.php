@@ -68,6 +68,10 @@ class Plugin extends Plugin_Abstract {
 		$this->rest_get_user_biography = new Rest\Rest_Get_User_Biography();
 		$this->rest_get_user_biography->register_hooks();
 
+		// Load Rest API for Changing a Profile Picture.
+		$this->rest_change_profile_picture = new Rest\Rest_Change_Profile_Image();
+		$this->rest_change_profile_picture->register_hooks();
+
 		// Load Rest API for Avatar.
 		$this->rest_get_avatar = new Rest\Rest_Get_Avatar();
 		$this->rest_get_avatar->register_hooks();

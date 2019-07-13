@@ -221,7 +221,7 @@ class User_Profile_Picture_Enhanced_Recent_Posts extends Component {
 									) }
 								/>
 								<ToggleControl
-									label={ __( 'Parallax?', 'metronet-profile-picture' ) }
+									label={ __( 'Parallax?', 'user-profile-picture-enhanced' ) }
 									checked={ bgImgParallax }
 									onChange={ ( value ) => this.props.setAttributes( { bgImgParallax: value } ) }
 								/>

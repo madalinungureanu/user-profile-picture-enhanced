@@ -70,6 +70,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 	};
 
 	getAvatar = () => {
+		const refThis = this;
 		axios.post(upp_enhanced.rest_url + `mpp/v3/get_avatar/`, { post_id: this.props.post.id, size: this.props.attributes.imageSize }, { 'headers': { 'X-WP-Nonce': upp_enhanced.rest_nonce } } ).then( (response) => {
 			this.setState(
 				{
@@ -88,7 +89,13 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 				height: response.data.height,
 				html: response.data.html,
 			});
-		});
+		}).catch(function (error) {
+			refThis.setState(
+				{
+					loading: false,
+				}
+			)
+		});;
 	}
 
 	componentDidMount = () => {
@@ -100,6 +107,13 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 	componentDidUpdate = (prevProps) => {
 		if ( this.props.post.author !== prevProps.post.author ) {
 			this.getAvatar();
+		}
+		if ( this.props.post.featured_media !== prevProps.post.featured_media ) {
+
+			// Set up endpoint to add new profile picture.
+			axios.post(upp_enhanced.rest_url + `mpp/v3/change_profile_image/`, { post_id: this.props.post.id, media_id: this.props.post.featured_media }, { 'headers': { 'X-WP-Nonce': upp_enhanced.rest_nonce } } ).then( (response) => {
+				this.getAvatar();
+			} );
 		}
 	}
 
@@ -132,7 +146,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 					</Placeholder>
 				</Fragment>
 				}
-				{!this.state.loading &&
+				{!this.state.loading && '' !== imgUrl &&
 					<Fragment>
 						<InspectorControls>
 							<PanelBody title={ __( 'Avatar Settings', 'user-profile-picture-enhanced' ) }>
@@ -227,7 +241,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 									) }
 								/>
 								<ToggleControl
-									label={ __( 'Parallax?', 'metronet-profile-picture' ) }
+									label={ __( 'Parallax?', 'user-profile-picture-enhanced' ) }
 									checked={ bgImgParallax }
 									onChange={ ( value ) => this.props.setAttributes( { bgImgParallax: value } ) }
 								/>
@@ -295,7 +309,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 								>
 								</PanelColorSettings>
 								<RangeControl
-									label={ __( 'Caption Font Size', 'user-profile-picture' ) }
+									label={ __( 'Caption Font Size', 'user-profile-picture-enhanced' ) }
 									value={ captionFontSize }
 									onChange={ ( value ) => this.props.setAttributes( { captionFontSize: value } ) }
 									min={ 10 }
@@ -336,7 +350,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 								/>
 								<RichText
 									tagName="h2"
-									placeholder={ __( 'Enter a Caption...', 'metronet-profile-picture' ) }
+									placeholder={ __( 'Enter a Caption...', 'user-profile-picture-enhancedanced' ) }
 									value={ caption }
 									className='upp-enhanced-avatar-caption'
 									style={ {
@@ -347,6 +361,11 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 								/>
 							</div>
 						</Fragment>
+					</Fragment>
+				}
+				{!this.state.loading && '' === imgUrl &&
+					<Fragment>
+						{__( 'There is no avatar for this user.', 'user-profile-picture-enhanced' )}
 					</Fragment>
 				}
 			</Fragment>
