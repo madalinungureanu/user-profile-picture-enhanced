@@ -102,7 +102,7 @@ class Options {
 			<td>
 				<input type="hidden" name="options[author_box_type]" value="off" />
 				<input id="author-box-post-type" type="checkbox" value="on" name="options[author_box_type]" <?php checked( 'on', $options['author_box_type'] ); ?> /> <label for="author-box-post-type"><?php esc_html_e( 'Enable Author Boxes?', 'user-profile-picture-enhanced' ); ?></label>
-				<p class="description"><?php esc_html_e( 'Check this box to enable an Author Box post type.', 'user-profile-picture-enhanced' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Check this box to enable an Author Box post type. This will allow you to insert an Author Box below the content area of your site.', 'user-profile-picture-enhanced' ); ?></p>
 			</td>
 		</tr>
 		<?php
