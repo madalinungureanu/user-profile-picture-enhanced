@@ -119,11 +119,39 @@ class Options {
 		if ( 'off' === $options['author_box_type'] ) {
 			return;
 		}
+		$post_types_arr   = get_post_types(
+			array(
+				'public'             => true,
+			),
+			'objects'
+		);
+		$mpp_author_boxes = get_posts(
+			array(
+				'post_status'    => 'publish',
+				'posts_per_page' => '100',
+				'post_type'      => 'uppe_author_box',
+				'orderby'        => 'title',
+				'order'          => 'asc',
+			)
+		);
+		$post_type_html = '';
+		foreach ( $post_types_arr as $post_type ) {
+			$post_type_html .= '<h3>' . esc_html( $post_type->label ) . '</h3>';
+			$post_type_html .= '<select name="options[' . esc_attr( $post_type->name ) . ']">';
+			$post_type_html .= sprintf( '<option value="none">%s</option>', esc_html__( 'None', 'user-profile-picture-enhanced' ) );
+			foreach ( $mpp_author_boxes as $post ) {
+				$post_type_html .= sprintf( '<option value="%s" %s>%s</option>', esc_attr( $post->ID ), selected( $post->ID, isset( $options[ $post_type->name ] ) ? $options[ $post_type->name ] : '', false ), $post->post_title );
+			}
+			$post_type_html .= '</select>';
+		}
 		?>
 		<tr>
 			<th scope="row"><?php esc_html_e( 'Author Box Select', 'user-profile-picture-enhanced' ); ?></th>
 			<td>
 				<p class="description"><?php esc_html_e( 'Select an Author Box to show up for each post type. Select none for no author box for that post type.', 'user-profile-picture-enhanced' ); ?></p>
+				<?php
+				echo $post_type_html; // phpcs:ignore
+				?>
 			</td>
 		</tr>
 		<?php
@@ -217,7 +245,7 @@ class Options {
 			<td>
 				<input id="uppe-license" class="regular-text" type="text" value="<?php echo esc_attr( $license ); ?>" name="options[license]" /><br />
 				<?php
-				if( false === $license || empty( $license ) ) {
+				if ( false === $license || empty( $license ) ) {
 					printf( '<p>%s</p>', esc_html__( 'Please enter your license key.', 'user-profile-picture-enhanced' ) );
 				} else {
 					printf( '<p>%s</p>', esc_html__( 'Your license is valid and you will now receive update notifications.', 'user-profile-picture-enhanced' ) );
