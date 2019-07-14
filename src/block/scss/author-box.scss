@@ -1,0 +1,106 @@
+.upp-enhanced-author-box {
+	.author-name {
+		a,
+		a:hover,
+		a:visited {
+			text-decoration: none;
+			margin-right: 20px;
+		}
+		.icons {
+			margin-left: 10px;
+			&:before {
+				width: 30px;
+				height: 30px;
+				font-size: 30px;
+			}
+		}
+	}
+	.author-title {
+		font-size: 24px;
+		line-height: 1.1;
+		color: #000000;
+		font-weight: 700;
+	}
+	&.round .author-picture {
+		img {
+			border-radius: 100%;
+		}
+	}
+	.author-picture {
+		float: left;
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+	&.centered {
+		.author-title {
+			text-align: center;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		.author-picture {
+			float: none;
+			padding: 10px 0;
+			text-align: center;
+		}
+		.author-biography {
+			text-align: center;
+		}
+		.upp-enhanced-author-box-title {
+			text-align: center;
+		}
+		.author-name {
+			text-align: center;
+		}
+	}
+	&.bold {
+		background-color: #ff9d35 !important;
+		border: 10px solid #e87800 !important;
+		border-radius: inherit !important;
+		.author-title {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #FFF !important;
+		}
+		.author-biography {
+			color: #FFF !important;
+			font-style: italic !important;
+			font-size: 18px !important;
+			padding: 20px !important;
+		}
+		.author-name {
+			text-align: center;
+			a,
+			a:hover,
+			a:visited {
+				color: #FFF;
+				font-family: Arial, Helvetica, sans-serif;
+				text-decoration: none;
+			}
+			a:hover {
+				color: #DDD;
+			}
+
+		}
+		.upp-enhanced-author-box-title {
+			text-align: center;
+			color: #FFF !important;
+			font-weight: 700 !important;
+		}
+		.fab,
+		.fas {
+			color: #FFF;
+			&:hover {
+				color: #DDDDDD;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			text-decoration: underline;
+			color: #FFF;
+		}
+		img {
+			background: #FFF;
+			border: 2px solid #e87800;
+			padding: 2px;
+		}
+	}
+}

@@ -45,7 +45,7 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 
 	render() {
 		const { post, setAttributes } = this.props;
-		const { defaultImg, theme, backgroundColor, border, padding, borderColor, borderRadius } = this.props.attributes;
+		const { defaultImg, avatarShape, aboutHeading, theme, backgroundColor, border, padding, borderColor, borderRadius, aboutHeadingColor, aboutHeadingFontSize, titleHeadingColor, titleHeadingFontSize } = this.props.attributes;
 
 		// Get thumbnail sizes in the right format.
 		const imageSizes = Object.entries( upp_enhanced.image_sizes );
@@ -58,6 +58,17 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 		const avatarShapeOptions = [
 			{ value: 'square', label: __( 'Square', 'user-profile-picture-enhanced' ) },
 			{ value: 'round', label: __( 'Round', 'user-profile-picture-enhanced' ) },
+		];
+
+		// Get Theme Settings.
+		const themeOptions = [
+			{ value: 'none', label: __( 'None', 'user-profile-picture-enhanced' ) },
+			{ value: 'centered', label: __( 'Centered', 'user-profile-picture-enhanced' ) },
+			{ value: 'bold', label: __( 'Bold', 'user-profile-picture-enhanced' ) },
+			{ value: 'minimal', label: __( 'Minimal', 'user-profile-picture-enhanced' ) },
+			{ value: 'dark', label: __( 'Dark', 'user-profile-picture-enhanced' ) },
+			{ value: 'light', label: __( 'light', 'user-profile-picture-enhanced' ) },
+			{ value: 'professional', label: __( 'Professional', 'user-profile-picture-enhanced' ) },
 		];
 
 		return (
@@ -75,12 +86,104 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 				{!this.state.loading &&
 					<Fragment>
 						<InspectorControls>
-							<PanelBody title={ __( 'Author Box Settings', 'user-profile-picture-enhanced' ) }>
+							<PanelBody title={ __( 'Author Heading Settings', 'user-profile-picture-enhanced' ) }>
+								<SelectControl
+										label={ __( 'Select a Theme', 'user-profile-picture-enhanced' ) }
+										value={theme}
+										options={ themeOptions }
+										onChange={ ( value ) => {
+											setAttributes( {theme: value} );
+										} }
+								/>
+								<PanelColorSettings
+									title={ __( 'Title Heading Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: titleHeadingColor,
+										onChange: ( value ) => {
+											setAttributes( { titleHeadingColor: value});
+										},
+										label: __( 'About Heading Text Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								>
+								</PanelColorSettings>
+								<RangeControl
+									label={ __( 'Title Font Size', 'user-profile-picture-enhanced' ) }
+									value={ titleHeadingFontSize }
+									onChange={ ( value ) => this.props.setAttributes( { titleHeadingFontSize: value } ) }
+									min={ 10 }
+									max={ 100 }
+									step={ 1 }
+								/>
+								<PanelColorSettings
+									title={ __( 'About Heading Text Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: aboutHeadingColor,
+										onChange: ( value ) => {
+											setAttributes( { aboutHeadingColor: value});
+										},
+										label: __( 'About Heading Text Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								>
+								</PanelColorSettings>
+								<RangeControl
+									label={ __( 'About Heading Font Size', 'user-profile-picture-enhanced' ) }
+									value={ aboutHeadingFontSize }
+									onChange={ ( value ) => this.props.setAttributes( { aboutHeadingFontSize: value } ) }
+									min={ 10 }
+									max={ 100 }
+									step={ 1 }
+								/>
+								<SelectControl
+										label={ __( 'Select an Avatar Shape', 'user-profile-picture-enhanced' ) }
+										value={avatarShape}
+										options={ avatarShapeOptions }
+										onChange={ ( value ) => {
+											setAttributes( {avatarShape: value} );
+										} }
+								/>
+								<RangeControl
+									label={ __( 'Padding', 'user-profile-picture-enhanced' ) }
+									value={ padding }
+									onChange={ ( value ) => this.props.setAttributes( { padding: value } ) }
+									min={ 0 }
+									max={ 60 }
+									step={ 1 }
+								/>
+								<RangeControl
+									label={ __( 'Border', 'user-profile-picture-enhanced' ) }
+									value={ border }
+									onChange={ ( value ) => this.props.setAttributes( { border: value } ) }
+									min={ 0 }
+									max={ 60 }
+									step={ 1 }
+								/>
+								<RangeControl
+									label={ __( 'Border Radius', 'user-profile-picture-enhanced' ) }
+									value={ borderRadius }
+									onChange={ ( value ) => this.props.setAttributes( { borderRadius: value } ) }
+									min={ 0 }
+									max={ 60 }
+									step={ 1 }
+								/>
+								<PanelColorSettings
+									title={ __( 'Background Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: backgroundColor,
+										onChange: ( value ) => {
+											setAttributes( { backgroundColor: value});
+										},
+										label: __( 'Background Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								>
+								</PanelColorSettings>
 							</PanelBody>
 							<PanelBody title={ __( 'Background Settings', 'user-profile-picture-enhanced' ) } initialOpen={false}>
 								<MediaUpload
 									onSelect={ ( imageObject ) => {
-										this.props.setAttributes( { bgImg: imageObject.url } );
+										this.props.setAttributes( { defaultImg: imageObject.url } );
 									} }
 									type="image"
 									value={ defaultImg }
@@ -92,7 +195,7 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 											{ defaultImg &&
 												<Fragment>
 													<div>
-														<img src={ bgImg } alt={ __( 'User Profile Picture Default Image', 'user-profile-picture-enhanced' ) } width="250" height="250" />
+														<img src={ defaultImg } alt={ __( 'User Profile Picture Default Image', 'user-profile-picture-enhanced' ) } width="250" height="250" />
 													</div>
 													<div>
 														<button className="components-button is-button" onClick={ ( event ) => {
@@ -120,6 +223,7 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 									classnames(
 										'upp-enhanced-author-box',
 										theme,
+										avatarShape
 									)
 								}
 								style={{
@@ -129,8 +233,47 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 									"border-radius": borderRadius + 'px',
 								}}
 							>
-								<div className="">
+								<div className="author-picture">
 									<img src={defaultImg} width="75" height="75" alt={__('Default Picture', 'user-profile-picture-enhanced')} />
+								</div>
+								<div
+									className="author-title"
+									style={ {
+										color: titleHeadingColor,
+										fontSize: titleHeadingFontSize + 'px'
+									} }
+								>
+									The Author's Title Will Go Here
+								</div>
+								<div className="author-biography">
+									Here's where the author's biography will be. It can <a href="#">have links</a> and other options where a detailed biogrpahy is left. It is recommended to fill out the user biography in the user's profile setting. The biography on the front end will be pulled from the user's biography that you set.
+								</div>
+								<div className="column-meta">
+									<div className="author-heading">
+										<RichText
+											tagName="h2"
+											placeholder={ __( 'Enter an Author Heading...', 'user-profile-picture-enhancedanced' ) }
+											value={ aboutHeading }
+											className='upp-enhanced-author-box-title'
+											style={ {
+												color: aboutHeadingColor,
+												fontSize: aboutHeadingFontSize + 'px'
+											} }
+											onChange={ ( value ) => { setAttributes( { aboutHeading: value } ) } }
+										/>
+									</div>
+									<div className="author-name">
+										<a href="#">{__('Jason Andrews', 'user-profile-picture-enhanced')}</a>
+										<span className="icons upp-enhanced-social-networks brand">
+											<a href="#"><i className="fab fa-facebook-f"></i></a>
+											<a href="#"><i className="fab fa-twitter"></i></a>
+											<a href="#"><i className="fab fa-instagram"></i></a>
+											<a href="#"><i className="fab fa-linkedin"></i></a>
+											<a href="#"><i className="fab fa-pinterest"></i></a>
+											<a href="#"><i className="fab fa-medium"></i></a>
+											<a href="#"><i className="fab fa-wordpress"></i></a>
+										</span>
+									</div>
 								</div>
 							</div>
 						</Fragment>

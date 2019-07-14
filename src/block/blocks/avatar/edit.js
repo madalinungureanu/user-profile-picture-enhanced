@@ -290,7 +290,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 										onChange: ( value ) => {
 											setAttributes( { backgroundColor: value});
 										},
-										label: __( 'Backgroud Color', 'user-profile-picture-enhanced' ),
+										label: __( 'Background Color', 'user-profile-picture-enhanced' ),
 									} ] }
 								>
 								</PanelColorSettings>

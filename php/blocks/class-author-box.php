@@ -41,6 +41,38 @@ class Author_Box {
 						'type'    => 'string',
 						'default' => \Metronet_Profile_Picture::get_plugin_url( '/img/mystery.png' ),
 					),
+					'aboutHeading'   => array(
+						'type'    => 'string',
+						'default' => __( 'Connect with the Author', 'user-profile-picture-enhanced' ),
+					),
+					'aboutHeadingColor' => array(
+						'type'    => 'string',
+						'default' => '#000000',
+					),
+					'aboutHeadingFontSize' => array(
+						'type'    => 'int',
+						'default' => 18,
+					),
+					'aboutHeadingColor' => array(
+						'type'    => 'string',
+						'default' => '#000000',
+					),
+					'aboutHeadingFontSize' => array(
+						'type'    => 'int',
+						'default' => 18,
+					),
+					'titleHeadingColor' => array(
+						'type'    => 'string',
+						'default' => '#000000'
+					),
+					'titleHeadingFontSize' => array(
+						'type'    => 'int',
+						'default' => 32,
+					),
+					'avatarShape'          => array(
+						'type'    => 'string',
+						'default' => 'round',
+					),
 					'theme'          => array(
 						'type'    => 'string',
 						'default' => 'none',

@@ -387,3 +387,90 @@
 .upp-enhanced-recent-posts.yellow a:hover,
 .upp-enhanced-recent-posts.yellow a:visited {
   color: #000000; }
+
+.upp-enhanced-author-box .author-name a,
+.upp-enhanced-author-box .author-name a:hover,
+.upp-enhanced-author-box .author-name a:visited {
+  text-decoration: none;
+  margin-right: 20px; }
+
+.upp-enhanced-author-box .author-name .icons {
+  margin-left: 10px; }
+  .upp-enhanced-author-box .author-name .icons:before {
+    width: 30px;
+    height: 30px;
+    font-size: 30px; }
+
+.upp-enhanced-author-box .author-title {
+  font-size: 24px;
+  line-height: 1.1;
+  color: #000000;
+  font-weight: 700; }
+
+.upp-enhanced-author-box.round .author-picture img {
+  border-radius: 100%; }
+
+.upp-enhanced-author-box .author-picture {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px; }
+
+.upp-enhanced-author-box.centered .author-title {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif; }
+
+.upp-enhanced-author-box.centered .author-picture {
+  float: none;
+  padding: 10px 0;
+  text-align: center; }
+
+.upp-enhanced-author-box.centered .author-biography {
+  text-align: center; }
+
+.upp-enhanced-author-box.centered .upp-enhanced-author-box-title {
+  text-align: center; }
+
+.upp-enhanced-author-box.centered .author-name {
+  text-align: center; }
+
+.upp-enhanced-author-box.bold {
+  background-color: #ff9d35 !important;
+  border: 10px solid #e87800 !important;
+  border-radius: inherit !important; }
+  .upp-enhanced-author-box.bold .author-title {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFF !important; }
+  .upp-enhanced-author-box.bold .author-biography {
+    color: #FFF !important;
+    font-style: italic !important;
+    font-size: 18px !important;
+    padding: 20px !important; }
+  .upp-enhanced-author-box.bold .author-name {
+    text-align: center; }
+    .upp-enhanced-author-box.bold .author-name a,
+    .upp-enhanced-author-box.bold .author-name a:hover,
+    .upp-enhanced-author-box.bold .author-name a:visited {
+      color: #FFF;
+      font-family: Arial, Helvetica, sans-serif;
+      text-decoration: none; }
+    .upp-enhanced-author-box.bold .author-name a:hover {
+      color: #DDD; }
+  .upp-enhanced-author-box.bold .upp-enhanced-author-box-title {
+    text-align: center;
+    color: #FFF !important;
+    font-weight: 700 !important; }
+  .upp-enhanced-author-box.bold .fab,
+  .upp-enhanced-author-box.bold .fas {
+    color: #FFF; }
+    .upp-enhanced-author-box.bold .fab:hover,
+    .upp-enhanced-author-box.bold .fas:hover {
+      color: #DDDDDD; }
+  .upp-enhanced-author-box.bold a,
+  .upp-enhanced-author-box.bold a:hover,
+  .upp-enhanced-author-box.bold a:visited {
+    text-decoration: underline;
+    color: #FFF; }
+  .upp-enhanced-author-box.bold img {
+    background: #FFF;
+    border: 2px solid #e87800;
+    padding: 2px; }
