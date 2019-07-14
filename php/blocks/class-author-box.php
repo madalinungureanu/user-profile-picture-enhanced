@@ -39,7 +39,7 @@ class Author_Box {
 				'attributes'      => array(
 					'defaultImg'       => array(
 						'type'    => 'string',
-						'default' => '',
+						'default' => \Metronet_Profile_Picture::get_plugin_url( '/img/mystery.png' ),
 					),
 					'theme'          => array(
 						'type'    => 'string',
@@ -51,7 +51,7 @@ class Author_Box {
 					),
 					'padding'         => array(
 						'type'    => 'int',
-						'default' => 20,
+						'default' => 0,
 					),
 					'border'          => array(
 						'type'    => 'int',

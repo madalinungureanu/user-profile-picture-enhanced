@@ -129,7 +129,9 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 									"border-radius": borderRadius + 'px',
 								}}
 							>
-								{__('Test')}
+								<div className="">
+									<img src={defaultImg} width="75" height="75" alt={__('Default Picture', 'user-profile-picture-enhanced')} />
+								</div>
 							</div>
 						</Fragment>
 					</Fragment>
