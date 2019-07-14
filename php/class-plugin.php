@@ -16,6 +16,10 @@ class Plugin extends Plugin_Abstract {
 	 */
 	public function plugin_loaded() {
 
+		// Register frontend content override for the author box.
+		$this->author_box_output = new Frontend\Output_Author_Box();
+		$this->author_box_output->register_hooks();
+
 		// Register post type actions and filters.
 		$this->post_type_upp = new Admin\Post_Type_UPP();
 		$this->post_type_upp->register_hooks();
