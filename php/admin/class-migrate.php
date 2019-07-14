@@ -141,7 +141,7 @@ class Migrate {
 			array(
 				'migrating' => __( 'Migrating...', 'user-profile-picture-enhanced' ),
 				'migrated'  => __( 'All Done!', 'user-profile-profile-enhanced' ),
-				'upp_page'  => esc_url( admin_url( 'options-general.php?page=mpp' ) ),
+				'upp_page'  => esc_url( admin_url( 'admin.php?page=mpp' ) ),
 			)
 		);
 	}

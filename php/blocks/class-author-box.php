@@ -63,7 +63,7 @@ class Author_Box {
 					),
 					'titleHeadingColor' => array(
 						'type'    => 'string',
-						'default' => '#000000'
+						'default' => '#000000',
 					),
 					'titleHeadingFontSize' => array(
 						'type'    => 'int',
