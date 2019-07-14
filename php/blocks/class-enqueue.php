@@ -87,7 +87,6 @@ class Enqueue {
 	 */
 	public function frontend_css() {
 		global $mt_pp;
-		error_log( print_r( $mt_pp, true ) );
 		$options = $mt_pp->get_options();
 
 		if ( 'on' === $options['font_awesome_frontend'] ) {
