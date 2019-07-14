@@ -95,46 +95,50 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 											setAttributes( {theme: value} );
 										} }
 								/>
-								<PanelColorSettings
-									title={ __( 'Title Heading Color', 'user-profile-picture-enhanced' ) }
-									initialOpen={ true }
-									colorSettings={ [ {
-										value: titleHeadingColor,
-										onChange: ( value ) => {
-											setAttributes( { titleHeadingColor: value});
-										},
-										label: __( 'About Heading Text Color', 'user-profile-picture-enhanced' ),
-									} ] }
-								>
-								</PanelColorSettings>
-								<RangeControl
-									label={ __( 'Title Font Size', 'user-profile-picture-enhanced' ) }
-									value={ titleHeadingFontSize }
-									onChange={ ( value ) => this.props.setAttributes( { titleHeadingFontSize: value } ) }
-									min={ 10 }
-									max={ 100 }
-									step={ 1 }
-								/>
-								<PanelColorSettings
-									title={ __( 'About Heading Text Color', 'user-profile-picture-enhanced' ) }
-									initialOpen={ true }
-									colorSettings={ [ {
-										value: aboutHeadingColor,
-										onChange: ( value ) => {
-											setAttributes( { aboutHeadingColor: value});
-										},
-										label: __( 'About Heading Text Color', 'user-profile-picture-enhanced' ),
-									} ] }
-								>
-								</PanelColorSettings>
-								<RangeControl
-									label={ __( 'About Heading Font Size', 'user-profile-picture-enhanced' ) }
-									value={ aboutHeadingFontSize }
-									onChange={ ( value ) => this.props.setAttributes( { aboutHeadingFontSize: value } ) }
-									min={ 10 }
-									max={ 100 }
-									step={ 1 }
-								/>
+								{'bold' !== theme &&
+									<Fragment>
+										<PanelColorSettings
+											title={ __( 'Title Heading Color', 'user-profile-picture-enhanced' ) }
+											initialOpen={ true }
+											colorSettings={ [ {
+												value: titleHeadingColor,
+												onChange: ( value ) => {
+													setAttributes( { titleHeadingColor: value});
+												},
+												label: __( 'About Heading Text Color', 'user-profile-picture-enhanced' ),
+											} ] }
+										>
+										</PanelColorSettings>
+										<RangeControl
+											label={ __( 'Title Font Size', 'user-profile-picture-enhanced' ) }
+											value={ titleHeadingFontSize }
+											onChange={ ( value ) => this.props.setAttributes( { titleHeadingFontSize: value } ) }
+											min={ 10 }
+											max={ 100 }
+											step={ 1 }
+										/>
+										<PanelColorSettings
+											title={ __( 'About Heading Text Color', 'user-profile-picture-enhanced' ) }
+											initialOpen={ true }
+											colorSettings={ [ {
+												value: aboutHeadingColor,
+												onChange: ( value ) => {
+													setAttributes( { aboutHeadingColor: value});
+												},
+												label: __( 'About Heading Text Color', 'user-profile-picture-enhanced' ),
+											} ] }
+										>
+										</PanelColorSettings>
+										<RangeControl
+											label={ __( 'About Heading Font Size', 'user-profile-picture-enhanced' ) }
+											value={ aboutHeadingFontSize }
+											onChange={ ( value ) => this.props.setAttributes( { aboutHeadingFontSize: value } ) }
+											min={ 10 }
+											max={ 100 }
+											step={ 1 }
+										/>
+									</Fragment>
+								}
 								<SelectControl
 										label={ __( 'Select an Avatar Shape', 'user-profile-picture-enhanced' ) }
 										value={avatarShape}
@@ -180,7 +184,7 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 								>
 								</PanelColorSettings>
 							</PanelBody>
-							<PanelBody title={ __( 'Background Settings', 'user-profile-picture-enhanced' ) } initialOpen={false}>
+							<PanelBody title={ __( 'Default Image', 'user-profile-picture-enhanced' ) } initialOpen={false}>
 								<MediaUpload
 									onSelect={ ( imageObject ) => {
 										this.props.setAttributes( { defaultImg: imageObject.url } );

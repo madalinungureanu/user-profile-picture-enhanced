@@ -474,3 +474,75 @@
     background: #FFF;
     border: 2px solid #e87800;
     padding: 2px; }
+
+.upp-enhanced-author-box.minimal {
+  background-color: #EEEEEE !important;
+  border: 10px solid #DDDDDD !important;
+  border-radius: 2px !important; }
+  .upp-enhanced-author-box.minimal .author-title {
+    display: none; }
+  .upp-enhanced-author-box.minimal .author-biography {
+    color: #423f3b !important;
+    font-style: italic !important;
+    font-size: 18px !important; }
+  .upp-enhanced-author-box.minimal .author-name {
+    text-align: left; }
+    .upp-enhanced-author-box.minimal .author-name a,
+    .upp-enhanced-author-box.minimal .author-name a:hover,
+    .upp-enhanced-author-box.minimal .author-name a:visited {
+      color: #524c66;
+      font-family: Arial, Helvetica, sans-serif;
+      text-decoration: none; }
+    .upp-enhanced-author-box.minimal .author-name a:hover {
+      color: #463f62; }
+  .upp-enhanced-author-box.minimal .upp-enhanced-author-box-title {
+    display: none; }
+  .upp-enhanced-author-box.minimal .fab,
+  .upp-enhanced-author-box.minimal .fas {
+    color: #000; }
+    .upp-enhanced-author-box.minimal .fab:hover,
+    .upp-enhanced-author-box.minimal .fas:hover {
+      color: #333; }
+  .upp-enhanced-author-box.minimal a,
+  .upp-enhanced-author-box.minimal a:hover,
+  .upp-enhanced-author-box.minimal a:visited {
+    text-decoration: underline;
+    color: #524c66; }
+  .upp-enhanced-author-box.minimal img {
+    background: #fff;
+    border: 2px solid #333333;
+    padding: 2px; }
+
+.upp-enhanced-author-box.dark {
+  background-color: #000000 !important;
+  border-radius: 2px !important; }
+  .upp-enhanced-author-box.dark .author-title {
+    color: #FFF !important;
+    font-family: Arial, Helvetica, sans-serif; }
+  .upp-enhanced-author-box.dark .author-biography {
+    color: #FFFFFF !important;
+    font-style: italic !important;
+    font-size: 22px !important; }
+  .upp-enhanced-author-box.dark .author-name {
+    text-align: left; }
+    .upp-enhanced-author-box.dark .author-name a,
+    .upp-enhanced-author-box.dark .author-name a:hover,
+    .upp-enhanced-author-box.dark .author-name a:visited {
+      color: #e87800;
+      font-family: Arial, Helvetica, sans-serif; }
+    .upp-enhanced-author-box.dark .author-name a:hover {
+      color: #e87800; }
+  .upp-enhanced-author-box.dark .upp-enhanced-author-box-title {
+    color: #FFF !important;
+    font-family: Arial, Helvetica, sans-serif; }
+  .upp-enhanced-author-box.dark .fab,
+  .upp-enhanced-author-box.dark .fas {
+    color: #FFF; }
+    .upp-enhanced-author-box.dark .fab:hover,
+    .upp-enhanced-author-box.dark .fas:hover {
+      color: #EEE; }
+  .upp-enhanced-author-box.dark a,
+  .upp-enhanced-author-box.dark a:hover,
+  .upp-enhanced-author-box.dark a:visited {
+    color: #e87800;
+    text-decoration: none; }
