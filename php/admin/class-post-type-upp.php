@@ -149,6 +149,7 @@ class Post_Type_UPP {
 			),
 			'map_meta_cap'        => true,
 			'show_in_rest'        => true,
+			'show_in_menu'        => 'mpp',
 		);
 		return $args;
 	}

@@ -34,7 +34,7 @@ class Post_Type_Author_Box {
 		if ( 'off' === $options['author_box_type'] ) {
 			return;
 		}
-		add_filter( 'init', array( $this, 'init' ) );
+		add_filter( 'init', array( $this, 'init' ), 5 );
 	}
 
 	/**
@@ -97,6 +97,7 @@ class Post_Type_Author_Box {
 			'query_var'           => 'uppe_author_box',
 			'capability_type'     => 'page',
 			'show_in_rest'        => true,
+			'show_in_menu'        => 'mpp',
 		);
 		register_post_type( 'uppe_author_box', $args );
 	}

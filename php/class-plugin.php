@@ -40,6 +40,10 @@ class Plugin extends Plugin_Abstract {
 		$this->migrate = new Admin\Migrate();
 		$this->migrate->register_hooks();
 
+		// Add submenu to parent User Profile Picture options.
+		$this->settings_menu = new Admin\Add_Settings_Page();
+		$this->settings_menu->register_hooks();
+
 		// Show social networks screen.
 		$this->social_networks = new Admin\Social_Networks();
 		$this->social_networks->register_hooks();

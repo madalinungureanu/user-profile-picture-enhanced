@@ -194,4 +194,117 @@
 			text-decoration: none;
 		}
 	}
+	&.light {
+		background-color: #FFFFFF !important;
+		border-radius: 2px !important;
+		.author-title {
+			color: #777777 !important;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		.author-biography {
+			color: #777777 !important;
+			font-style: italic !important;
+			font-size: 22px !important;
+		}
+		.author-name {
+			text-align: left;
+			a,
+			a:hover,
+			a:visited {
+				color: #e87800;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			a:hover {
+				color: #e87800;
+			}
+
+		}
+		.upp-enhanced-author-box-title {
+			color: #777777 !important;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		.fab,
+		.fas {
+			color: #777777;
+			&:hover {
+				color: #777777;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #e87800;
+			text-decoration: none;
+		}
+		img {
+			background: #fff;
+			border: 2px solid #777777;
+			padding: 2px;
+		}
+	}
+	&.professional {
+		background-color: #f3f8ff !important;
+		border-radius: 20px !important;
+		border: 2px solid #417eda !important;
+		.author-title {
+			color: #4e88dd !important;
+			font-family: Arial, Helvetica, sans-serif;
+			text-align: center;
+		}
+		.author-biography {
+			color: #4e88dd !important;
+			font-size: 22px !important;
+			text-align: center;
+		}
+		.author-name {
+			text-align: center;
+			font-weight: 700;
+			a,
+			a:hover,
+			a:visited {
+				color: #4e88dd;
+				text-decoration: underline;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			a:hover {
+				color: #4e88dd;
+			}
+
+		}
+		.upp-enhanced-author-box-title {
+			color: #4e88dd !important;
+			font-family: Arial, Helvetica, sans-serif;
+			text-align: center;
+		}
+		.fab,
+		.fas {
+			color: #4e88dd;
+			&:hover {
+				color:#4e88dd;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			color: #4e88dd;
+			text-decoration: underline;
+		}
+		.upp-enhanced-social-networks {
+			display: block;
+		}
+		.author-picture {
+			text-align: center;
+			border-bottom: 1px solid #345f9f;
+			float: none;
+			margin-bottom: 10px;
+			img {
+				background: #FFF;
+				border: 2px solid #345f9f;
+				padding: 2px;
+				width: 150px;
+				height: 150px;
+			}
+		}
+
+	}
 }

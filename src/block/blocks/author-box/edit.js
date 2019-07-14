@@ -67,7 +67,7 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 			{ value: 'bold', label: __( 'Bold', 'user-profile-picture-enhanced' ) },
 			{ value: 'minimal', label: __( 'Minimal', 'user-profile-picture-enhanced' ) },
 			{ value: 'dark', label: __( 'Dark', 'user-profile-picture-enhanced' ) },
-			{ value: 'light', label: __( 'light', 'user-profile-picture-enhanced' ) },
+			{ value: 'light', label: __( 'Light', 'user-profile-picture-enhanced' ) },
 			{ value: 'professional', label: __( 'Professional', 'user-profile-picture-enhanced' ) },
 		];
 
@@ -250,7 +250,7 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 									The Author's Title Will Go Here
 								</div>
 								<div className="author-biography">
-									Here's where the author's biography will be. It can <a href="#">have links</a> and other options where a detailed biogrpahy is left. It is recommended to fill out the user biography in the user's profile setting. The biography on the front end will be pulled from the user's biography that you set.
+									Here's where the author's biography will be. It can <a href="#">have links</a> and other options where a detailed biography is left. It is recommended to fill out the user biography in the user's profile setting. The biography on the front end will be pulled from the user's biography that you set.
 								</div>
 								<div className="column-meta">
 									<div className="author-heading">
