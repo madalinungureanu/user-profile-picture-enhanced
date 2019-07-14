@@ -64,6 +64,10 @@ class Plugin extends Plugin_Abstract {
 		$this->recent_posts_block = new Blocks\Recent_Posts();
 		$this->recent_posts_block->register_hooks();
 
+		// Author Box block.
+		$this->author_box_block = new Blocks\Author_Box();
+		$this->author_box_block->register_hooks();
+
 		// Load Rest API for Biography.
 		$this->rest_get_user_biography = new Rest\Rest_Get_User_Biography();
 		$this->rest_get_user_biography->register_hooks();

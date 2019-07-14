@@ -21,7 +21,7 @@ class Post_Type_Author_Box {
 		// Setup Post Type Template.
 		$author_box_type           = get_post_type_object( 'uppe_author_box' );
 		$author_box_type->template = array(
-			array( 'mpp/user-profile-enhanced' ),
+			array( 'mpp/user-profile-picture-enhanced-author-box' ),
 		);
 	}
 
