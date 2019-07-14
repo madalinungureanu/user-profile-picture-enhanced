@@ -41,7 +41,7 @@ class EDD_License_Settings {
 				array(
 					'version' => USER_PROFILE_PICTURE_ENHANCED_VERSION,
 					'license' => $license,
-					'item_id' => 688,
+					'item_id' => 5596,
 					'author'  => 'Ronald Huereca',
 					'beta'    => false,
 					'url'     => home_url(),
