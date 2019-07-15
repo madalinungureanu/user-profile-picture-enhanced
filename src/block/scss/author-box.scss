@@ -321,4 +321,145 @@
 		}
 
 	}
+	&.red-minimal {
+		position: relative;
+		background-color: #9c3333 !important;
+		border: 4px solid #761515 !important;
+		border-radius: inherit !important;
+		.author-picture {
+			float: none;
+			margin: 10px 0;
+			text-align: center;
+		}
+		.author-title {
+			display: none;
+		}
+		.author-biography {
+			display: none;
+		}
+		.author-heading {
+			display: none;
+		}
+		.author-name {
+			text-align: center;
+			a,
+			a:hover,
+			a:visited {
+				color: #FFF;
+				font-family: Arial, Helvetica, sans-serif;
+				text-decoration: none;
+			}
+			a:hover {
+				color: #e3b8b8;
+			}
+
+		}
+		.upp-enhanced-social-networks {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		.upp-enhanced-author-box-title {
+			text-align: center;
+			color: #FFF !important;
+			font-weight: 700 !important;
+			font-size: 28px !important;
+			&:before {
+				display: none;
+			}
+		}
+		.fab,
+		.fas {
+			color: #FFF;
+			&:hover {
+				color: #e3b8b8;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			text-decoration: underline;
+			color: #FFF;
+		}
+		img {
+			float: none;
+			background: #761515;
+			border: 2px solid #FFFFFF;
+			padding: 10px;
+		}
+	}
+	&.red-full {
+		position: relative;
+		background-color: #9c3333 !important;
+		border: 4px solid #761515 !important;
+		border-radius: inherit !important;
+		color: #FFF;
+		font-family: Arial, Helvetica, sans-serif;
+		.author-picture {
+			float: none;
+			margin: 10px 0;
+			text-align: center;
+		}
+		.author-title {
+			display: block;
+			text-align: center;
+		}
+		.author-biography {
+			display: block;
+			font-style: italic;
+			font-size: 22px;
+			padding: 0 20px;
+			text-align: center;
+		}
+		.author-heading {
+			display: block;
+		}
+		.author-name {
+			text-align: center;
+			a,
+			a:hover,
+			a:visited {
+				color: #FFF;
+				font-family: Arial, Helvetica, sans-serif;
+				text-decoration: none;
+			}
+			a:hover {
+				color: #e3b8b8;
+			}
+
+		}
+		.upp-enhanced-social-networks {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		.upp-enhanced-author-box-title {
+			text-align: center;
+			color: #FFF !important;
+			font-weight: 700 !important;
+			font-size: 28px !important;
+			&:before {
+				display: none;
+			}
+		}
+		.fab,
+		.fas {
+			color: #FFF;
+			&:hover {
+				color: #e3b8b8;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			text-decoration: underline;
+			color: #FFF;
+		}
+		img {
+			float: none;
+			background: #761515;
+			border: 2px solid #FFFFFF;
+			padding: 10px;
+		}
+	}
 }

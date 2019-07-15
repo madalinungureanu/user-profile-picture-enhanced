@@ -76,6 +76,10 @@ class Author_Box {
 						'type'    => 'string',
 						'default' => 'none',
 					),
+					'textColor'            => array(
+						'type'     => 'string',
+						'default'  => '#000000'
+					),
 					'backgroundColor'      => array(
 						'type'    => 'string',
 						'default' => '#FFFFFF',
@@ -126,6 +130,7 @@ class Author_Box {
 		$padding                 = $attributes['padding'];
 		$avatar_shape            = $attributes['avatarShape'];
 		$background_color        = $attributes['backgroundColor'];
+		$text_color              = $attributes['textColor'];
 
 		ob_start();
 		?>
@@ -133,7 +138,7 @@ class Author_Box {
 			class="upp-enhanced-author-box <?php echo esc_attr( $avatar_shape ); ?> <?php echo esc_attr( $theme ); ?>"
 			style="background-color: <?php echo esc_attr( $background_color ); ?>; padding: <?php echo absint( $padding ); ?>px; border: <?php echo absint( $border ); ?>px solid <?php echo esc_attr( $border_color ); ?>; border-radius: <?php echo absint( $border_radius ); ?>px;"
 		>
-		<div class="author-picture">
+		<div class="author-picture" style="color: <?php echo esc_attr( $text_color ); ?>;">
 				<?php
 				global $post;
 				global $wp_query;

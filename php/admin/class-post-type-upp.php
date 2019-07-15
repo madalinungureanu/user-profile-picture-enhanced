@@ -16,7 +16,36 @@ class Post_Type_UPP {
 	 * Initialize the Admin component.
 	 */
 	public function init() {
-
+		// Setup Post Type Template.
+		$author_profile_type           = get_post_type_object( 'mt_pp' );
+		$author_profile_type->template = array(
+			array(
+				'mpp/user-profile-picture-enhanced-avatar',
+			),
+			array(
+				'mpp/user-profile-picture-enhanced-biography',
+			),
+			array(
+				'core/heading',
+				array(
+					'level'   => '3',
+					'content' => __( 'Social Networks', 'user-profile-picture-enhanced' ),
+				),
+			),
+			array(
+				'mpp/user-profile-picture-enhanced-social-networks',
+			),
+			array(
+				'core/heading',
+				array(
+					'level'   => '3',
+					'content' => __( 'Recent Posts', 'user-profile-picture-enhanced' ),
+				),
+			),
+			array(
+				'mpp/user-profile-picture-enhanced-recent-posts',
+			),
+		);
 	}
 
 	/**
@@ -28,6 +57,7 @@ class Post_Type_UPP {
 		if ( 'off' === $options['show_profile_post_type'] ) {
 			return;
 		}
+		add_action( 'init', array( $this, 'init' ) );
 		add_filter( 'mpp_post_type_args', array( $this, 'post_type_args' ) );
 		add_filter( 'manage_mt_pp_posts_columns', array( $this, 'post_type_columns' ) );
 		add_action( 'manage_mt_pp_posts_custom_column', array( $this, 'post_type_column_output' ), 10, 2 );
@@ -77,7 +107,7 @@ class Post_Type_UPP {
 	 * @return array New Post Type arguments
 	 */
 	public function post_type_args( $args ) {
-		$labels  = array(
+		$labels = array(
 			'name'                  => _x( 'Profile Pictures', 'Post Type General Name', 'user-profile-picture-enhanced' ),
 			'singular_name'         => _x( 'Profile Picture', 'Post Type Singular Name', 'user-profile-picture-enhanced' ),
 			'menu_name'             => __( 'Profile Pictures', 'user-profile-picture-enhanced' ),

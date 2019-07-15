@@ -45,7 +45,7 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 
 	render() {
 		const { post, setAttributes } = this.props;
-		const { defaultImg, avatarShape, aboutHeading, theme, backgroundColor, border, padding, borderColor, borderRadius, aboutHeadingColor, aboutHeadingFontSize, titleHeadingColor, titleHeadingFontSize } = this.props.attributes;
+		const { defaultImg, textColor, avatarShape, aboutHeading, theme, backgroundColor, border, padding, borderColor, borderRadius, aboutHeadingColor, aboutHeadingFontSize, titleHeadingColor, titleHeadingFontSize } = this.props.attributes;
 
 		// Get thumbnail sizes in the right format.
 		const imageSizes = Object.entries( upp_enhanced.image_sizes );
@@ -63,12 +63,16 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 		// Get Theme Settings.
 		const themeOptions = [
 			{ value: 'none', label: __( 'None', 'user-profile-picture-enhanced' ) },
-			{ value: 'centered', label: __( 'Centered', 'user-profile-picture-enhanced' ) },
 			{ value: 'bold', label: __( 'Bold', 'user-profile-picture-enhanced' ) },
+			{ value: 'business', label: __( 'Business', 'user-profile-picture-enhanced' ) },
+			{ value: 'centered', label: __( 'Centered', 'user-profile-picture-enhanced' ) },
 			{ value: 'minimal', label: __( 'Minimal', 'user-profile-picture-enhanced' ) },
 			{ value: 'dark', label: __( 'Dark', 'user-profile-picture-enhanced' ) },
 			{ value: 'light', label: __( 'Light', 'user-profile-picture-enhanced' ) },
 			{ value: 'professional', label: __( 'Professional', 'user-profile-picture-enhanced' ) },
+			{ value: 'red-minimal', label: __( 'Red Minimal', 'user-profile-picture-enhanced' ) },
+			{ value: 'red-full', label: __( 'Red Full', 'user-profile-picture-enhanced' ) },
+
 		];
 
 		return (
@@ -183,6 +187,18 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 									} ] }
 								>
 								</PanelColorSettings>
+								<PanelColorSettings
+									title={ __( 'Text Color', 'user-profile-picture-enhanced' ) }
+									initialOpen={ true }
+									colorSettings={ [ {
+										value: textColor,
+										onChange: ( value ) => {
+											setAttributes( { textColor: value});
+										},
+										label: __( 'Text Color', 'user-profile-picture-enhanced' ),
+									} ] }
+								>
+								</PanelColorSettings>
 							</PanelBody>
 							<PanelBody title={ __( 'Default Image', 'user-profile-picture-enhanced' ) } initialOpen={false}>
 								<MediaUpload
@@ -214,12 +230,6 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 									) }
 								/>
 							</PanelBody>
-							<PanelBody title={ __( 'Color Settings', 'user-profile-picture-enhanced' ) } initialOpen={false}>
-
-							</PanelBody>
-							<PanelBody title={ __( 'Caption Settings', 'user-profile-picture-enhanced' ) } initialOpen={false}>
-
-							</PanelBody>
 						</InspectorControls>
 						<Fragment>
 							<div
@@ -235,6 +245,7 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 									"padding": padding + 'px',
 									"border": border + 'px' + ' solid' + borderColor,
 									"border-radius": borderRadius + 'px',
+									"color": textColor,
 								}}
 							>
 								<div className="author-picture">
@@ -267,7 +278,7 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 										/>
 									</div>
 									<div className="author-name">
-										<a href="#">{__('Jason Andrews', 'user-profile-picture-enhanced')}</a>
+										<a href="#">{__('Author Name Goes Here', 'user-profile-picture-enhanced')}</a>
 										<span className="icons upp-enhanced-social-networks brand">
 											<a href="#"><i className="fab fa-facebook-f"></i></a>
 											<a href="#"><i className="fab fa-twitter"></i></a>

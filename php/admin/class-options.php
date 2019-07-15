@@ -145,10 +145,10 @@ class Options {
 	 * @param array $options Options for the plugin.
 	 */
 	public function output_license_setting( $options ) {
-		if ( isset( $_POST['submit'] ) && isset( $_POST['options'] ) ) { // phpcs:ignore
+		if ( isset( $_POST['options'] ) ) { // phpcs:ignore
 
 			// Check for valid license.
-			$store_url  = 'https://bbvapormodules.com';
+			$store_url  = 'https://mediaron.com';
 			$api_params = array(
 				'edd_action' => 'activate_license',
 				'license'    => $_POST['options']['license'], // phpcs:ignore
