@@ -145,17 +145,24 @@
 			}
 
 		}
+		.upp-enhanced-social-networks {
+			display: block;
+			text-align: center;
+		}
 		.author-name {
 			text-align: center;
-			a,
-			a:hover,
-			a:visited {
-				color: #2096BA;
-				font-family: Arial, Helvetica, sans-serif;
-				text-decoration: none;
-			}
-			a:hover {
-				color: #e9a81d;
+		}
+		.author-name > a {
+			display: inline-block;
+			background: #2096BA;
+			padding: 10px 20px;
+			margin: 10px 0;
+			color: #FFF !important;
+			font-family: Arial, Helvetica, sans-serif;
+			text-decoration: none;
+			&:hover {
+				background: #1e85a4;
+				color: #FFFFFF;
 			}
 
 		}
@@ -170,6 +177,7 @@
 		}
 		.fab,
 		.fas {
+			background: transparent;
 			color: #2096BA;
 			&:hover {
 				color: #e9a81d;
