@@ -136,13 +136,12 @@ class Author_Box {
 		<div class="author-picture">
 				<?php
 				global $post;
-				$post_id     = $post->ID;
-				$user_id     = $post->post_author;
-
+				global $wp_query;
 				// Get profile data.
-				$profile_post_id = absint( get_user_option( 'metronet_post_id', $user_id ) );
-				$profile_post    = get_post( $profile_post_id );
-				$profile_img     = mt_profile_img(
+				$profile_type = ( empty( get_query_var( 'post_type' ) || 'NULL' === get_query_var( 'post_type' ) ) ? 'post' : get_query_var( 'post_type' ) );
+				$post_id      = $options[ $profile_type  ];
+				$user_id      = $wp_query->queried_object->post_author;
+				$profile_img  = mt_profile_img(
 					$user_id,
 					array(
 						'echo' => false,
@@ -182,13 +181,21 @@ class Author_Box {
 			</div>
 			<div class="author-name">
 				<?php
-				$user       = get_user_by( 'id', $user_id );
+				$user_post  = get_posts(
+					array(
+						'post_status' => 'publish',
+						'post_type'   => 'mt_pp',
+						'author'      => $user_id,
+					)
+				);
+				$user_post  = current( $user_post );
+				$user       = get_user_by( 'id', $user_post->post_author );
 				$maybe_href = $user->user_url;
 				if ( ! $maybe_href || empty( $maybe_href ) ) {
-					$maybe_href = get_the_author_link();
+					$maybe_href = get_permalink( $user_post->ID );
 				}
 				?>
-				<a href="<?php echo esc_url( $maybe_href ); ?>"><?php echo ( isset( $profile_post->post_title ) ? esc_html( $profile_post->post_title ) : '' ); ?></a>
+				<a href="<?php echo esc_url( $maybe_href ); ?>"><?php echo ( isset( $user_post->post_title ) ? esc_html( $user_post->post_title ) : '' ); ?></a>
 				<?php
 				global $wpdb;
 				$tablename = $wpdb->prefix . 'upp_social_networks';
@@ -215,6 +222,13 @@ class Author_Box {
 				endif;
 				?>
 			</div>
+			<?php
+			if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
+				?>
+				<a href="<?php echo esc_url( admin_url( "post.php?post={$post_id}&action=edit" ) ); ?>"><?php echo esc_html__( 'Edit Author Box', 'user-profile-picture-enhanced' ); ?></a>
+				<?php
+			}
+			?>
 		</div>
 		<?php
 		return ob_get_clean();

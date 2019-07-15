@@ -410,6 +410,9 @@
 .upp-enhanced-author-box.round .author-picture img {
   border-radius: 100%; }
 
+.upp-enhanced-author-box .author-biography {
+  padding: 10px 20px; }
+
 .upp-enhanced-author-box .author-picture {
   float: left;
   margin-right: 20px;
