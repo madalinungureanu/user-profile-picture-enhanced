@@ -225,7 +225,7 @@ class Author_Box {
 			<?php
 			if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
 				?>
-				<a href="<?php echo esc_url( admin_url( "post.php?post={$post_id}&action=edit" ) ); ?>"><?php echo esc_html__( 'Edit Author Box', 'user-profile-picture-enhanced' ); ?></a>
+				<a href="<?php echo esc_url( admin_url( "post.php?post={$post->ID}&action=edit" ) ); ?>"><?php echo esc_html__( 'Edit Author Box', 'user-profile-picture-enhanced' ); ?></a>
 				<?php
 			}
 			?>

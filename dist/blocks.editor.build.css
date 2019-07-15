@@ -540,7 +540,8 @@
     .upp-enhanced-author-box.dark .author-name a:hover,
     .upp-enhanced-author-box.dark .author-name a:visited {
       color: #e87800;
-      font-family: Arial, Helvetica, sans-serif; }
+      font-family: Arial, Helvetica, sans-serif;
+      text-decoration: none !important; }
     .upp-enhanced-author-box.dark .author-name a:hover {
       color: #e87800; }
   .upp-enhanced-author-box.dark .upp-enhanced-author-box-title {
