@@ -458,7 +458,10 @@
   .upp-enhanced-author-box.bold .upp-enhanced-author-box-title {
     text-align: center;
     color: #FFF !important;
-    font-weight: 700 !important; }
+    font-weight: 700 !important;
+    font-size: 28px !important; }
+    .upp-enhanced-author-box.bold .upp-enhanced-author-box-title:before {
+      display: none; }
   .upp-enhanced-author-box.bold .fab,
   .upp-enhanced-author-box.bold .fas {
     color: #FFF; }

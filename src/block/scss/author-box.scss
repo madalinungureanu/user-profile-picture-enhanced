@@ -83,6 +83,10 @@
 			text-align: center;
 			color: #FFF !important;
 			font-weight: 700 !important;
+			font-size: 28px !important;
+			&:before {
+				display: none;
+			}
 		}
 		.fab,
 		.fas {

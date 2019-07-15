@@ -181,16 +181,39 @@ class Author_Box {
 				<h2 class="upp-enhanced-author-box-title" style="color: <?php echo esc_attr( $about_heading_color ); ?>; font-size: <?php echo esc_attr( $about_heading_font_size ); ?>px;"><?php echo esc_html( $about_heading ); ?></h2>
 			</div>
 			<div class="author-name">
-				<a href="#"><?php echo ( isset( $profile_post->post_title ) ? esc_html( $profile_post->post_title ) : ''); ?></a>
-				<span class="icons upp-enhanced-social-networks brand">
-					<a href="#"><i class="fab fa-facebook-f"></i></a>
-					<a href="#"><i class="fab fa-twitter"></i></a>
-					<a href="#"><i class="fab fa-instagram"></i></a>
-					<a href="#"><i class="fab fa-linkedin"></i></a>
-					<a href="#"><i class="fab fa-pinterest"></i></a>
-					<a href="#"><i class="fab fa-medium"></i></a>
-					<a href="#"><i class="fab fa-wordpress"></i></a>
-				</span>
+				<?php
+				$user       = get_user_by( 'id', $user_id );
+				$maybe_href = $user->user_url;
+				if ( ! $maybe_href || empty( $maybe_href ) ) {
+					$maybe_href = get_the_author_link();
+				}
+				?>
+				<a href="<?php echo esc_url( $maybe_href ); ?>"><?php echo ( isset( $profile_post->post_title ) ? esc_html( $profile_post->post_title ) : '' ); ?></a>
+				<?php
+				global $wpdb;
+				$tablename = $wpdb->prefix . 'upp_social_networks';
+				$results   = $wpdb->get_results( // phpcs:ignore
+					$wpdb->prepare(
+						"select * from {$tablename} WHERE user_id = %d ORDER BY item_order ASC", // phpcs:ignore
+						$user_id
+					)
+				);
+				if ( $results && ! empty( $results ) ) :
+					?>
+					<span class="icons upp-enhanced-social-networks brand">
+						<?php
+						foreach( $results as $result ) {
+							printf(
+								'<a href="%s"><i class="%s"></i></a>',
+								esc_url( $result->url ),
+								esc_attr( $result->icon )
+							);
+						}
+						?>
+					</span>
+					<?php
+				endif;
+				?>
 			</div>
 		</div>
 		<?php
