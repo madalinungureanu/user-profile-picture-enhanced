@@ -77,8 +77,8 @@ class Author_Box {
 						'default' => 'none',
 					),
 					'textColor'            => array(
-						'type'     => 'string',
-						'default'  => '#000000'
+						'type'    => 'string',
+						'default' => '#000000',
 					),
 					'backgroundColor'      => array(
 						'type'    => 'string',
@@ -112,11 +112,43 @@ class Author_Box {
 	 * @param array $attributes Array of attributes.
 	 */
 	public function frontend( $attributes ) {
-		global $mt_pp;
-		$options = $mt_pp->get_options();
 		if ( is_admin() ) {
 			return;
 		}
+
+		ob_start();
+		// Check for co-authors plus multi-authors.
+		$post_id = get_queried_object_id();
+		$terms   = get_terms(
+			'author',
+			array(
+				'hide_empty' => false,
+				'object_ids' => $post_id,
+			)
+		);
+		if ( ! empty( $terms ) ) {
+			foreach ( $terms as $term ) {
+				$user = get_user_by( 'slug', $term->name );
+				if ( $user ) {
+					$this->get_author_box_html( $attributes, $user->ID );
+				}
+			}
+		} else {
+			$this->get_author_box_html( $attributes );
+		}
+		return ob_get_clean();
+	}
+
+	/**
+	 * Get HTML output for the author box.
+	 *
+	 * @param array $attributes The block attributes.
+	 * @param int   $user_id    The user ID to retrieve the profile for.
+	 */
+	private function get_author_box_html( $attributes, $user_id = 0 ) {
+		global $mt_pp;
+		$options = $mt_pp->get_options();
+		global $post;
 		$about_heading           = $attributes['aboutHeading'];
 		$theme                   = $attributes['theme'];
 		$about_heading_color     = $attributes['aboutHeadingColor'];
@@ -131,8 +163,6 @@ class Author_Box {
 		$avatar_shape            = $attributes['avatarShape'];
 		$background_color        = $attributes['backgroundColor'];
 		$text_color              = $attributes['textColor'];
-
-		ob_start();
 		?>
 		<div
 			class="upp-enhanced-author-box <?php echo esc_attr( $avatar_shape ); ?> <?php echo esc_attr( $theme ); ?>"
@@ -140,12 +170,11 @@ class Author_Box {
 		>
 		<div class="author-picture" style="color: <?php echo esc_attr( $text_color ); ?>;">
 				<?php
-				global $post;
 				global $wp_query;
 				// Get profile data.
 				$profile_type = ( empty( get_query_var( 'post_type' ) || 'NULL' === get_query_var( 'post_type' ) ) ? 'post' : get_query_var( 'post_type' ) );
 				$post_id      = $options[ $profile_type  ];
-				$user_id      = $wp_query->queried_object->post_author;
+				$user_id      = 0 !== $user_id ? $user_id : $wp_query->queried_object->post_author;
 				$profile_img  = mt_profile_img(
 					$user_id,
 					array(
@@ -227,15 +256,15 @@ class Author_Box {
 				endif;
 				?>
 			</div>
-			<?php
-			if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
-				?>
-				<a href="<?php echo esc_url( admin_url( "post.php?post={$post->ID}&action=edit" ) ); ?>"><?php echo esc_html__( 'Edit Author Box', 'user-profile-picture-enhanced' ); ?></a>
-				<?php
-			}
-			?>
 		</div>
 		<?php
-		return ob_get_clean();
+		if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
+			?>
+			<a href="<?php echo esc_url( admin_url( "post.php?post={$post->ID}&action=edit" ) ); ?>"><?php echo esc_html__( 'Edit Author Box', 'user-profile-picture-enhanced' ); ?></a>
+			<?php
+		}
+		?>
+		</div>
+		<?php
 	}
 }
