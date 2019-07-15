@@ -401,6 +401,11 @@
     height: 30px;
     font-size: 30px; }
 
+.upp-enhanced-author-box h2 {
+  font-size: 32px; }
+  .upp-enhanced-author-box h2:before {
+    display: none; }
+
 .upp-enhanced-author-box .author-title {
   font-size: 24px;
   line-height: 1.1;
