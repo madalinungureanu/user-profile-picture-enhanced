@@ -116,6 +116,80 @@
 			padding: 2px;
 		}
 	}
+	&.business {
+		position: relative;
+		background-color: #FFFFFF !important;
+		border: 2px solid #2096BA !important;
+		border-radius: 20px !important;
+		color: #C5919D;
+		font-family: Arial, Helvetica, sans-serif;
+		.author-title {
+			color: #2096BA !important;
+			display: block;
+			text-align: center;
+			font-weight: 700;
+		}
+		.author-biography {
+			color: #C5919D;
+			display: block;
+			font-style: italic;
+			font-size: 22px;
+			padding: 20px;
+		}
+		.author-heading {
+			clear: both;
+			display: block;
+			text-align: center;
+			h2 {
+				color: #2096BA !important;
+			}
+
+		}
+		.author-name {
+			text-align: center;
+			a,
+			a:hover,
+			a:visited {
+				color: #2096BA;
+				font-family: Arial, Helvetica, sans-serif;
+				text-decoration: none;
+			}
+			a:hover {
+				color: #e9a81d;
+			}
+
+		}
+		.upp-enhanced-author-box-title {
+			text-align: center;
+			color: #2059ae !important;
+			font-weight: 700 !important;
+			font-size: 28px !important;
+			&:before {
+				display: none;
+			}
+		}
+		.fab,
+		.fas {
+			color: #2096BA;
+			&:hover {
+				color: #e9a81d;
+			}
+		}
+		a,
+		a:hover,
+		a:visited {
+			text-decoration: underline;
+			color: #2096BA;
+		}
+		img {
+			float: left;
+			background: #FFFFFF;
+			border: 2px solid #2096BA;
+			padding: 5px;
+			width: 150px !important;
+			height: 150px !important;
+		}
+	}
 	&.minimal {
 		background-color: #EEEEEE !important;
 		border: 10px solid #DDDDDD !important;

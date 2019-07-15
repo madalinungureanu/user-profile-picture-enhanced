@@ -486,6 +486,66 @@
     border: 2px solid #e87800;
     padding: 2px; }
 
+.upp-enhanced-author-box.business {
+  position: relative;
+  background-color: #FFFFFF !important;
+  border: 2px solid #2096BA !important;
+  border-radius: 20px !important;
+  color: #C5919D;
+  font-family: Arial, Helvetica, sans-serif; }
+  .upp-enhanced-author-box.business .author-title {
+    color: #2096BA !important;
+    display: block;
+    text-align: center;
+    font-weight: 700; }
+  .upp-enhanced-author-box.business .author-biography {
+    color: #C5919D;
+    display: block;
+    font-style: italic;
+    font-size: 22px;
+    padding: 20px; }
+  .upp-enhanced-author-box.business .author-heading {
+    clear: both;
+    display: block;
+    text-align: center; }
+    .upp-enhanced-author-box.business .author-heading h2 {
+      color: #2096BA !important; }
+  .upp-enhanced-author-box.business .author-name {
+    text-align: center; }
+    .upp-enhanced-author-box.business .author-name a,
+    .upp-enhanced-author-box.business .author-name a:hover,
+    .upp-enhanced-author-box.business .author-name a:visited {
+      color: #2096BA;
+      font-family: Arial, Helvetica, sans-serif;
+      text-decoration: none; }
+    .upp-enhanced-author-box.business .author-name a:hover {
+      color: #e9a81d; }
+  .upp-enhanced-author-box.business .upp-enhanced-author-box-title {
+    text-align: center;
+    color: #2059ae !important;
+    font-weight: 700 !important;
+    font-size: 28px !important; }
+    .upp-enhanced-author-box.business .upp-enhanced-author-box-title:before {
+      display: none; }
+  .upp-enhanced-author-box.business .fab,
+  .upp-enhanced-author-box.business .fas {
+    color: #2096BA; }
+    .upp-enhanced-author-box.business .fab:hover,
+    .upp-enhanced-author-box.business .fas:hover {
+      color: #e9a81d; }
+  .upp-enhanced-author-box.business a,
+  .upp-enhanced-author-box.business a:hover,
+  .upp-enhanced-author-box.business a:visited {
+    text-decoration: underline;
+    color: #2096BA; }
+  .upp-enhanced-author-box.business img {
+    float: left;
+    background: #FFFFFF;
+    border: 2px solid #2096BA;
+    padding: 5px;
+    width: 150px !important;
+    height: 150px !important; }
+
 .upp-enhanced-author-box.minimal {
   background-color: #EEEEEE !important;
   border: 10px solid #DDDDDD !important;
