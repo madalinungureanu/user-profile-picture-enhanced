@@ -9,7 +9,7 @@
  * Plugin Name: User Profile Picture Enhanced
  * Plugin URI: https://mediaron.com/downloads/user-profile-picture-enhanced/
  * Description: An add-on for User Profile Picture.
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: MediaRon LLC
  * Author URI: https://mediaron.com
  * License: GPL2
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! defined( 'USER_PROFILE_PICTURE_ENHANCED' ) ) {
 	define( 'USER_PROFILE_PICTURE_ENHANCED', true );
 }
-define( 'USER_PROFILE_PICTURE_ENHANCED_VERSION', '1.0.5' );
+define( 'USER_PROFILE_PICTURE_ENHANCED_VERSION', '1.0.6' );
 define( 'USER_PROFILE_PICTURE_ENHANCED_PLUGIN_NAME', 'User Profile Picture Enhanced' );
 define( 'USER_PROFILE_PICTURE_ENHANCED_DIR', plugin_dir_path( __FILE__ ) );
 define( 'USER_PROFILE_PICTURE_ENHANCED_URL', plugins_url( '/', __FILE__ ) );
