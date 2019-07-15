@@ -124,6 +124,24 @@ add_action( 'plugins_loaded', array( user_profile_picture_enhanced(), 'plugin_lo
 add_action( 'init', 'user_profile_picture_enhanced_add_i18n' );
 
 /**
+ * Provide default options this plugin needs for User Profile Picture.
+ *
+ * @param array $defaults The default options for User Profile Picture.
+ *
+ * @return array New Defaults.
+ */
+function uppe_option_defaults( $defaults ) {
+	$defaults['migrated']               = 'off';
+	$defaults['show_profile_post_type'] = 'off';
+	$defaults['allow_public_profiles']  = 'off';
+	$defaults['font_awesome_admin']     = 'on';
+	$defaults['font_awesome_frontend']  = 'off';
+	$defaults['author_box_type']        = 'off';
+	return $defaults;
+}
+add_filter( 'mpp_options_defaults', 'uppe_option_defaults', 5, 1 );
+
+/**
  * Add i18n to User Profile Picture Enhanced.
  */
 function user_profile_picture_enhanced_add_i18n() {

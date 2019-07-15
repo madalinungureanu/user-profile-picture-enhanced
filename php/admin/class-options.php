@@ -23,29 +23,11 @@ class Options {
 	 * Register any hooks that this component needs.
 	 */
 	public function register_hooks() {
-		add_filter( 'mpp_options_defaults', array( $this, 'option_defaults' ), 10, 1 );
 		add_action( 'mpp_user_profile_admin_settings_after_row', array( $this, 'output_license_setting' ), 8, 1 );
 		add_action( 'mpp_user_profile_admin_settings_after_row', array( $this, 'output_post_type_options' ), 10, 1 );
 		add_action( 'mpp_user_profile_admin_settings_after_row', array( $this, 'output_font_awesome_options' ), 11, 1 );
 		add_action( 'mpp_user_profile_admin_settings_after_row', array( $this, 'output_author_box_options' ), 12, 1 );
 		add_action( 'mpp_user_profile_admin_settings_after_row', array( $this, 'output_author_box_select' ), 13, 1 );
-	}
-
-	/**
-	 * Provide default options this plugin needs for User Profile Picture.
-	 *
-	 * @param array $defaults The default options for User Profile Picture.
-	 *
-	 * @return array New Defaults.
-	 */
-	public function option_defaults( $defaults ) {
-		$defaults['migrated']               = 'off';
-		$defaults['show_profile_post_type'] = 'off';
-		$defaults['allow_public_profiles']  = 'off';
-		$defaults['font_awesome_admin']     = 'on';
-		$defaults['font_awesome_frontend']  = 'off';
-		$defaults['author_box_type']        = 'off';
-		return $defaults;
 	}
 
 	/**

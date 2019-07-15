@@ -36,15 +36,15 @@ class Author_Box {
 			'mpp/user-profile-picture-enhanced-author-box',
 			array(
 				'attributes'      => array(
-					'defaultImg'       => array(
+					'defaultImg'           => array(
 						'type'    => 'string',
 						'default' => \Metronet_Profile_Picture::get_plugin_url( '/img/mystery.png' ),
 					),
-					'aboutHeading'   => array(
+					'aboutHeading'         => array(
 						'type'    => 'string',
 						'default' => __( 'Connect with the Author', 'user-profile-picture-enhanced' ),
 					),
-					'aboutHeadingColor' => array(
+					'aboutHeadingColor'    => array(
 						'type'    => 'string',
 						'default' => '#000000',
 					),
@@ -52,7 +52,7 @@ class Author_Box {
 						'type'    => 'int',
 						'default' => 18,
 					),
-					'aboutHeadingColor' => array(
+					'aboutHeadingColor'    => array(
 						'type'    => 'string',
 						'default' => '#000000',
 					),
@@ -60,7 +60,7 @@ class Author_Box {
 						'type'    => 'int',
 						'default' => 18,
 					),
-					'titleHeadingColor' => array(
+					'titleHeadingColor'    => array(
 						'type'    => 'string',
 						'default' => '#000000',
 					),
@@ -72,27 +72,27 @@ class Author_Box {
 						'type'    => 'string',
 						'default' => 'round',
 					),
-					'theme'          => array(
+					'theme'                => array(
 						'type'    => 'string',
 						'default' => 'none',
 					),
-					'backgroundColor' => array(
+					'backgroundColor'      => array(
 						'type'    => 'string',
 						'default' => '#FFFFFF',
 					),
-					'padding'         => array(
+					'padding'              => array(
 						'type'    => 'int',
 						'default' => 0,
 					),
-					'border'          => array(
+					'border'               => array(
 						'type'    => 'int',
 						'default' => 0,
 					),
-					'borderColor'     => array(
+					'borderColor'          => array(
 						'type'    => 'string',
 						'default' => '#000000',
 					),
-					'borderRadius'    => array(
+					'borderRadius'         => array(
 						'type'    => 'int',
 						'default' => 0,
 					),
@@ -209,7 +209,7 @@ class Author_Box {
 					?>
 					<span class="icons upp-enhanced-social-networks brand">
 						<?php
-						foreach( $results as $result ) {
+						foreach ( $results as $result ) {
 							printf(
 								'<a href="%s"><i class="%s"></i></a>',
 								esc_url( $result->url ),
