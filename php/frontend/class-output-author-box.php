@@ -33,10 +33,10 @@ class Output_Author_Box {
 	 * @return string $content New content with author box attached.
 	 */
 	public function maybe_add_author_box( $content ) {
-		global $post;
-		global $mt_pp;
-		$options = $mt_pp->get_options();
 		if ( ( is_single() || is_singular() ) && is_main_query() && ! is_front_page() && ! is_home() ) {
+			global $post;
+			global $mt_pp;
+			$options = $mt_pp->get_options();
 			$post_type = $post->post_type;
 			if ( isset( $options[ $post_type ] ) ) {
 				if ( 'none' !== $options[ $post_type ] ) {
@@ -44,7 +44,7 @@ class Output_Author_Box {
 					$author_box_query = new \WP_Query ( // phpcs:ignore
 						array(
 							'post_status' => 'publish',
-							'p'           => $post_id,
+							'post__in'    => array( $post_id ),
 							'post_type'   => 'uppe_author_box',
 
 						)

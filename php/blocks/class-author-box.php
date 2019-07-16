@@ -126,7 +126,7 @@ class Author_Box {
 				'object_ids' => $post_id,
 			)
 		);
-		if ( ! empty( $terms ) ) {
+		if ( ! empty( $terms && ! is_wp_error( $terms ) ) ) {
 			foreach ( $terms as $term ) {
 				$user = get_user_by( 'slug', $term->name );
 				if ( $user ) {
