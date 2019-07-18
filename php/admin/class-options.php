@@ -103,7 +103,7 @@ class Options {
 		}
 		$post_types_arr   = get_post_types(
 			array(
-				'public'             => true,
+				'public' => true,
 			),
 			'objects'
 		);
@@ -116,7 +116,7 @@ class Options {
 				'order'          => 'asc',
 			)
 		);
-		$post_type_html = '';
+		$post_type_html   = '';
 		foreach ( $post_types_arr as $post_type ) {
 			$post_type_html .= '<h3>' . esc_html( $post_type->label ) . '</h3>';
 			$post_type_html .= '<select name="options[' . esc_attr( $post_type->name ) . ']">';

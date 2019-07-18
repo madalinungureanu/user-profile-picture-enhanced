@@ -36,7 +36,7 @@ class Output_Author_Box {
 		if ( ( is_single() || is_singular() ) && is_main_query() && ! is_front_page() && ! is_home() ) {
 			global $post;
 			global $mt_pp;
-			$options = $mt_pp->get_options();
+			$options   = $mt_pp->get_options();
 			$post_type = $post->post_type;
 			if ( isset( $options[ $post_type ] ) ) {
 				if ( 'none' !== $options[ $post_type ] ) {
