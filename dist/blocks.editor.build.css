@@ -1097,7 +1097,8 @@
         text-decoration: none !important; }
       .upp-enhanced-author-box-two.dark .author-name a:hover {
         color: #e87800; }
-    .upp-enhanced-author-box-two.dark .upp-enhanced-author-box-title {
+    .upp-enhanced-author-box-two.dark .upp-enhanced-author-box-title,
+    .upp-enhanced-author-box-two.dark .author-post-list-heading {
       color: #FFF !important;
       font-family: Arial, Helvetica, sans-serif; }
     .upp-enhanced-author-box-two.dark .fab,
@@ -1111,10 +1112,30 @@
     .upp-enhanced-author-box-two.dark a:visited {
       color: #e87800;
       text-decoration: none; }
+    .upp-enhanced-author-box-two.dark ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none; }
+      .upp-enhanced-author-box-two.dark ul li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0; }
+        .upp-enhanced-author-box-two.dark ul li a {
+          display: inline-block;
+          width: 100%;
+          text-decoration: none; }
+    .upp-enhanced-author-box-two.dark .author-name {
+      display: block;
+      text-align: center; }
+      .upp-enhanced-author-box-two.dark .author-name .upp-enhanced-social-networks {
+        display: block;
+        text-align: center;
+        margin: 10px auto; }
   .upp-enhanced-author-box-two.light {
     background-color: #FFFFFF !important;
     border-radius: 2px !important; }
-    .upp-enhanced-author-box-two.light .author-title {
+    .upp-enhanced-author-box-two.light .author-title,
+    .upp-enhanced-author-box-two.light .author-post-list-heading {
       color: #777777 !important;
       font-family: Arial, Helvetica, sans-serif; }
     .upp-enhanced-author-box-two.light .author-biography {
@@ -1148,11 +1169,31 @@
       background: #fff;
       border: 2px solid #777777;
       padding: 2px; }
+    .upp-enhanced-author-box-two.light ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none; }
+      .upp-enhanced-author-box-two.light ul li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0; }
+        .upp-enhanced-author-box-two.light ul li a {
+          display: inline-block;
+          width: 100%;
+          text-decoration: none; }
+    .upp-enhanced-author-box-two.light .author-name {
+      display: block;
+      text-align: center; }
+      .upp-enhanced-author-box-two.light .author-name .upp-enhanced-social-networks {
+        display: block;
+        text-align: center;
+        margin: 10px auto; }
   .upp-enhanced-author-box-two.professional {
     background-color: #f3f8ff !important;
     border-radius: 20px !important;
     border: 2px solid #417eda !important; }
-    .upp-enhanced-author-box-two.professional .author-title {
+    .upp-enhanced-author-box-two.professional .author-title,
+    .upp-enhanced-author-box-two.professional .author-post-list-heading {
       color: #4e88dd !important;
       font-family: Arial, Helvetica, sans-serif;
       text-align: center; }
@@ -1199,6 +1240,26 @@
         padding: 2px;
         width: 150px;
         height: 150px; }
+    .upp-enhanced-author-box-two.professional ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none; }
+      .upp-enhanced-author-box-two.professional ul li {
+        text-align: center;
+        list-style-type: none;
+        margin: 0;
+        padding: 0; }
+        .upp-enhanced-author-box-two.professional ul li a {
+          display: inline-block;
+          width: 100%;
+          text-decoration: none; }
+    .upp-enhanced-author-box-two.professional .author-name {
+      display: block;
+      text-align: center; }
+      .upp-enhanced-author-box-two.professional .author-name .upp-enhanced-social-networks {
+        display: block;
+        text-align: center;
+        margin: 10px auto; }
   .upp-enhanced-author-box-two.red-minimal {
     position: relative;
     background-color: #9c3333 !important;
@@ -1215,7 +1276,8 @@
     .upp-enhanced-author-box-two.red-minimal .author-heading {
       display: none; }
     .upp-enhanced-author-box-two.red-minimal .author-name {
-      text-align: center; }
+      text-align: center;
+      margin-top: 20px; }
       .upp-enhanced-author-box-two.red-minimal .author-name a,
       .upp-enhanced-author-box-two.red-minimal .author-name a:hover,
       .upp-enhanced-author-box-two.red-minimal .author-name a:visited {
@@ -1251,6 +1313,8 @@
       background: #761515;
       border: 2px solid #FFFFFF;
       padding: 10px; }
+    .upp-enhanced-author-box-two.red-minimal .author-post-list {
+      display: none; }
   .upp-enhanced-author-box-two.red-full {
     position: relative;
     background-color: #9c3333 !important;

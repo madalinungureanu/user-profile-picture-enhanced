@@ -921,7 +921,8 @@
 			}
 
 		}
-		.upp-enhanced-author-box-title {
+		.upp-enhanced-author-box-title,
+		.author-post-list-heading {
 			color: #FFF !important;
 			font-family: Arial, Helvetica, sans-serif;
 		}
@@ -938,11 +939,36 @@
 			color: #e87800;
 			text-decoration: none;
 		}
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+			li {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				a {
+					display: inline-block;
+					width: 100%;
+					text-decoration: none;
+				}
+			}
+		}
+		.author-name {
+				display: block;
+				text-align: center;
+			.upp-enhanced-social-networks {
+				display: block;
+				text-align: center;
+				margin: 10px auto;
+			}
+		}
 	}
 	&.light {
 		background-color: #FFFFFF !important;
 		border-radius: 2px !important;
-		.author-title {
+		.author-title,
+		.author-post-list-heading {
 			color: #777777 !important;
 			font-family: Arial, Helvetica, sans-serif;
 		}
@@ -986,12 +1012,37 @@
 			border: 2px solid #777777;
 			padding: 2px;
 		}
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+			li {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				a {
+					display: inline-block;
+					width: 100%;
+					text-decoration: none;
+				}
+			}
+		}
+		.author-name {
+			display: block;
+			text-align: center;
+			.upp-enhanced-social-networks {
+				display: block;
+				text-align: center;
+				margin: 10px auto;
+			}
+		}
 	}
 	&.professional {
 		background-color: #f3f8ff !important;
 		border-radius: 20px !important;
 		border: 2px solid #417eda !important;
-		.author-title {
+		.author-title,
+		.author-post-list-heading {
 			color: #4e88dd !important;
 			font-family: Arial, Helvetica, sans-serif;
 			text-align: center;
@@ -1050,6 +1101,31 @@
 				height: 150px;
 			}
 		}
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+			li {
+				text-align: center;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				a {
+					display: inline-block;
+					width: 100%;
+					text-decoration: none;
+				}
+			}
+		}
+		.author-name {
+			display: block;
+			text-align: center;
+			.upp-enhanced-social-networks {
+				display: block;
+				text-align: center;
+				margin: 10px auto;
+			}
+		}
 
 	}
 	&.red-minimal {
@@ -1073,6 +1149,7 @@
 		}
 		.author-name {
 			text-align: center;
+			margin-top: 20px;
 			a,
 			a:hover,
 			a:visited {
@@ -1117,6 +1194,9 @@
 			background: #761515;
 			border: 2px solid #FFFFFF;
 			padding: 10px;
+		}
+		.author-post-list {
+			display: none;
 		}
 	}
 	&.red-full {
