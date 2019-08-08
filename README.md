@@ -8,4 +8,4 @@
 
 ## Purchase a license for support and upgrades
 
-<a href="https://mediaron.com/downloads/user-profile-picture-enhanced/">Purchase a License</a>
+<a href="https://mediaron.com/downloads/user-profile-picture-enhanced/">Purchase a License for Updates and Support</a>
