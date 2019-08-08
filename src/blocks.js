@@ -15,3 +15,4 @@ import './block/blocks/biography/block';
 import './block/blocks/social-networks/block';
 import './block/blocks/recent-posts/block';
 import './block/blocks/author-box/block';
+import './block/blocks/author-box-two/block';

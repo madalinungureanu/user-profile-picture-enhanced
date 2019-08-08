@@ -15,8 +15,8 @@ import edit from './edit';
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'mpp/user-profile-picture-enhanced-author-box-2', {
-	title: __( 'User Profile Author Box Two', 'user-profile-picture-enhanced' ), // Block title.
+registerBlockType( 'mpp/user-profile-picture-enhanced-author-box', {
+	title: __( 'User Profile Author Box', 'user-profile-picture-enhanced' ), // Block title.
 	icon: 'id',
 	category: 'mpp',
 	keywords: [
