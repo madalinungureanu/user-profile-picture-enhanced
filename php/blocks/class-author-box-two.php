@@ -187,56 +187,18 @@ class Author_Box_Two {
 		$avatar_shape            = $attributes['avatarShape'];
 		$background_color        = $attributes['backgroundColor'];
 		$text_color              = $attributes['textColor'];
+		$show_title              = filter_var( $attributes['showTitle'], FILTER_VALIDATE_BOOLEAN );
+		$show_bio                = filter_var( $attributes['showBio'], FILTER_VALIDATE_BOOLEAN );
+		$show_social             = filter_var( $attributes['showSocial'], FILTER_VALIDATE_BOOLEAN );
+		$show_posts              = filter_var( $attributes['showPosts'], FILTER_VALIDATE_BOOLEAN );
+		$post_list_heading_color = $attributes['postListHeadingColor'];
+		$post_list_font_size     = $attributes['postListHeadingFontSize'];
 		?>
 		<div
-			class="upp-enhanced-author-box <?php echo esc_attr( $avatar_shape ); ?> <?php echo esc_attr( $theme ); ?>"
+			class="upp-enhanced-author-box-two <?php echo esc_attr( $avatar_shape ); ?> <?php echo esc_attr( $theme ); ?>"
 			style="background-color: <?php echo esc_attr( $background_color ); ?>; padding: <?php echo absint( $padding ); ?>px; border: <?php echo absint( $border ); ?>px solid <?php echo esc_attr( $border_color ); ?>; border-radius: <?php echo absint( $border_radius ); ?>px;"
 		>
-		<div class="author-picture" style="color: <?php echo esc_attr( $text_color ); ?>;">
-				<?php
-				global $wp_query;
-				// Get profile data.
-				$profile_type = ( empty( get_query_var( 'post_type' ) || 'NULL' === get_query_var( 'post_type' ) ) ? 'post' : get_query_var( 'post_type' ) );
-				$post_id      = $options[ $profile_type  ];
-				$user_id      = 0 !== $user_id ? $user_id : $wp_query->queried_object->post_author;
-				$profile_img  = mt_profile_img(
-					$user_id,
-					array(
-						'echo' => false,
-						'size' => array( '75', '75' ),
-					)
-				);
-				if ( $profile_img ) {
-					echo $profile_img; // phpcs:ignore
-				} else {
-					?>
-					<img src="<?php echo esc_url( $default_image ); ?>" width="75" height="75" />
-					<?php
-				}
-				?>
-			</div>
-			<?php
-			$title = get_user_meta( $user_id, 'uppe_title', true ); // phpcs:ignore
-			if ( $title && ! empty( $title ) ) {
-				?>
-				<div class="author-title" style="color: <?php echo esc_attr( $title_heading_color ); ?>; font-size: <?php echo esc_attr( $title_heading_font_size ); ?>px;">
-					<?php echo esc_html( $title ); ?>
-				</div>
-				<?php
-			}
-			$biography = get_user_meta( $user_id, 'description', true );
-			if ( $biography && ! empty( $biography ) ) :
-				?>
-				<div class="author-biography">
-					<?php echo wp_kses_post( $biography ); ?>
-				</div>
-				<?php
-			endif;
-			?>
 		<div class="column-meta">
-			<div class="author-heading">
-				<h2 class="upp-enhanced-author-box-title" style="color: <?php echo esc_attr( $about_heading_color ); ?>; font-size: <?php echo esc_attr( $about_heading_font_size ); ?>px;"><?php echo esc_html( $about_heading ); ?></h2>
-			</div>
 			<div class="author-name">
 				<?php
 				$user_post  = get_posts(
@@ -263,7 +225,7 @@ class Author_Box_Two {
 						$user_id
 					)
 				);
-				if ( $results && ! empty( $results ) ) :
+				if ( $results && ! empty( $results ) && $show_social ) :
 					?>
 					<span class="icons upp-enhanced-social-networks brand">
 						<?php
@@ -281,7 +243,73 @@ class Author_Box_Two {
 				?>
 			</div>
 		</div>
+		<div class="author-picture" style="color: <?php echo esc_attr( $text_color ); ?>;">
+				<?php
+				global $wp_query;
+				// Get profile data.
+				$profile_type = ( empty( get_query_var( 'post_type' ) || 'NULL' === get_query_var( 'post_type' ) ) ? 'post' : get_query_var( 'post_type' ) );
+				$post_id      = $options[ $profile_type  ];
+				$user_id      = 0 !== $user_id ? $user_id : $wp_query->queried_object->post_author;
+				$profile_img  = mt_profile_img(
+					$user_id,
+					array(
+						'echo' => false,
+						'size' => array( '75', '75' ),
+					)
+				);
+				if ( $profile_img ) {
+					echo $profile_img; // phpcs:ignore
+				} else {
+					?>
+					<img src="<?php echo esc_url( $default_image ); ?>" width="75" height="75" />
+					<?php
+				}
+				?>
+			</div>
+			<?php
+			$title = get_user_meta( $user_id, 'uppe_title', true ); // phpcs:ignore
+			if ( $title && ! empty( $title ) && $show_title ) {
+				?>
+				<div class="author-title" style="color: <?php echo esc_attr( $title_heading_color ); ?>; font-size: <?php echo esc_attr( $title_heading_font_size ); ?>px;">
+					<?php echo esc_html( $title ); ?>
+				</div>
+				<?php
+			}
+			$biography = get_user_meta( $user_id, 'description', true );
+			if ( $biography && ! empty( $biography ) && $show_bio ) :
+				?>
+				<div class="author-biography">
+					<?php echo wp_kses_post( $biography ); ?>
+				</div>
+				<?php
+			endif;
+			?>
 		<?php
+		$args  = array(
+			'post_type'      => 'post',
+			'post_status'    => 'publish',
+			'author'         => $user_id,
+			'orderby'        => 'date',
+			'order'          => 'DESC',
+			'posts_per_page' => 5,
+		);
+		$posts = get_posts( $args );
+		if ( $show_posts && $posts ) {
+			?>
+			<div class="author-post-list">
+				<div class="author-post-list-heading" style="color: <?php echo esc_html( $post_list_heading_color ); ?>; font-size: <?php echo absint( $post_list_font_size ); ?>px;">
+					<?php echo esc_html__( 'Posts by ', 'user-profile-picture-enhanced' ); ?> <?php echo esc_html( $user->data->display_name ); ?>
+				</div>
+				<ul>
+				<?php
+				foreach ( $posts as $uppe_post ) {
+					printf( "<li><a href='%s'>%s</a></li>", esc_url( get_permalink( $uppe_post->ID ) ), esc_html( $uppe_post->post_title ) );
+				}
+				?>
+				</ul>
+			</div>
+			<?php
+		}
 		if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
 			?>
 			<a href="<?php echo esc_url( admin_url( "post.php?post={$post->ID}&action=edit" ) ); ?>"><?php echo esc_html__( 'Edit Author Box', 'user-profile-picture-enhanced' ); ?></a>
