@@ -1226,6 +1226,7 @@
 			display: block;
 		}
 		.author-name {
+			margin-top: 20px;
 			text-align: center;
 			a,
 			a:hover,
@@ -1271,6 +1272,22 @@
 			background: #761515;
 			border: 2px solid #FFFFFF;
 			padding: 10px;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+			li {
+				text-align: left;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				a {
+					display: inline-block;
+					width: 100%;
+					text-decoration: none;
+				}
+			}
 		}
 	}
 }
