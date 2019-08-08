@@ -21,9 +21,11 @@
     "axios": "^0.18.1",
     "cgb-scripts": "^1.17.0",
     "classnames": "^2.2.6",
+    "del": "^5.0.0",
     "gulp": "^4.0.2",
-    "gulp-zip": "^4.1.0",
-    "lodash": "^4.17.11"
+    "gulp-run": "^1.7.1",
+    "gulp-zip": "^4.2.0",
+    "lodash": "^4.17.15"
   },
   "dependencies": {
     "fstream": "^1.0.12",
