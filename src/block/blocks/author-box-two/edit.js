@@ -32,7 +32,7 @@ const {
 } = wp.blockEditor;
 
 
-class User_Profile_Picture_Enhanced_Author_Box extends Component {
+class User_Profile_Picture_Enhanced_Author_Box_Two extends Component {
 
 	constructor() {
 
@@ -45,7 +45,7 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 
 	render() {
 		const { post, setAttributes } = this.props;
-		const { defaultImg, textColor, avatarShape, aboutHeading, theme, backgroundColor, border, padding, borderColor, borderRadius, aboutHeadingColor, aboutHeadingFontSize, titleHeadingColor, titleHeadingFontSize } = this.props.attributes;
+		const { defaultImg, textColor, avatarShape, aboutHeading, theme, backgroundColor, border, padding, borderColor, borderRadius, aboutHeadingColor, aboutHeadingFontSize, titleHeadingColor, titleHeadingFontSize, postListHeadingColor, postListHeadingFontSize, showSocial, showTitle, showBio, showPosts} = this.props.attributes;
 
 		// Get thumbnail sizes in the right format.
 		const imageSizes = Object.entries( upp_enhanced.image_sizes );
@@ -122,21 +122,21 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 											step={ 1 }
 										/>
 										<PanelColorSettings
-											title={ __( 'About Heading Text Color', 'user-profile-picture-enhanced' ) }
+											title={ __( 'Post List Heading Text Color', 'user-profile-picture-enhanced' ) }
 											initialOpen={ true }
 											colorSettings={ [ {
-												value: aboutHeadingColor,
+												value: postListHeadingColor,
 												onChange: ( value ) => {
-													setAttributes( { aboutHeadingColor: value});
+													setAttributes( { postListHeadingColor: value});
 												},
-												label: __( 'About Heading Text Color', 'user-profile-picture-enhanced' ),
+												label: __( 'Post List Heading Text Color', 'user-profile-picture-enhanced' ),
 											} ] }
 										>
 										</PanelColorSettings>
 										<RangeControl
-											label={ __( 'About Heading Font Size', 'user-profile-picture-enhanced' ) }
-											value={ aboutHeadingFontSize }
-											onChange={ ( value ) => this.props.setAttributes( { aboutHeadingFontSize: value } ) }
+											label={ __( 'Post List Heading Font Size', 'user-profile-picture-enhanced' ) }
+											value={ postListHeadingFontSize }
+											onChange={ ( value ) => this.props.setAttributes( { postListHeadingFontSize: value } ) }
 											min={ 10 }
 											max={ 100 }
 											step={ 1 }
@@ -200,6 +200,40 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 								>
 								</PanelColorSettings>
 							</PanelBody>
+							<PanelBody title={ __( 'Show/Hide Sections', 'user-profile-picture-enhanced' ) } initialOpen={true}>
+								<ToggleControl
+									label={ __( 'Display Social Networks',  'post-type-archive-mapping' ) }
+									checked={ showSocial }
+									onChange={ ( value ) => {
+										setAttributes( {showSocial: value} );
+										this.props.attributes.showSocial = value;
+									} }
+								/>
+								<ToggleControl
+									label={ __( 'Display Title',  'post-type-archive-mapping' ) }
+									checked={ showTitle }
+									onChange={ ( value ) => {
+										setAttributes( {showTitle: value} );
+										this.props.attributes.showTitle = value;
+									} }
+								/>
+								<ToggleControl
+									label={ __( 'Display Biography',  'post-type-archive-mapping' ) }
+									checked={ showBio }
+									onChange={ ( value ) => {
+										setAttributes( {showBio: value} );
+										this.props.attributes.showBio = value;
+									} }
+								/>
+								<ToggleControl
+									label={ __( 'Display Posts',  'post-type-archive-mapping' ) }
+									checked={ showPosts }
+									onChange={ ( value ) => {
+										setAttributes( {showPosts: value} );
+										this.props.attributes.showPosts = value;
+									} }
+								/>
+							</PanelBody>
 							<PanelBody title={ __( 'Default Image', 'user-profile-picture-enhanced' ) } initialOpen={false}>
 								<MediaUpload
 									onSelect={ ( imageObject ) => {
@@ -235,7 +269,7 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 							<div
 								className={
 									classnames(
-										'upp-enhanced-author-box',
+										'upp-enhanced-author-box-two',
 										theme,
 										avatarShape
 									)
@@ -248,48 +282,60 @@ class User_Profile_Picture_Enhanced_Author_Box extends Component {
 									"color": textColor,
 								}}
 							>
+								<div className="column-meta">
+									<div className="author-name">
+										<a href="#">{__('Author Name Goes Here', 'user-profile-picture-enhanced')}</a>
+										{ showSocial &&
+											<span className="icons upp-enhanced-social-networks brand">
+												<a href="#"><i className="fab fa-facebook-f"></i></a>
+												<a href="#"><i className="fab fa-twitter"></i></a>
+												<a href="#"><i className="fab fa-instagram"></i></a>
+												<a href="#"><i className="fab fa-linkedin"></i></a>
+												<a href="#"><i className="fab fa-pinterest"></i></a>
+												<a href="#"><i className="fab fa-medium"></i></a>
+												<a href="#"><i className="fab fa-wordpress"></i></a>
+											</span>
+										}
+									</div>
+								</div>
 								<div className="author-picture">
 									<img src={defaultImg} width="75" height="75" alt={__('Default Picture', 'user-profile-picture-enhanced')} />
 								</div>
-								<div
-									className="author-title"
-									style={ {
-										color: titleHeadingColor,
-										fontSize: titleHeadingFontSize + 'px'
-									} }
-								>
-									The Author's Title Will Go Here
-								</div>
-								<div className="author-biography">
-									Here's where the author's biography will be. It can <a href="#">have links</a> and other options where a detailed biography is left. It is recommended to fill out the user biography in the user's profile setting. The biography on the front end will be pulled from the user's biography that you set.
-								</div>
-								<div className="column-meta">
-									<div className="author-heading">
-										<RichText
-											tagName="h2"
-											placeholder={ __( 'Enter an Author Heading...', 'user-profile-picture-enhancedanced' ) }
-											value={ aboutHeading }
-											className='upp-enhanced-author-box-title'
+								{ showTitle &&
+									<div
+										className="author-title"
+										style={ {
+											color: titleHeadingColor,
+											fontSize: titleHeadingFontSize + 'px'
+										} }
+									>
+										The Author's Title Will Go Here
+									</div>
+								}
+								{ showBio &&
+									<div className="author-biography">
+										Here's where the author's biography will be. It can <a href="#">have links</a> and other options where a detailed biography is left. It is recommended to fill out the user biography in the user's profile setting. The biography on the front end will be pulled from the user's biography that you set.
+									</div>
+								}
+
+								{ showPosts &&
+									<div className="author-post-list">
+										<div
+											className="author-post-list-heading"
 											style={ {
-												color: aboutHeadingColor,
-												fontSize: aboutHeadingFontSize + 'px'
+												color: postListHeadingColor,
+												fontSize: postListHeadingFontSize + 'px'
 											} }
-											onChange={ ( value ) => { setAttributes( { aboutHeading: value } ) } }
-										/>
+										>
+											Posts by User Display Name
+										</div>
+										<ul>
+											<li><a href="#">This is a fairly long post title</a></li>
+											<li><a href="#">This is another user post</a></li>
+											<li><a href="#">Finally, a third post.</a></li>
+										</ul>
 									</div>
-									<div className="author-name">
-										<a href="#">{__('Author Name Goes Here', 'user-profile-picture-enhanced')}</a>
-										<span className="icons upp-enhanced-social-networks brand">
-											<a href="#"><i className="fab fa-facebook-f"></i></a>
-											<a href="#"><i className="fab fa-twitter"></i></a>
-											<a href="#"><i className="fab fa-instagram"></i></a>
-											<a href="#"><i className="fab fa-linkedin"></i></a>
-											<a href="#"><i className="fab fa-pinterest"></i></a>
-											<a href="#"><i className="fab fa-medium"></i></a>
-											<a href="#"><i className="fab fa-wordpress"></i></a>
-										</span>
-									</div>
-								</div>
+								}
 							</div>
 						</Fragment>
 					</Fragment>
@@ -304,4 +350,4 @@ export default withSelect(select => {
 	return {
 		post: getCurrentPost(),
 	};
-})(User_Profile_Picture_Enhanced_Author_Box);
+})(User_Profile_Picture_Enhanced_Author_Box_Two);

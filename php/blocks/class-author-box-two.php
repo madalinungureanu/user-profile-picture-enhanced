@@ -36,69 +36,93 @@ class Author_Box_Two {
 			'mpp/user-profile-picture-enhanced-author-box-2',
 			array(
 				'attributes'      => array(
-					'defaultImg'           => array(
+					'defaultImg'              => array(
 						'type'    => 'string',
 						'default' => \Metronet_Profile_Picture::get_plugin_url( '/img/mystery.png' ),
 					),
-					'aboutHeading'         => array(
+					'aboutHeading'            => array(
 						'type'    => 'string',
 						'default' => __( 'Connect with the Author', 'user-profile-picture-enhanced' ),
 					),
-					'aboutHeadingColor'    => array(
+					'aboutHeadingColor'       => array(
 						'type'    => 'string',
 						'default' => '#000000',
 					),
-					'aboutHeadingFontSize' => array(
+					'aboutHeadingFontSize'    => array(
 						'type'    => 'int',
 						'default' => 18,
 					),
-					'aboutHeadingColor'    => array(
+					'aboutHeadingColor'       => array(
 						'type'    => 'string',
 						'default' => '#000000',
 					),
-					'aboutHeadingFontSize' => array(
+					'aboutHeadingFontSize'    => array(
 						'type'    => 'int',
 						'default' => 18,
 					),
-					'titleHeadingColor'    => array(
+					'titleHeadingColor'       => array(
 						'type'    => 'string',
 						'default' => '#000000',
 					),
-					'titleHeadingFontSize' => array(
+					'titleHeadingFontSize'    => array(
 						'type'    => 'int',
 						'default' => 32,
 					),
-					'avatarShape'          => array(
+					'postListHeadingColor'    => array(
+						'type'    => 'string',
+						'default' => '#000000',
+					),
+					'postListHeadingFontSize' => array(
+						'type'    => 'int',
+						'default' => 32,
+					),
+					'avatarShape'             => array(
 						'type'    => 'string',
 						'default' => 'round',
 					),
-					'theme'                => array(
+					'theme'                   => array(
 						'type'    => 'string',
 						'default' => 'none',
 					),
-					'textColor'            => array(
+					'textColor'               => array(
 						'type'    => 'string',
 						'default' => '#000000',
 					),
-					'backgroundColor'      => array(
+					'backgroundColor'         => array(
 						'type'    => 'string',
 						'default' => '#FFFFFF',
 					),
-					'padding'              => array(
+					'padding'                 => array(
 						'type'    => 'int',
 						'default' => 0,
 					),
-					'border'               => array(
+					'border'                  => array(
 						'type'    => 'int',
 						'default' => 0,
 					),
-					'borderColor'          => array(
+					'borderColor'             => array(
 						'type'    => 'string',
 						'default' => '#000000',
 					),
-					'borderRadius'         => array(
+					'borderRadius'            => array(
 						'type'    => 'int',
 						'default' => 0,
+					),
+					'showSocial'              => array(
+						'type'    => 'boolean',
+						'default' => true,
+					),
+					'showTitle'               => array(
+						'type'    => 'boolean',
+						'default' => true,
+					),
+					'showBio'                 => array(
+						'type'    => 'boolean',
+						'default' => true,
+					),
+					'showPosts'               => array(
+						'type'    => 'boolean',
+						'default' => true,
 					),
 				),
 				'render_callback' => array( $this, 'frontend' ),
