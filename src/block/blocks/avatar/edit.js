@@ -80,6 +80,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 					width: response.data.width,
 					height: response.data.height,
 					html: response.data.html,
+					caption: response.title,
 				}
 			);
 			this.props.setAttributes( {
@@ -88,6 +89,7 @@ class User_Profile_Picture_Enhanced_Avatar extends Component {
 				width: response.data.width,
 				height: response.data.height,
 				html: response.data.html,
+				caption: response.data.title,
 			});
 		}).catch(function (error) {
 			refThis.setState(

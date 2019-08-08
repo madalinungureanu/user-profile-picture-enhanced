@@ -101,6 +101,7 @@ class Rest_Get_Avatar {
 			'src'    => $image_url,
 			'width'  => $image_arr[1],
 			'height' => $image_arr[2],
+			'title'  => get_user_meta( $user_id, 'uppe_title', true ),
 		);
 		return $return;
 	}
