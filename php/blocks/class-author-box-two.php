@@ -193,6 +193,9 @@ class Author_Box_Two {
 		$show_posts              = filter_var( $attributes['showPosts'], FILTER_VALIDATE_BOOLEAN );
 		$post_list_heading_color = $attributes['postListHeadingColor'];
 		$post_list_font_size     = $attributes['postListHeadingFontSize'];
+
+		global $wp_query;
+		$user_id = 0 !== $user_id ? $user_id : $wp_query->queried_object->post_author;
 		?>
 		<div
 			class="upp-enhanced-author-box-two <?php echo esc_attr( $avatar_shape ); ?> <?php echo esc_attr( $theme ); ?>"
@@ -245,12 +248,7 @@ class Author_Box_Two {
 		</div>
 		<div class="author-picture" style="color: <?php echo esc_attr( $text_color ); ?>;">
 				<?php
-				global $wp_query;
-				// Get profile data.
-				$profile_type = ( empty( get_query_var( 'post_type' ) || 'NULL' === get_query_var( 'post_type' ) ) ? 'post' : get_query_var( 'post_type' ) );
-				$post_id      = $options[ $profile_type  ];
-				$user_id      = 0 !== $user_id ? $user_id : $wp_query->queried_object->post_author;
-				$profile_img  = mt_profile_img(
+				$profile_img = mt_profile_img(
 					$user_id,
 					array(
 						'echo' => false,
