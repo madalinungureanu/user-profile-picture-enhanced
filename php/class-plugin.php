@@ -84,6 +84,10 @@ class Plugin extends Plugin_Abstract {
 		$this->author_box_block_two = new Blocks\Author_Box_Two();
 		$this->author_box_block_two->register_hooks();
 
+		// Front-end Editing block.
+		$this->front_end_editing = new Blocks\Front_End_Editing();
+		$this->front_end_editing->register_hooks();
+
 		// Load Rest API for Biography.
 		$this->rest_get_user_biography = new Rest\Rest_Get_User_Biography();
 		$this->rest_get_user_biography->register_hooks();
