@@ -25,7 +25,7 @@
     "gulp": "^4.0.2",
     "gulp-run": "^1.7.1",
     "gulp-zip": "^4.2.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   },
   "dependencies": {
     "fstream": "^1.0.12",
